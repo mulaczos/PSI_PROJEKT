@@ -9,7 +9,6 @@ create table if not exists authorities (
   authority varchar(50) not null,
   constraint fk_authorities_users foreign key(username) references users(username)
 );
-create unique index ix_auth_username on authorities (username,authority);
 
-INSERT INTO USERS(USERNAME, PASSWORD, ENABLED) VALUES ('ADMIN', 'ADMIN', TRUE);
-INSERT INTO AUTHORITIES(USERNAME, AUTHORITY) VALUES ('ADMIN', 'ADMIN');
+create unique index if not exists ix_auth_username on authorities (username,authority);
+
