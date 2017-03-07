@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>INZ_VI_2017</groupId>
-    <artifactId>Sklep Internetowy</artifactId>
+    <artifactId>SklepInternetowy</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <parent>
