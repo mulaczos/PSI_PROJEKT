@@ -1,11 +1,9 @@
 package shop.infrastructure.domain.model;
 
 import lombok.Data;
+import shop.infrastructure.domain.model.base.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Witu on 08.03.2017.
@@ -13,12 +11,10 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name="Items")
-public class Item {
+public class Item extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    private Long id;
     private String name;
     private Double price;
-    private boolean deleted;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
 }
