@@ -28,14 +28,9 @@ public class Security extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/console/**").permitAll()
+                .anyRequest().permitAll()
                 .and()
-                .formLogin()
-                .failureUrl("/login?error")
-                .usernameParameter("username").passwordParameter("password")
-                .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
-                .and()
-                .exceptionHandling().accessDeniedPage("/403")
+                .formLogin().permitAll()
                 .and()
                 .csrf().disable()
                 .headers().frameOptions().disable();

@@ -1,6 +1,7 @@
 package shop.infrastructure.domain.model;
 
 import lombok.Data;
+import lombok.ToString;
 import shop.infrastructure.domain.model.base.BaseEntity;
 
 import javax.persistence.*;
