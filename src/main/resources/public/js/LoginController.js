@@ -12,13 +12,11 @@ function LoginController($scope) {
              }
              $scope.greeting = "hello!";
 }
-
-
 function config($stateProvider) {
             $stateProvider
                 .state('login', {
                     url: "/login",
-                    templateUrl: 'views/login.html',
+                    templateUrl: '/views/login.html',
                     controller: 'LoginController'
             })}
 

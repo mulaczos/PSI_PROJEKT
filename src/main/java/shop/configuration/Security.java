@@ -30,8 +30,6 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .antMatchers("/console/**").permitAll()
                 .anyRequest().permitAll()
                 .and()
-                .formLogin().permitAll()
-                .and()
                 .csrf().disable()
                 .headers().frameOptions().disable();
 
