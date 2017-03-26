@@ -1,26 +1,79 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html lang="en" ng-app="app">
 
 <head>
-    <script src="js/core/angular.js"></script>
-    <script src="js/core/angular-route.js"></script>
-    <script src="js/core/angular-ui-router.js"></script>
-    <script src="js/core/permission.js"></script>
-    <script src="js/core/permission-ui.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/LoginController.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
+    <!-- JQUERY -->
+    <script src="js/core/jquery.js"></script>
+    <!-- ANGULAR -->
+    <script src="js/core/angular/angular.js"></script>
+    <script src="js/core/angular/angular-ui-router.js"></script>
+    <script src="js/core/angular/angular-hamburger-toggle.js"></script>
+    <!-- OWN -->
+    <script src="js/app.js"></script>
+    <script src="js/loginController.js"></script>
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/material-design-hamburger.css" rel="stylesheet">
+
 </head>
+
 <body>
 
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <div>
+                    Sklep Internetowy
+                </div>
+            </li>
+            <li>
+                <a ui-sref="login">Szukaj</a>
+            </li>
+            <li>
+                <a ui-sref="login">Dashboard</a>
+            </li>
+            <li>
+                <a ui-sref="login">Dashboard</a>
+            </li>
+            <li>
+                <a ui-sref="login">Dashboard</a>
+            </li>
+            <li>
+                <a ui-sref="login">Dashboard</a>
+            </li>
+            <li>
+                <a ui-sref="login">Dashboard</a>
+            </li>
+            <li>
+                <a ui-sref="login">Dashboard</a>
+            </li>
+        </ul>
+    </div>
+
+    <br/>
+    <br/>
+    <div id="menu-toggle">
+        <hamburger-toggle state="tgState"></hamburger-toggle>
+    </div>
+
+
+</div>
 <div ui-view></div>
 
-<div></div>
-<div ui-sref='login'>"YO"</div>
-<div>{{greeting}}</div>
-
-
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
 
 </body>
+
 </html>

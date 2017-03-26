@@ -1,5 +1,5 @@
-var app = angular.module('app',[ 'ngRoute', 'ui.router']).config(
-    function($routeProvider, $locationProvider) {
+var app = angular.module('app',['ui.router', 'ngHamburger']).config(
+    function($locationProvider) {
 
         $locationProvider.hashPrefix('');
         $locationProvider.html5Mode({
