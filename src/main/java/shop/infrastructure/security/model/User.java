@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Primary user class used for application authentication
@@ -20,5 +21,7 @@ public class User {
     private String username;
     private String password;
     private boolean enabled = Boolean.TRUE;
+    @Transient
+    private Role role;
 
 }

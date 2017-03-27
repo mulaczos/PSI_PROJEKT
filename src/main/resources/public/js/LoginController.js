@@ -1,22 +1,23 @@
 angular
     .module('app')
     .controller('LoginController', LoginController)
-    .config(config);
 
-LoginController.$inject = ['$scope'];
-config.$inject=(['$stateProvider']);
+LoginController.$inject = ['$scope', 'AuthenticationFactory'];
 
-function LoginController($scope) {
-             $scope.init = function() {
-                console.log("it works!");
-             }
-             $scope.greeting = "hello!";
+function LoginController($scope, AuthenticationFactory) {
+    $scope.processLogin = function () {
+        console.log($scope.user.username);
+        console.log($scope.user.password);
+
+        AuthenticationFactory.login({
+            username: $scope.user.username,
+            password: $scope.user.password
+        }).$promise.then(function (success) {
+            console.log(success);
+        });
+    }
 }
-function config($stateProvider) {
-            $stateProvider
-                .state('login', {
-                    url: "/login",
-                    templateUrl: '/views/login.html',
-                    controller: 'LoginController'
-            })}
+
+
+
 
