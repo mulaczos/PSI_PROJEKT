@@ -12,6 +12,5 @@ function LoginController($scope, AuthenticationService) {
             $scope.user.username,
             $scope.user.password
         );
-
-    }
+    };
 }

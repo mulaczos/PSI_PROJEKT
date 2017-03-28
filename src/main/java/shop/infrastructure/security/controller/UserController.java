@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 
-/**
- * Created by Witu on 07.03.2017.
- */
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("authentication")

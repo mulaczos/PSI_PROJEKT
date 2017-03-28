@@ -6,9 +6,9 @@ angular.module('app', [
 ])
     .config(config)
     .run(function (AuthenticationService) {
-        AuthenticationService.isAuthenticated();
+        // AuthenticationService.isAuthenticated();
     })
-    .run(['PermRoleStore', 'PermPermissionStore', 'AuthenticationService', function (PermRoleStore, PermPermissionStore, AuthenticationService) {
+    .run(['PermRoleStore', 'PermPermissionStore', 'AuthenticationService', function (PermRoleStore, PermPermissionStore, Session) {
 
         PermRoleStore
             .defineRole('ADMIN', ['ADMIN_PANEL', 'ROOT_MODIFICATION_PANEL']);
@@ -18,23 +18,23 @@ angular.module('app', [
             .defineRole('USER', []);
         PermPermissionStore
             .definePermission('ADMIN_PANEL', function () {
-                return 'ROLE_ADMIN' === Session.authorities;
+                return 'ADMIN' === Session.authority;
             });
         PermPermissionStore
             .definePermission('ROOT_MODIFICATION_PANEL', function () {
-                return ('ROLE_ADMIN' === Session.authorities);
+                return ('ADMIN' === Session.authority);
             });
         PermPermissionStore
             .definePermission('EXTENDED_MODIFICATION_PANEL', function () {
                 return (
-                'ROLE_ADMIN' === Session.authorities ||
-                'ROLE_MODERATOR' === Session.authorities);
+                'ADMIN' === Session.authority ||
+                'MODERATOR' === Session.authority);
             });
         PermPermissionStore
             .definePermission('ITEM_PANEL', function () {
                 return (
-                'ROLE_ADMIN' === Session.authorities ||
-                'ROLE_MODERATOR' === Session.authorities);
+                'ADMIN' === Session.authority ||
+                'MODERATOR' === Session.authority);
             });
     }]);
 
@@ -48,16 +48,24 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
         requireBase: false
     });
 
-    $stateProvider
-        .state('login', {
-            url: "/login",
-            templateUrl: '/views/login.html',
-            controller: 'LoginController'
-        })
-        .state('other', {
-            url: "/dsadasdasd"
-        });
+    // $stateProvider
+    //     .state('login', {
+    //         url: "/login",
+    //         templateUrl: '/views/login.html',
+    //         controller: 'LoginController'
+    //     })
+    //     .state('login', {
+    //         url: "/login",
+    //         templateUrl: '/views/login.html',
+    //         controller: 'LoginController'
+    //     })
+    //     .state('other', {
+    //         url: "/dsadasdasd"
+    //     });
 
-    $urlRouterProvider.otherwise('login');
+
+    $urlRouterProvider
+        .when('/', '/')
+        .otherwise("/");
 }
 

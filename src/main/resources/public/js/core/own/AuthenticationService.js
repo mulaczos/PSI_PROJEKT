@@ -2,9 +2,9 @@ angular
     .module('app')
     .factory('AuthenticationService', AuthenticationService);
 
-AuthenticationService.$inject = ['$http'];
+AuthenticationService.$inject = ['$http', 'Session', '$state'];
 
-function AuthenticationService($http) {
+function AuthenticationService($http, Session, $state) {
 
     var AuthenticationService = {};
 
@@ -14,7 +14,7 @@ function AuthenticationService($http) {
             url: 'login',
             data: 'username=' + username + '&password=' + password,
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/x-www-form-urlencoded"
             }
         });
     };
@@ -23,6 +23,12 @@ function AuthenticationService($http) {
         return $http({
             method: 'GET',
             url: 'authentication'
+        }).then(function success(response) {
+            if (response.data) {
+                Session.create(response.data.principal.username, response.data.principal.authorities[0].authority);
+            } else {
+                // $state.go("login");
+            }
         });
     };
 
