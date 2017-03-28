@@ -29,8 +29,9 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/console/**").permitAll()
                 .anyRequest().permitAll()
-                .and()
-                .csrf().disable()
+                .and().formLogin().permitAll()
+                .and().logout().logoutSuccessUrl("/")
+                .and().csrf().disable()
                 .headers().frameOptions().disable();
 
     }

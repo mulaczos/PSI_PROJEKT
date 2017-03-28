@@ -1,23 +1,17 @@
 angular
     .module('app')
-    .controller('LoginController', LoginController)
+    .controller('LoginController', LoginController);
 
-LoginController.$inject = ['$scope', 'AuthenticationFactory'];
+LoginController.$inject = ['$scope', 'AuthenticationService'];
 
-function LoginController($scope, AuthenticationFactory) {
+function LoginController($scope, AuthenticationService) {
+
     $scope.processLogin = function () {
-        console.log($scope.user.username);
-        console.log($scope.user.password);
 
-        AuthenticationFactory.login({
-            username: $scope.user.username,
-            password: $scope.user.password
-        }).$promise.then(function (success) {
-            console.log(success);
-        });
+        AuthenticationService.login(
+            $scope.user.username,
+            $scope.user.password
+        );
+
     }
 }
-
-
-
-
