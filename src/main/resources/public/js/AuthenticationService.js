@@ -18,6 +18,14 @@ function AuthenticationService($http) {
             }
         });
     };
+
+    AuthenticationService.isAuthenticated = function () {
+        return $http({
+            method: 'GET',
+            url: 'authentication'
+        });
+    };
+
     return AuthenticationService;
 }
 
