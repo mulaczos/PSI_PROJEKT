@@ -11,27 +11,30 @@ angular.module('app', [
     .run(['PermRoleStore', 'PermPermissionStore', 'AuthenticationService', function (PermRoleStore, PermPermissionStore, AuthenticationService) {
 
         PermRoleStore
-            .defineRole('ADMIN', ['admin_panel', 'all_orders', 'to_acceptance']);
+            .defineRole('ADMIN', ['ADMIN_PANEL', 'ROOT_MODIFICATION_PANEL']);
         PermRoleStore
-            .defineRole('ADMINISTRATION', ['all_orders', 'to_acceptance']);
-        PermRoleStore
-            .defineRole('LEADER', ['to_acceptance']);
+            .defineRole('MODERATOR', ['EXTENDED_MODIFICATION_PANEL', 'ITEM_PANEL']);
         PermRoleStore
             .defineRole('USER', []);
         PermPermissionStore
-            .definePermission('admin_panel', function () {
+            .definePermission('ADMIN_PANEL', function () {
                 return 'ROLE_ADMIN' === Session.authorities;
             });
         PermPermissionStore
-            .definePermission('all_orders', function () {
-                return ('ROLE_ADMIN' === Session.authorities || 'ROLE_ADMINISTRATION' === Session.authorities);
+            .definePermission('ROOT_MODIFICATION_PANEL', function () {
+                return ('ROLE_ADMIN' === Session.authorities);
             });
         PermPermissionStore
-            .definePermission('to_acceptance', function () {
+            .definePermission('EXTENDED_MODIFICATION_PANEL', function () {
                 return (
                 'ROLE_ADMIN' === Session.authorities ||
-                'ROLE_ADMINISTRATION' === Session.authorities ||
-                'ROLE_LEADER' === Session.authorities);
+                'ROLE_MODERATOR' === Session.authorities);
+            });
+        PermPermissionStore
+            .definePermission('ITEM_PANEL', function () {
+                return (
+                'ROLE_ADMIN' === Session.authorities ||
+                'ROLE_MODERATOR' === Session.authorities);
             });
     }]);
 
