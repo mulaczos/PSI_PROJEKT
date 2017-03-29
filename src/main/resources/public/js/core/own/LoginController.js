@@ -13,6 +13,8 @@ function LoginController($scope, AuthenticationService, $state) {
             $scope.user.password
         ).then(function success(response) {
             $state.go("home");
+        }, function failure(response) {
+            $state.go("login");
         });
     };
 }
