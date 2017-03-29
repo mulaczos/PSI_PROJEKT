@@ -6,7 +6,7 @@ angular.module('app', [
 ])
     .config(config)
     .run(function (AuthenticationService) {
-        // AuthenticationService.isAuthenticated();
+        AuthenticationService.isAuthenticated();
     })
     .run(['PermRoleStore', 'PermPermissionStore', 'AuthenticationService', function (PermRoleStore, PermPermissionStore, Session) {
 
@@ -48,20 +48,20 @@ function config($locationProvider, $stateProvider, $urlRouterProvider) {
         requireBase: false
     });
 
-    // $stateProvider
-    //     .state('login', {
-    //         url: "/login",
-    //         templateUrl: '/views/login.html',
-    //         controller: 'LoginController'
-    //     })
-    //     .state('login', {
-    //         url: "/login",
-    //         templateUrl: '/views/login.html',
-    //         controller: 'LoginController'
-    //     })
-    //     .state('other', {
-    //         url: "/dsadasdasd"
-    //     });
+    $stateProvider
+        .state('login', {
+            url: "/login",
+            templateUrl: '/views/login.html',
+            controller: 'LoginController'
+        })
+        .state('home', {
+            url: "/home",
+            templateUrl: '/views/home.html',
+            controller: 'HomeController'
+        });
+    // .state('other', {
+    //     url: "/dsadasdasd"
+    // });
 
 
     $urlRouterProvider

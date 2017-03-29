@@ -26,8 +26,9 @@ function AuthenticationService($http, Session, $state) {
         }).then(function success(response) {
             if (response.data) {
                 Session.create(response.data.principal.username, response.data.principal.authorities[0].authority);
+                $state.go("home");
             } else {
-                // $state.go("login");
+                $state.go("login");
             }
         });
     };
