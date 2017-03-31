@@ -1,5 +1,6 @@
 package groovy.shop.infrastructure.base
 
+import groovy.json.JsonSlurper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ContextConfiguration
@@ -26,8 +27,9 @@ abstract class BaseControllerIT extends Specification {
         client = MockMvcBuilders.webAppContextSetup(context).build();
     }
 
-    def performAndReturnAsJson(MockHttpServletRequestBuilder requestBuilder) {
-        return fromJson(performAndReturnAsString(requestBuilder))
+    def performAndReturnAsJsonSlurperObject(MockHttpServletRequestBuilder requestBuilder) {
+        def slurper = new JsonSlurper();
+        return slurper.parseText(performAndReturnAsString(requestBuilder))
     }
 
     def performAndReturnAsString(MockHttpServletRequestBuilder requestBuilder) {

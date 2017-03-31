@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import shop.infrastructure.domain.model.Customer;
 import shop.infrastructure.domain.service.CustomerService;
 
-/**
- * Created by Witu on 04.03.2017.
- */
 @RestController
 @RequestMapping("customer")
 public class CustomerController {
