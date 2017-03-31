@@ -1,19 +1,14 @@
 package shop.infrastructure.domain.model;
 
 import lombok.Data;
+import shop.infrastructure.domain.model.base.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
-public class Customer {
+public class Customer extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    private Long id;
     @Column
     private String firstName;
     @Column
