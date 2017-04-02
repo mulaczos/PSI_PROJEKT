@@ -8,10 +8,10 @@
     <script src="js/core/jquery.js"></script>
     <!-- ANGULAR -->
     <script src="js/core/angular/angular.js"></script>
-    <script src="js/core/angular/angular-ui-router.js"></script>
+    <script src="js/core/angular/angular-route.js"></script>
     <script src="js/core/angular/angular-hamburger-toggle.js"></script>
     <script src="js/core/angular/angular-permission.js"></script>
-    <script src="js/core/angular/angular-permission-ui.js"></script>
+    <script src="js/core/angular/angular-permission-ng.js"></script>
     <!-- OWN -->
     <script src="js/core/own/app.js"></script>
     <script src="js/core/own/Session.js"></script>
@@ -38,10 +38,10 @@
                 </div>
             </li>
             <li>
-                <a ui-sref="login">Szukaj</a>
+                <a href="login">Szukaj</a>
             </li>
             <li>
-                <a permission permission-only="['ADMIN', 'MODERATOR']" ui-sref="login">MODERATOR I ADMIN</a>
+                <a permission permission-only="['ADMIN', 'MODERATOR']" a href="login">MODERATOR I ADMIN</a>
             </li>
         </ul>
     </div>
@@ -54,7 +54,7 @@
 
 
 </div>
-<div ui-view></div>
+<div ng-view></div>
 
 <!-- Menu Toggle Script -->
 <script>

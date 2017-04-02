@@ -2,9 +2,9 @@ angular
     .module('app')
     .factory('AuthenticationService', AuthenticationService);
 
-AuthenticationService.$inject = ['$http', 'Session', '$state'];
+AuthenticationService.$inject = ['$http', 'Session'];
 
-function AuthenticationService($http, Session, $state) {
+function AuthenticationService($http, Session) {
 
     var AuthenticationService = {};
 
@@ -26,9 +26,7 @@ function AuthenticationService($http, Session, $state) {
         }).then(function success(response) {
             if (response.data) {
                 Session.create(response.data.principal.username, response.data.principal.authorities[0].authority);
-                $state.go("home");
             } else {
-                $state.go("login");
             }
         });
     };

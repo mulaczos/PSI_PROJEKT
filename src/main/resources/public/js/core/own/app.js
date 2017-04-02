@@ -1,8 +1,8 @@
 angular.module('app', [
-    'ui.router',
+    'ngRoute',
     'ngHamburger',
     'permission',
-    'permission.ui'
+    'permission.ng'
 ])
     .config(config)
     .run(function (AuthenticationService) {
@@ -38,34 +38,33 @@ angular.module('app', [
             });
     }]);
 
-config.$inject = (['$locationProvider', '$stateProvider', '$urlRouterProvider']);
+config.$inject = (['$locationProvider', '$routeProvider']);
 
-function config($locationProvider, $stateProvider, $urlRouterProvider) {
+function config($locationProvider, $routeProvider) {
 
-    $locationProvider.hashPrefix('');
+    // $locationProvider.hashPrefix('');
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
     });
 
-    $stateProvider
-        .state('login', {
-            url: "/login",
-            templateUrl: '/views/login.html',
-            controller: 'LoginController'
+    $routeProvider.when('/', {
+        redirectTo : '/login',
+        controller : 'LoginController'
+    })
+        .when('/login', {
+            templateUrl : '/views/login.html',
+            controller : 'LoginController'
         })
-        .state('home', {
-            url: "/home",
-            templateUrl: '/views/home.html',
-            controller: 'HomeController'
+        .when('/home', {
+            templateUrl :  '/views/home.html',
+            controller : 'HomeController'
+        })
+        .otherwise({
+            redirectTo : '/',
+            controller : 'LoginController',
         });
-    // .state('other', {
-    //     url: "/dsadasdasd"
-    // });
 
 
-    $urlRouterProvider
-        .when('/', '/')
-        .otherwise("/");
 }
 

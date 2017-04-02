@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller('LoginController', LoginController);
 
-LoginController.$inject = ['$scope', 'AuthenticationService', '$state'];
+LoginController.$inject = ['$scope', 'AuthenticationService'];
 
-function LoginController($scope, AuthenticationService, $state) {
+function LoginController($scope, AuthenticationService) {
 
     $scope.processLogin = function () {
 
@@ -12,9 +12,7 @@ function LoginController($scope, AuthenticationService, $state) {
             $scope.user.username,
             $scope.user.password
         ).then(function success(response) {
-            $state.go("home");
         }, function failure(response) {
-            $state.go("login");
         });
     };
 }
