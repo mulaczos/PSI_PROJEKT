@@ -14,7 +14,7 @@
     <script src="js/core/angular/angular-permission-ui.js"></script>
     <!-- OWN -->
     <script src="js/core/own/app.js"></script>
-    <script src="js/core/own/Session.js"></script>
+    <script src="js/core/own/SessionService.js"></script>
     <script src="js/core/own/AuthenticationService.js"></script>
     <script src="js/core/own/LoginController.js"></script>
     <script src="js/core/own/HomeController.js"></script>
@@ -41,7 +41,10 @@
                 <a ui-sref="login">Szukaj</a>
             </li>
             <li>
-                <a permission permission-only="['ADMIN', 'MODERATOR']" ui-sref="login">MODERATOR I ADMIN</a>
+                <a permission permission-only="'ADMIN_PANEL'" ui-sref="login">MODERATOR I ADMIN</a>
+            </li>
+            <li>
+                <a ui-sref="home">xczczxczxczxczxc</a>
             </li>
         </ul>
     </div>

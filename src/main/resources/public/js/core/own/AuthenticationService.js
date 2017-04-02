@@ -1,38 +1,42 @@
-angular
-    .module('app')
-    .factory('AuthenticationService', AuthenticationService);
+(function () {
+    'use strict';
 
-AuthenticationService.$inject = ['$http', 'Session', '$state'];
+    angular
+        .module('app')
+        .factory('AuthenticationService', AuthenticationService);
 
-function AuthenticationService($http, Session, $state) {
+    AuthenticationService.$inject = ['$http', 'SessionService', '$state'];
 
-    var AuthenticationService = {};
+    function AuthenticationService($http, SessionService, $state) {
 
-    AuthenticationService.login = function (username, password) {
-        return $http({
-            method: 'POST',
-            url: 'login',
-            data: 'username=' + username + '&password=' + password,
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            }
-        });
-    };
+        var AuthenticationService = {};
 
-    AuthenticationService.isAuthenticated = function () {
-        return $http({
-            method: 'GET',
-            url: 'authentication'
-        }).then(function success(response) {
-            if (response.data) {
-                Session.create(response.data.principal.username, response.data.principal.authorities[0].authority);
-                $state.go("home");
-            } else {
-                $state.go("login");
-            }
-        });
-    };
+        AuthenticationService.login = function (username, password) {
+            return $http({
+                method: 'POST',
+                url: 'login',
+                data: 'username=' + username + '&password=' + password,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            });
+        };
 
-    return AuthenticationService;
-}
+        AuthenticationService.isAuthenticated = function () {
+            return $http({
+                method: 'GET',
+                url: 'authentication'
+            }).then(function success(response) {
+                if (response.data) {
+                    SessionService.create(response.data.principal.username, response.data.principal.authorities[0].authority);
+                    $state.go("home");
+                    // $state.go($state.current, {}, {reload: true});
+                } else {
+                    $state.go("login");
+                }
+            });
+        };
 
+        return AuthenticationService;
+    }
+}());

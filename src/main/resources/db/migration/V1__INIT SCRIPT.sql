@@ -13,4 +13,4 @@ create table if not exists authorities (
 create unique index if not exists ix_auth_username on authorities (username,authority);
 
 INSERT INTO USERS(USERNAME, PASSWORD, ENABLED) VALUES ('admin', 'admin', TRUE);
-INSERT INTO AUTHORITIES(USERNAME, AUTHORITY) VALUES ('admin', 'admin');
+INSERT INTO AUTHORITIES(USERNAME, AUTHORITY) VALUES ('admin', 'ADMIN');
