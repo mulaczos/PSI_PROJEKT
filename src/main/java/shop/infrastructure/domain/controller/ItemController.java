@@ -20,7 +20,7 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	
-	@GetMapping
+	@GetMapping(params = "{id}")
 	public Item get(Long id) {
 		return itemService.get(id);
 	}

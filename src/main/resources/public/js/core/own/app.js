@@ -3,9 +3,8 @@
 
     angular.module('app', [
         'ui.router',
-        'ngHamburger',
-        'permission',
-        'permission.ui'])
+        'ngHamburger'
+    ])
         .config(config);
 
     config.$inject = (['$locationProvider', '$stateProvider', '$urlRouterProvider']);
@@ -28,10 +27,6 @@
                 templateUrl: '/views/home.html',
                 controller: 'HomeController'
             });
-        // .state('other', {
-        //     url: "/dsadasdasd"
-        // });
-
 
         $urlRouterProvider
             .when('/', '/')
