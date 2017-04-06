@@ -14,3 +14,6 @@ hs_err_pid*
 target/
 *.iml
 .idea/
+
+src/main/resource/rebel-remote.xml
+src/main/resource/rebel.xml

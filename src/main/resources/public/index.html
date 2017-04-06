@@ -20,48 +20,27 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/material-design-hamburger.css" rel="stylesheet">
+    <link href="css/own.css" rel="stylesheet">
 
 </head>
 
+<nav class="navigation">
+    <ul>
+        <li>
+            <a ui-sref="home">PRsdasdasdasdZEGLĄDAJ</a>
+        </li>
+        <li>
+            <a ui-sref="home">?????????</a>
+        </li>
+        <li>
+            <a ui-sref="login">ZALOGUJ</a>
+        </li>
+    </ul>
+</nav>
+
+<header></header>
 <body>
-
-<div id="wrapper">
-
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <div>
-                    Sklep Internetowy
-                </div>
-            </li>
-            <li>
-                <a ui-sref="login">Szukaj</a>
-            </li>
-            <li>
-                <a ui-sref="home">xczczxczxczxczxc</a>
-            </li>
-        </ul>
-    </div>
-
-    <br/>
-    <br/>
-    <div id="menu-toggle">
-        <hamburger-toggle state="tgState"></hamburger-toggle>
-    </div>
-
-
-</div>
-<div ui-view></div>
-
-<!-- Menu Toggle Script -->
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
-
 </body>
+<div ui-view></div>
 
 </html>
