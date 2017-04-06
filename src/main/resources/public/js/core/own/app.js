@@ -5,49 +5,10 @@
         'ui.router',
         'ngHamburger',
         'permission',
-        'permission.ui'
-    ])
-        .config(config)
-        .run(function (AuthenticationService) {
-            AuthenticationService.isAuthenticated();
-        })
-        .run(['PermRoleStore', 'PermPermissionStore', 'SessionService', function (PermRoleStore, PermPermissionStore, SessionService) {
-
-            console.log(SessionService);
-            console.log(SessionService.authority);
-            console.log(SessionService.username);
-            console.log(SessionService.loggedIn);
-
-            PermRoleStore
-                .defineRole('ADMIN', ['ADMIN_PANEL', 'ROOT_MODIFICATION_PANEL']);
-            PermRoleStore
-                .defineRole('MODERATOR', ['EXTENDED_MODIFICATION_PANEL', 'ITEM_PANEL']);
-            PermRoleStore
-                .defineRole('USER', []);
-            PermPermissionStore
-                .definePermission('ADMIN_PANEL', function () {
-                    return 'ADMIN' === SessionService.authority;
-                });
-            PermPermissionStore
-                .definePermission('ROOT_MODIFICATION_PANEL', function () {
-                    return ('ADMIN' === SessionService.authority);
-                });
-            PermPermissionStore
-                .definePermission('EXTENDED_MODIFICATION_PANEL', function () {
-                    return (
-                    'ADMIN' === SessionService.authority ||
-                    'MODERATOR' === SessionService.authority);
-                });
-            PermPermissionStore
-                .definePermission('ITEM_PANEL', function () {
-                    return (
-                    'ADMIN' === SessionService.authority ||
-                    'MODERATOR' === SessionService.authority);
-                });
-        }]);
+        'permission.ui'])
+        .config(config);
 
     config.$inject = (['$locationProvider', '$stateProvider', '$urlRouterProvider']);
-
     function config($locationProvider, $stateProvider, $urlRouterProvider) {
 
         $locationProvider.hashPrefix('');

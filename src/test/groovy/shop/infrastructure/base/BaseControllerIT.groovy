@@ -2,9 +2,9 @@ package groovy.shop.infrastructure.base
 
 import groovy.json.JsonSlurper
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootContextLoader
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ContextConfiguration
-import org.springframework.test.context.web.WebAppConfiguration
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
@@ -14,8 +14,7 @@ import spock.lang.Shared
 import spock.lang.Specification
 
 @SpringBootTest
-@WebAppConfiguration
-@ContextConfiguration(classes = Application.class)
+@ContextConfiguration(loader = SpringBootContextLoader.class, classes = Application.class)
 abstract class BaseControllerIT extends Specification {
 
     @Shared
