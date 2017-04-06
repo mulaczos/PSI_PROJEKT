@@ -48,7 +48,4 @@ public class CustomerController {
 	public void delete(Long id) {
 		customerService.delete(id);
 	}
-	
-	
-	
 }
