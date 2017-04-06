@@ -22,10 +22,30 @@
                 templateUrl: '/views/login.html',
                 controller: 'LoginController'
             })
-            .state('home', {
-                url: "/home",
-                templateUrl: '/views/home.html',
-                controller: 'HomeController'
+            .state('items', {
+                url: "/items",
+                templateUrl: '/views/items.html',
+                controller: 'ItemsController'
+            })
+            .state('basket', {
+                url: "/basket",
+                templateUrl: '/views/basket.html',
+                controller: 'BasketController'
+            })
+            .state('orders', {
+                url: "/orders",
+                templateUrl: '/views/orders.html',
+                controller: 'OrdersController'
+            })
+            .state('panel', {
+                url: "/panel",
+                templateUrl: '/views/panel.html',
+                controller: 'PanelController'
+            })
+            .state('settings', {
+                url: "/settings",
+                templateUrl: '/views/settings.html',
+                controller: 'SettingsController'
             });
 
         $urlRouterProvider

@@ -26,15 +26,7 @@
             return $http({
                 method: 'GET',
                 url: 'authentication'
-            }).then(function success(response) {
-                if (response.data) {
-                    SessionService.create(response.data.principal.username, response.data.principal.authorities[0].authority);
-                    $state.go("home");
-                    // $state.go($state.current, {}, {reload: true});
-                } else {
-                    $state.go("login");
-                }
-            });
+            })
         };
 
         return AuthenticationService;
