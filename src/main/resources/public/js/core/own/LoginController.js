@@ -14,7 +14,7 @@
                 $scope.user.username,
                 $scope.user.password
             ).then(function success(response) {
-                $state.go("items");
+                $state.go("items", {}, {reload: true});
             }, function failure(response) {
                 $state.go("login");
             });

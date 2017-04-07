@@ -1,13 +1,12 @@
 (function () {
     'use strict';
-
     angular
         .module('app')
         .factory('AuthenticationService', AuthenticationService);
 
     AuthenticationService.$inject = ['$http', 'SessionService', '$state'];
 
-    function AuthenticationService($http, SessionService, $state) {
+    function AuthenticationService($http) {
 
         var AuthenticationService = {};
 
@@ -28,7 +27,6 @@
                 url: 'authentication'
             })
         };
-
         return AuthenticationService;
     }
 }());

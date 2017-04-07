@@ -21,7 +21,7 @@ public class OrderController {
 	private OrderService orderService;
 	
 	
-	@GetMapping(params = "{id}")
+	@GetMapping(params = "id")
 	public Order get(Long id) {
 		return orderService.get(id);
 	}

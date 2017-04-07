@@ -20,7 +20,7 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@GetMapping(params = "{id}")
+	@GetMapping(params = "id")
 	public Customer get(Long id) {
 		return customerService.get(id);
 	}

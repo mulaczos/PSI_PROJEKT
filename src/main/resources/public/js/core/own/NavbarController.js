@@ -4,18 +4,18 @@
         .module('app')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$scope', 'AuthenticationService'];
+    NavbarController.$inject = ['$scope', 'AuthenticationService', '$state'];
 
-    function NavbarController($scope, AuthenticationService) {
-
-        $scope.loggedIn = false;
+    function NavbarController($scope, AuthenticationService, $state) {
 
         $scope.init = function () {
             AuthenticationService.isAuthenticated()
                 .then(function success(response) {
                     if (response.data) {
                         $scope.loggedIn = true;
-                        $state.go("items");
+                        $state.go("items", {}, {reload: true});
+                    } else {
+                        $state.go("login");
                     }
                 }, function failure(response) {
                     $state.go("login");
