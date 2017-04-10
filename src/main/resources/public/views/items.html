@@ -1,3 +1,19 @@
-<div class="container">
-    <div class="col-lg-2"></div>
+<div class="container custom-margin">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div id=panel class="panel panel-primary">
+                <table class="table table-hover">
+                    <tr ng-repeat="item in items">
+                        <td></td>
+                        <td title="'Name'" class="row">
+                            {{item.name}}
+                        </td>
+                        <td title="'Age'" class="row">
+                            {{item.price}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

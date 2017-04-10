@@ -31,8 +31,8 @@ public class ItemController {
 	}
 	
 	@PostMapping
-	public Item save(Item customer) {
-		return itemService.save(customer);
+	public Item save(Item item) {
+		return itemService.save(item);
 	}
 	
 	@PutMapping
@@ -48,4 +48,5 @@ public class ItemController {
 	public void delete(Long id) {
 		itemService.delete(id);
 	}
+	
 }
