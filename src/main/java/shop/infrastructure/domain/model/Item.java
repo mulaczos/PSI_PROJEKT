@@ -17,6 +17,8 @@ public class Item extends BaseEntity {
 	private String name;
 	private Double price;
 	private Integer quanity;
+	private String shortDescription;
+	private String fullDescription;
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Order order;
 }

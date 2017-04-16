@@ -2,17 +2,20 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <div id=panel class="panel panel-primary">
-                <table class="table table-hover">
-                    <tr ng-repeat="item in items">
-                        <td></td>
-                        <td title="'Name'" class="row">
-                            {{item.name}}
-                        </td>
-                        <td title="'Age'" class="row">
-                            {{item.price}}
-                        </td>
-                    </tr>
-                </table>
+                <div class="table table-hover">
+                    <div ng-repeat="item in items" class="table-row-cell">
+                        <div>
+                            <div class="container">
+                                <div class="row">
+                                    <strong>{{item.name}}</strong>
+                                </div>
+                                <div class="row">
+                                    {{item.price}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
