@@ -34,7 +34,7 @@
         }
     }
 
-    RegisterController.$inject = ['$scope', $state];
+    RegisterController.$inject = ['$scope', '$state'];
 
     function RegisterController($scope, $state) {
 

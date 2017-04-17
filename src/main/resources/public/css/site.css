@@ -261,3 +261,5 @@ left: 50%;
 	table#cart tfoot td .btn{display:block;}
 	
 }
+
+.cursor-block {cursor: not-allowed !important;}

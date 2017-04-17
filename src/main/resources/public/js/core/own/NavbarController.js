@@ -38,6 +38,12 @@
                     $state.go("login", {}, {reload: true});
                 });
         };
+
+        $scope.goToState = function (state) {
+            if($rootScope.loggedIn) {
+                $state.go(state);
+            }
+        };
     }
 
 

@@ -32,48 +32,47 @@
 <body ng-controller="NavbarController" ng-init="init()">
 <div class="wrapper">
     <div class="header">
-            <div class="padding container">
-                <div class="row">
-                    <div class="col-xs-6 col-md-4 text-center">
-                        <h1 class="logo"><a href="" ng-click="goHome()">Xtra Shop</a></h1>
-                    </div>
-                    <div class="hidden-xs col-md-4">
-                        <div class="input-group" ng-show="loggedIn">
-                            <input type="text" class="form-control" placeholder="Search for a product">
-                            <span class="input-group-btn">
+        <div class="padding container">
+            <div class="row">
+                <div class="col-xs-6 col-md-4 text-center">
+                    <h1 class="logo"><a href="" ng-click="goHome()">Xtra Shop</a></h1>
+                </div>
+                <div class="hidden-xs col-md-4">
+                    <div class="input-group" ng-show="loggedIn">
+                        <input type="text" class="form-control" placeholder="Search for a product">
+                        <span class="input-group-btn">
 										<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
 									</span>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-md-4 text-center">
-                        <a href="cart.html" class="btn btn-primary" ng-show="loggedIn"><i class="fa fa-shopping-cart"></i> 1 Item</a>
                     </div>
                 </div>
-                <nav class="navbar navbar-default" role="navigation">
-
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#shop-navbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#"><span class="label label-danger"><i class="fa fa-home"></i></span></a>
-                    </div>
-
-                    <div class="collapse navbar-collapse" id="shop-navbar">
-                        <ul class="nav navbar-nav">
-                            <li><a ui-sref="home">PRODUCTS</a></li>
-                            <li><a href="#">ABOUT US</a></li>
-                            <li><a href="#">RETURN POLICY</a></li>
-                            <li><a href="#">BLOG</a></li>
-                            <li><a href="#">CONTACT US</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="navbar-right" ng-show="loggedIn"><a href="" ng-click="logout()">LOGOUT</a></li>
-                        </ul>
-                    </div>
-                </nav>
+                <div class="col-xs-6 col-md-4 text-center">
+                    <a href="cart.html" class="btn btn-primary" ng-show="loggedIn"><i class="fa fa-shopping-cart"></i> 1 Item</a>
+                </div>
             </div>
+            <nav class="navbar navbar-default" role="navigation">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#shop-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span class="label label-danger"><i class="fa fa-home"></i></span></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="shop-navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="" ng-click="goToState('products')" ng-class="{ 'cursor-block': !loggedIn }">PRODUCTS</a></li>
+                        <li><a href="" ng-click="goToState('about')" ng-class="{ 'cursor-block': !loggedIn }">ABOUT US</a></li>
+                        <li><a href="" ng-click="goToState('profile')" ng-class="{ 'cursor-block': !loggedIn }">PROFILE</a></li>
+                        <li><a href="" ng-click="goToState('admin')" ng-class="{ 'cursor-block': !loggedIn }">ADMINISTRATION</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="navbar-right" ng-show="loggedIn"><a href="" ng-click="logout()">LOGOUT</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </div>
     <div ui-view=""></div>
 </div>
