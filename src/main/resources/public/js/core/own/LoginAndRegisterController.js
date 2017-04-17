@@ -34,9 +34,9 @@
         }
     }
 
-    RegisterController.$inject = ['$scope'];
+    RegisterController.$inject = ['$scope', $state];
 
-    function RegisterController($scope) {
+    function RegisterController($scope, $state) {
 
         $scope.register = function (valid) {
             if (valid) {
@@ -50,6 +50,10 @@
                 return $scope.password == $scope.confirm;
 
             } else return true;
-        }
+        };
+
+        $scope.goToLoginPage = function () {
+            $state.go("login", {}, {reload: true});
+        };
     }
 }());
