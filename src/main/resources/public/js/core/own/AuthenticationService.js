@@ -27,6 +27,14 @@
                 url: 'user/credentials'
             })
         };
+
+        AuthenticationService.logout = function () {
+          return $http({
+              method: 'GET',
+              url: '/logout'
+          })
+        };
+
         return AuthenticationService;
     }
 }());

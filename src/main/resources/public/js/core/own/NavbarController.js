@@ -9,7 +9,6 @@
     function NavbarController($scope, AuthenticationService, $state, $rootScope) {
 
 
-
         $scope.init = function () {
             AuthenticationService.isAuthenticated()
                 .then(function success(response) {
@@ -22,7 +21,23 @@
                 }, function failure(response) {
                     $state.go("login");
                 });
-        }
+        };
+
+        $scope.goHome = function () {
+            if($rootScope.loggedIn) {
+                $state.go("home", {}, {reload: true});
+            } else {
+                $state.go("login", {}, {reload: true});
+            }
+        };
+
+        $scope.logout = function () {
+            AuthenticationService.logout()
+                .then(function success(success) {
+                    $rootScope.loggedIn=false;
+                    $state.go("login", {}, {reload: true});
+                });
+        };
     }
 
 
