@@ -4,13 +4,12 @@
         .module('app')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$scope', 'AuthenticationService', '$state', '$rootScope'];
+    NavbarController.$inject = ['$scope', 'AccountService', '$state', '$rootScope'];
 
-    function NavbarController($scope, AuthenticationService, $state, $rootScope) {
-
+    function NavbarController($scope, AccountService, $state, $rootScope) {
 
         $scope.init = function () {
-            AuthenticationService.isAuthenticated()
+            AccountService.isAuthenticated()
                 .then(function success(response) {
                     if (response.data) {
                         $rootScope.loggedIn = true;
@@ -32,7 +31,7 @@
         };
 
         $scope.logout = function () {
-            AuthenticationService.logout()
+            AccountService.logout()
                 .then(function success(success) {
                     $rootScope.loggedIn=false;
                     $state.go("login", {}, {reload: true});

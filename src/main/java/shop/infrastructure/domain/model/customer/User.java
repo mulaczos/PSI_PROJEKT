@@ -22,6 +22,7 @@ public class User {
     private String password;
     private String email;
     private String name;
+    private String lastname;
     private boolean enabled = Boolean.TRUE;
     @Transient
     private Role role;

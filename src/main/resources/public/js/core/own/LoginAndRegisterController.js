@@ -5,15 +5,15 @@
         .controller('LoginController', LoginController)
         .controller('RegisterController', RegisterController);
 
-    LoginController.$inject = ['$scope', 'AuthenticationService', '$state', '$rootScope'];
+    LoginController.$inject = ['$scope', 'AccountService', '$state', '$rootScope'];
 
-    function LoginController($scope, AuthenticationService, $state, $rootScope) {
+    function LoginController($scope, AccountService, $state, $rootScope) {
 
         $scope.processLogin = function (valid) {
 
             console.log(valid);
             if (valid) {
-                AuthenticationService.login(
+                AccountService.login(
                     $scope.username,
                     $scope.password
                 ).then(function success(response) {
@@ -34,13 +34,19 @@
         }
     }
 
-    RegisterController.$inject = ['$scope', '$state'];
+    RegisterController.$inject = ['$scope', '$state', 'AccountService'];
 
-    function RegisterController($scope, $state) {
+    function RegisterController($scope, $state, AccountService) {
 
-        $scope.register = function (valid) {
-            if (valid) {
-
+        $scope.processRegistration = function (valid) {
+            if(valid && ($scope.password === $scope.confirm)) {
+                AccountService.register(
+                    $scope.username,
+                    $scope.password,
+                    $scope.name,
+                    $scope.lastname,
+                    $scope.email
+                );
             }
         };
 
