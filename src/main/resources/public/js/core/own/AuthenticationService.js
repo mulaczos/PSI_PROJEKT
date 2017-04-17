@@ -24,7 +24,7 @@
         AuthenticationService.isAuthenticated = function () {
             return $http({
                 method: 'GET',
-                url: 'authentication'
+                url: 'user/credentials'
             })
         };
         return AuthenticationService;

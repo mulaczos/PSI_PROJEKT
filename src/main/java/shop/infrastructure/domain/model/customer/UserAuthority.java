@@ -1,4 +1,4 @@
-package shop.infrastructure.security.model;
+package shop.infrastructure.domain.model.customer;
 
 import lombok.Data;
 

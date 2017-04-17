@@ -1,23 +1,55 @@
 (function () {
     'use strict';
-
     angular
         .module('app')
-        .controller('LoginController', LoginController);
+        .controller('LoginController', LoginController)
+        .controller('RegisterController', RegisterController);
 
-    LoginController.$inject = ['$scope', 'AuthenticationService', '$state'];
+    LoginController.$inject = ['$scope', 'AuthenticationService', '$state', '$rootScope'];
 
-    function LoginController($scope, AuthenticationService, $state) {
+    function LoginController($scope, AuthenticationService, $state, $rootScope) {
 
-        $scope.processLogin = function () {
-            AuthenticationService.login(
-                $scope.user.username,
-                $scope.user.password
-            ).then(function success(response) {
-                $state.go("items", {}, {reload: true});
-            }, function failure(response) {
-                $state.go("login");
-            });
+        $scope.processLogin = function (valid) {
+
+            console.log(valid);
+            if (valid) {
+                AuthenticationService.login(
+                    $scope.username,
+                    $scope.password
+                ).then(function success(response) {
+                    $rootScope.loggedIn = true;
+                    $state.go("home", {}, {reload: true});
+                }, function failure(response) {
+                    $scope.signInForm.$setPristine();
+                    $scope.signInForm.$setUntouched();
+                    $scope.username = null;
+                    $scope.password = null;
+                    $scope.failed = true;
+                });
+            }
         };
+
+        $scope.register = function () {
+            $state.go("register", {}, {reload: true});
+        }
+    }
+
+    RegisterController.$inject = ['$scope'];
+
+    function RegisterController($scope) {
+
+        $scope.register = function (valid) {
+            if (valid) {
+
+            }
+        };
+
+        $scope.arePasswordsTheSame = function () {
+
+            if ($scope.password && $scope.confirm && $scope.password.length > 5 && $scope.confirm.length > 5) {
+                return $scope.password == $scope.confirm;
+
+            } else return true;
+        }
     }
 }());

@@ -1,4 +1,4 @@
-package shop.infrastructure.security.model;
+package shop.infrastructure.domain.model.customer;
 
 import lombok.Data;
 
@@ -20,6 +20,8 @@ public class User {
     @Id
     private String username;
     private String password;
+    private String email;
+    private String name;
     private boolean enabled = Boolean.TRUE;
     @Transient
     private Role role;

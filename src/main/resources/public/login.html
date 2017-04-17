@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Login</h3>
+                </div>
+                <div class="panel-body">
+                    <form ng-submit="processLogin(signInForm.$valid)" name="signInForm" novalidate>
+
+                        <div class="form-group" ng-class="{ 'has-error': signInForm.username.$error && signInForm.$submitted }">
+                            <input class="form-control" placeholder="Login" type="text" ng-model="username" ng-required="true" id="username" name="username">
+                        </div>
+
+                        <div class="form-group" ng-class="{ 'has-error': signInForm.password.$error && signInForm.$submitted }">
+                            <input class="form-control" placeholder="Password" type="password" ng-model="password" ng-required="true" id="password" name="password">
+                        </div>
+
+                        <button class="btn btn-lg btn-info btn-block">Login</button>
+
+                    </form>
+                    <br/>
+                    <div class="alert alert-danger" ng-show="failed">
+                        Wrong login or username! Try again
+                    </div>
+                    <label class="text-center">
+                        No account?
+                    </label>
+                    <button class="btn btn-lg btn-warning btn-block" ng-click="register()">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
