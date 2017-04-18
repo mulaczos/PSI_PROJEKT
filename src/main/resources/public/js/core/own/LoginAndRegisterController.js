@@ -40,13 +40,18 @@
 
         $scope.processRegistration = function (valid) {
             if(valid && ($scope.password === $scope.confirm)) {
-                AccountService.register(
-                    $scope.username,
-                    $scope.password,
-                    $scope.name,
-                    $scope.lastname,
-                    $scope.email
-                );
+                console.log($scope.username);
+                console.log($scope.lastname);
+                console.log($scope.email);
+                console.log($scope.password);
+                console.log($scope.name);
+                AccountService.register({
+                    username: $scope.username,
+                    password: $scope.password,
+                    name: $scope.name,
+                    email: $scope.email,
+                    lastname: $scope.lastname
+                });
             }
         };
 

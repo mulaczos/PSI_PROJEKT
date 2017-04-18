@@ -1,7 +1,8 @@
 package shop.infrastructure.domain.controller;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import shop.infrastructure.domain.model.customer.User;
 import shop.infrastructure.domain.service.UserService;
@@ -9,6 +10,8 @@ import shop.infrastructure.domain.service.UserService;
 import javax.persistence.EntityNotFoundException;
 import java.security.Principal;
 import java.util.List;
+
+import static org.springframework.http.MediaType.ALL_VALUE;
 
 @RestController
 @RequestMapping("user")
@@ -27,8 +30,10 @@ public class UserController {
         return userService.getAll();
     }
 
-    @PostMapping
-    public User save(User user) {
+//    @PostMapping(consumes = "text/plain;charset=UTF-8")
+    @RequestMapping(method = RequestMethod.POST, consumes = ALL_VALUE, produces = ALL_VALUE)
+    public User save(User user, @RequestHeader HttpHeaders a) {
+        System.out.println(a);
         return userService.save(user);
     }
 
@@ -46,7 +51,7 @@ public class UserController {
         userService.delete(id);
     }
 
-    @GetMapping(value="credentials")
+    @GetMapping(value = "credentials")
     public Principal credentials(Principal principal) {
         return principal;
     }

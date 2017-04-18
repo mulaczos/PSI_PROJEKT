@@ -7,10 +7,19 @@
     ])
         .config(config);
 
-    config.$inject = (['$locationProvider', '$stateProvider', '$urlRouterProvider']);
-    function config($locationProvider, $stateProvider, $urlRouterProvider) {
+    config.$inject = (['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider']);
+    function config($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
 
-        // $locationProvider.hashPrefix('');
+        $httpProvider.defaults.headers.post={};
+        console.log($httpProvider.defaults.headers.post);
+
+        $httpProvider.defaults.headers.post['content-type'] = 'application/x-www-form-urlencoded';
+        $httpProvider.defaults.headers.post['accept'] = 'application/json;charset=UTF-8';
+
+
+
+        $httpProvider.defaults.headers.post['content-type'] = 'application/x-www-form-urlencoded';
+
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false

@@ -35,14 +35,11 @@
           })
         };
 
-        AccountService.register = function (username, password, name, lastname, email) {
+        AccountService.register = function (data) {
             return $http({
                 method: 'POST',
                 url: '/user',
-                data: 'username=' + username + '&password=' + password + '&name=' + name + '&lastname=' + lastname + '&email=' + email,
-                headers: {
-                    "Content-Type": "application/json;charset=UTF-8"
-                }
+                data: data
             });
         };
 
