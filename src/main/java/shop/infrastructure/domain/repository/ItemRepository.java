@@ -1,12 +1,9 @@
 package shop.infrastructure.domain.repository;
 
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import shop.infrastructure.domain.model.Item;
+import shop.infrastructure.domain.repository.base.BaseRepository;
 
-/**
- * Created by Witu on 09.03.2017.
- */
 @Repository
-public interface ItemRepository extends CrudRepository<Item, Long> {
+public interface ItemRepository extends BaseRepository<Item, Long> {
 }

@@ -1,21 +1,24 @@
 package shop.infrastructure.domain.model;
 
 import lombok.Data;
-import lombok.ToString;
 import shop.infrastructure.domain.model.base.BaseEntity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-/**
- * Created by Witu on 08.03.2017.
- */
 @Data
 @Entity
-@Table(name="Items")
+@Table(name = "Items")
 public class Item extends BaseEntity {
-
-    private String name;
-    private Double price;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Order order;
+	
+	private String name;
+	private Double price;
+	private Integer quanity;
+	private String shortDescription;
+	private String fullDescription;
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Order order;
 }
