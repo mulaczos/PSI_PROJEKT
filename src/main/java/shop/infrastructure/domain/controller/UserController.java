@@ -14,7 +14,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.ALL_VALUE;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping(value = "user")
 public class UserController {
 
     @Autowired
@@ -30,15 +30,13 @@ public class UserController {
         return userService.getAll();
     }
 
-//    @PostMapping(consumes = "text/plain;charset=UTF-8")
-    @RequestMapping(method = RequestMethod.POST, consumes = ALL_VALUE, produces = ALL_VALUE)
-    public User save(User user, @RequestHeader HttpHeaders a) {
-        System.out.println(a);
+    @PostMapping
+    public User save(@RequestBody User user) {
         return userService.save(user);
     }
 
     @PutMapping
-    public User update(User user) {
+    public User update(@RequestBody User user) {
         if (userService.findByUsername(user.getUsername()) != null) {
             return userService.update(user);
         } else {
