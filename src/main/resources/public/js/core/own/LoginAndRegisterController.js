@@ -62,8 +62,9 @@
 
             if ($scope.password && $scope.confirm && $scope.password.length > 5 && $scope.confirm.length > 5) {
                 return $scope.password == $scope.confirm;
-
-            } else return true;
+            } else {
+                return true;
+            }
         };
 
         $scope.goToLoginPage = function () {

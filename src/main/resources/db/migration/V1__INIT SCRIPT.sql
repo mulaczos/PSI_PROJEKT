@@ -1,19 +1,21 @@
-create table if not exists users(
-  username varchar(50) not null primary key,
-  password varchar(50) not null,
-  name varchar(50) not null,
-  lastname varchar(50) not null,
-  email varchar(100) not null,
-  enabled boolean not null
+CREATE TABLE IF NOT EXISTS USERS(
+  USERNAME VARCHAR(50) NOT NULL PRIMARY KEY,
+  PASSWORD VARCHAR(50) NOT NULL,
+  NAME VARCHAR(50) NOT NULL,
+  LASTNAME VARCHAR(50) NOT NULL,
+  EMAIL VARCHAR(100) NOT NULL,
+  ENABLED BOOLEAN NOT NULL
 );
 
-create table if not exists authorities (
-  username varchar(50) not null,
-  authority varchar(50) not null,
-  constraint fk_authorities_users foreign key(username) references users(username)
+CREATE UNIQUE INDEX ON USERS(USERNAME);
+
+CREATE TABLE IF NOT EXISTS AUTHORITIES (
+  USERNAME VARCHAR(50) NOT NULL,
+  AUTHORITY VARCHAR(50) NOT NULL,
+  CONSTRAINT FK_AUTHORITIES_USERS FOREIGN KEY(USERNAME) REFERENCES USERS(USERNAME)
 );
 
-create unique index if not exists ix_auth_username on authorities (username,authority);
+CREATE UNIQUE INDEX IF NOT EXISTS IX_AUTH_USERNAME ON AUTHORITIES (USERNAME,AUTHORITY);
 
-INSERT INTO USERS(USERNAME, PASSWORD, ENABLED, NAME, LASTNAME, EMAIL) VALUES ('admin', 'admin', TRUE,'Administrator',' ', '');
-INSERT INTO AUTHORITIES(USERNAME, AUTHORITY) VALUES ('admin', 'ADMIN');
+INSERT INTO USERS(USERNAME, PASSWORD, ENABLED, NAME, LASTNAME, EMAIL) VALUES ('ADMIN', 'ADMIN', TRUE,'ADMINISTRATOR',' ', '');
+INSERT INTO AUTHORITIES(USERNAME, AUTHORITY) VALUES ('ADMIN', 'ADMIN');
