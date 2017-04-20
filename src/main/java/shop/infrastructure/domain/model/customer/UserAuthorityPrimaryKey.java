@@ -1,10 +1,9 @@
 package shop.infrastructure.domain.model.customer;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -12,9 +11,19 @@ import java.io.Serializable;
  */
 @Data
 @Embeddable
+@NoArgsConstructor
 public class UserAuthorityPrimaryKey implements Serializable {
-    private String username;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "username")
+    private User username;
 
     @Enumerated(EnumType.STRING)
     private Role authority;
+
+    public UserAuthorityPrimaryKey(User username, Role authority) {
+        this.username = username;
+        this.authority = authority;
+    }
+
 }
