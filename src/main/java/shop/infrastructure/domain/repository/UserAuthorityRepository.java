@@ -1,6 +1,7 @@
 package shop.infrastructure.domain.repository;
 
 import org.springframework.stereotype.Repository;
+import shop.infrastructure.domain.model.customer.User;
 import shop.infrastructure.domain.model.customer.UserAuthority;
 import shop.infrastructure.domain.repository.base.BaseRepository;
 
@@ -9,4 +10,5 @@ import shop.infrastructure.domain.repository.base.BaseRepository;
  */
 @Repository
 public interface UserAuthorityRepository extends BaseRepository<UserAuthority, Long> {
+    User findByAuthorityUsernameAndAuthorityAuthority(String username, String authority);
 }

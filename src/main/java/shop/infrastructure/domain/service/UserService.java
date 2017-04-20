@@ -3,6 +3,7 @@ package shop.infrastructure.domain.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shop.infrastructure.domain.exception.UsernameAlreadyUsedException;
+import shop.infrastructure.domain.model.customer.Role;
 import shop.infrastructure.domain.model.customer.User;
 import shop.infrastructure.domain.model.customer.UserAuthority;
 import shop.infrastructure.domain.repository.UserAuthorityRepository;
@@ -40,6 +41,14 @@ public class UserService {
         }
     }
 
+    @Transactional
+    public boolean grantToModerator(User user) {
+        if (userAuthorityService.isUserAuthority(user)) {
+            System.out.println("JESZTY");
+        }
+        return true;
+    }
+
     public User update(User user) {
         return userRepository.save(user);
     }
@@ -57,5 +66,9 @@ class UserAuthorityService {
 
     public UserAuthority save(UserAuthority userAuthority) {
         return userAuthorityRepository.save(userAuthority);
+    }
+
+    public boolean isUserAuthority(User user) {
+        return userAuthorityRepository.findByAuthorityUsernameAndAuthorityAuthority(user.getUsername(), Role.ROLE_USER.toString()) != null;
     }
 }
