@@ -8,10 +8,7 @@
     LoginController.$inject = ['$scope', 'AccountService', '$state', '$rootScope'];
 
     function LoginController($scope, AccountService, $state, $rootScope) {
-
         $scope.processLogin = function (valid) {
-
-            console.log(valid);
             if (valid) {
                 AccountService.login(
                     $scope.username,
@@ -39,18 +36,17 @@
     function RegisterController($scope, $state, AccountService) {
 
         $scope.processRegistration = function (valid) {
-            if(valid && ($scope.password === $scope.confirm)) {
-                console.log($scope.username);
-                console.log($scope.lastname);
-                console.log($scope.email);
-                console.log($scope.password);
-                console.log($scope.name);
+            if (valid && ($scope.password === $scope.confirm)) {
                 AccountService.register({
                     username: $scope.username,
                     password: $scope.password,
                     name: $scope.name,
                     email: $scope.email,
                     lastname: $scope.lastname
+                }).then(function (success) {
+                    $state.go("login", {}, {reload: true});
+                }, function (failure) {
+                    $state.reload();
                 });
             }
         };
