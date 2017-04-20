@@ -13,20 +13,18 @@
                             <input class="form-control" placeholder="Login" type="text" ng-model="username"
                                    ng-required="true" id="username" name="username">
                         </div>
-
                         <div class="form-group"
                              ng-class="{ 'has-error': signInForm.password.$error && signInForm.$submitted }">
                             <input class="form-control" placeholder="Password" type="password" ng-model="password"
                                    ng-required="true" id="password" name="password">
                         </div>
-
                         <button class="btn btn-lg btn-info btn-block">Login</button>
 
                     </form>
                     <br/>
                     <div class="alert alert-success" ng-show="newAccount">
-                        Conrgatulations! Your account has been created successfully!
-                        Your login is {{login}}, please remeber that username is case sensitive!
+                        Conrgatulations! Your account has been created successfully! Your login is {{user}}.
+                        Please remeber that username and password are case sensitive!
                     </div>
                     <div class="alert alert-danger" ng-show="failed">
                         Wrong login or username! Try again

@@ -30,9 +30,8 @@
             $state.go("register", {}, {reload: true});
         };
 
-        $rootScope.$on('newAccount', function (login) {
-            $state.go("login", {}, {reload: true});
-            $scope.login = login;
+        $rootScope.$on('newAccount', function (event, data) {
+            $scope.user = data;
             $scope.newAccount = true;
         });
     }
@@ -50,7 +49,9 @@
                     email: $scope.email,
                     lastname: $scope.lastname
                 }).then(function (success) {
-                    $rootScope.$broadcast('newAccount', $scope.username);
+                    $state.go("login").then(function () {
+                        $rootScope.$broadcast('newAccount', $scope.username);
+                    });
                 }, function (failure) {
                     $state.reload();
                 });

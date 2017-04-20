@@ -31,7 +31,7 @@
                 <label for="email" class="cols-sm-2 control-label">Email</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
-                         ng-class="{ 'has-error': registerForm.$submitted && (registerForm.email.$error.required || registerForm.email.$error) }">
+                         ng-class="{ 'has-error': registerForm.$submitted && (registerForm.email.$error.required || registerForm.$error.email) }">
                         <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"
                                ng-model="email" ng-required="true"/>
