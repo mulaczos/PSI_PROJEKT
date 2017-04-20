@@ -28,12 +28,18 @@
 
         $scope.register = function () {
             $state.go("register", {}, {reload: true});
-        }
+        };
+
+        $rootScope.$on('newAccount', function (login) {
+            $state.go("login", {}, {reload: true});
+            $scope.login = login;
+            $scope.newAccount = true;
+        });
     }
 
-    RegisterController.$inject = ['$scope', '$state', 'AccountService'];
+    RegisterController.$inject = ['$scope', '$state', 'AccountService', '$rootScope'];
 
-    function RegisterController($scope, $state, AccountService) {
+    function RegisterController($scope, $state, AccountService, $rootScope) {
 
         $scope.processRegistration = function (valid) {
             if (valid && ($scope.password === $scope.confirm)) {
@@ -44,7 +50,7 @@
                     email: $scope.email,
                     lastname: $scope.lastname
                 }).then(function (success) {
-                    $state.go("login", {}, {reload: true});
+                    $rootScope.$broadcast('newAccount', $scope.username);
                 }, function (failure) {
                     $state.reload();
                 });

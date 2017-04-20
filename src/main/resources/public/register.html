@@ -31,7 +31,7 @@
                 <label for="email" class="cols-sm-2 control-label">Email</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
-                         ng-class="{ 'has-error': registerForm.email.$error.required && registerForm.$submitted }">
+                         ng-class="{ 'has-error': registerForm.$submitted && (registerForm.email.$error.required || registerForm.email.$error) }">
                         <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"
                                ng-model="email" ng-required="true"/>
@@ -61,13 +61,13 @@
                                ng-minlength="5"/>
                     </div>
                     <br/>
-                    <!--<div class="alert alert-danger" ng-hide="arePasswordsTheSame()">-->
-                    <!--Passwords are not the same!-->
-                    <!--</div>-->
-                    <!--<div class="alert alert-danger"-->
-                    <!--ng-show="(registerForm.$submitted && registerForm.password.$error.minlength) || (registerForm.confirm.$error.minlength && registerForm.$submitted ) ">-->
-                    <!--Password need at least 5 characters!-->
-                    <!--</div>-->
+                    <div class="alert alert-danger" ng-hide="arePasswordsTheSame()">
+                        Passwords are not the same!
+                    </div>
+                    <div class="alert alert-danger"
+                         ng-show="registerForm.$submitted && (registerForm.password.$error.minlength || registerForm.confirm.$error.minlength) ">
+                        Password need at least 5 characters!
+                    </div>
                 </div>
             </div>
 

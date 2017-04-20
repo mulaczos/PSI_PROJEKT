@@ -24,6 +24,10 @@
 
                     </form>
                     <br/>
+                    <div class="alert alert-success" ng-show="newAccount">
+                        Conrgatulations! Your account has been created successfully!
+                        Your login is {{login}}, please remeber that username is case sensitive!
+                    </div>
                     <div class="alert alert-danger" ng-show="failed">
                         Wrong login or username! Try again
                     </div>
