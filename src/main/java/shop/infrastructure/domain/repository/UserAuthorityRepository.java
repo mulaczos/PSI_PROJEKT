@@ -10,5 +10,4 @@ import shop.infrastructure.domain.repository.base.BaseRepository;
  */
 @Repository
 public interface UserAuthorityRepository extends BaseRepository<UserAuthority, Long> {
-    User findByAuthorityUsernameAndAuthorityAuthority(String username, String authority);
-}
+	UserAuthority findByAuthorityUsername(User user);}

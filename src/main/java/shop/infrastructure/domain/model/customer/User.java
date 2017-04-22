@@ -15,13 +15,23 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Users")
 public class User {
-
-    @Id
-    private String username;
-    private String password;
-    private String email;
-    private String name;
-    private String lastname;
-    private boolean enabled = Boolean.TRUE;
-
+	
+	@Id
+	private String username;
+	private String password;
+	private String email;
+	private String name;
+	private String lastname;
+	private boolean enabled = Boolean.TRUE;
+	
+	public static User getCopy(User user) {
+		User copy = new User();
+		copy.setUsername(user.getUsername());
+		copy.setPassword(user.getPassword());
+		copy.setName(user.getName());
+		copy.setLastname(user.getLastname());
+		copy.setEmail((user.getEmail()));
+		return copy;
+	}
+	
 }
