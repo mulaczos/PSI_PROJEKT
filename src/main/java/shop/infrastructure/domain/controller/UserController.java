@@ -1,6 +1,7 @@
 package shop.infrastructure.domain.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,19 +58,25 @@ public class UserController {
 	}
 	
 	@PostMapping("grantmoderator")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public boolean grantModerator(@RequestBody String username) {
 		return userService.grantToModerator(username);
 	}
 	
 	@PostMapping("degradetouser")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public boolean degradeToUser(@RequestBody String username) {
 		return userService.degradeToUser(username);
 	}
+	
 	@PostMapping("grantadmin")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public boolean grantAdmin(@RequestBody String username) {
 		return userService.grantAdmin(username);
 	}
+	
 	@PostMapping("degradetomoderator")
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public boolean degradeToModerator(@RequestBody String username) {
 		return userService.degradeToModerator(username);
 	}

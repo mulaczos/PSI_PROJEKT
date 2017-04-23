@@ -31,28 +31,28 @@ public class UserAuthority {
 	}
 	
 	public static UserAuthority getUserAuthority(User user) {
-		return new UserAuthority(user, Role.ROLE_USER);
+		return new UserAuthority(user, Role.USER);
 	}
 	
 	public static UserAuthority getModeratorAuthority(User user) {
-		return new UserAuthority(user, Role.ROLE_MODERATOR);
+		return new UserAuthority(user, Role.MODERATOR);
 	}
 	
 	public static UserAuthority getAdminAuthority(User user) {
-		return new UserAuthority(user, Role.ROLE_ADMIN);
+		return new UserAuthority(user, Role.ADMIN);
 		
 	}
 	
 	public boolean isUserAuthority() {
-		return this.getAuthority().getAuthority().equals(Role.ROLE_USER);
+		return this.getAuthority().getAuthority().equals(Role.USER);
 	}
 	
 	public boolean isModeratorAuthority() {
-		return this.getAuthority().getAuthority().equals(Role.ROLE_MODERATOR);
+		return this.getAuthority().getAuthority().equals(Role.MODERATOR);
 	}
 	
 	public boolean isAdminAuthority() {
-		return this.getAuthority().getAuthority().equals(Role.ROLE_ADMIN);
+		return this.getAuthority().getAuthority().equals(Role.ADMIN);
 	}
 }
 
