@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.infrastructure.domain.exception.UsernameAlreadyUsedException;
 import shop.infrastructure.domain.exception.WrongConfirmPasswordException;
+import shop.infrastructure.domain.model.customer.Role;
 import shop.infrastructure.domain.model.customer.User;
 import shop.infrastructure.domain.model.customer.UserAuthority;
 import shop.infrastructure.domain.model.customer.UserDto;
@@ -97,8 +98,8 @@ public class UserService {
         if (toDelete != null) {
             if (toDelete.getPassword().equals(userDto.getConfirmwithpassword())) {
                 User userToSave = new User(userDto.getUsername(), userDto.getNewpassword(), userDto.getEmail(), userDto.getName(), userDto.getLastname(), true);
-                delete(toDelete.getUsername());
-                userToReturn = save(userToSave);
+                UserAuthority userAuthority = userAuthorityService.save(UserAuthority.getUserAuthorityByRole(userToSave, userAuthorityService.findAndDelete(toDelete)));
+                userToReturn = userAuthority.getUser();
             } else {
                 throw new WrongConfirmPasswordException();
             }
@@ -132,6 +133,11 @@ class UserAuthorityService {
     }
 
     @Transactional
+    UserAuthority findAndSave(User user) {
+        return save(findByUser(user));
+    }
+
+    @Transactional
     boolean hasUserRole(User user) {
         return userAuthorityRepository.findByAuthorityUsername(user).isUserAuthority();
     }
@@ -139,6 +145,14 @@ class UserAuthorityService {
     @Transactional(readOnly = true)
     boolean hasModeratorRole(User user) {
         return userAuthorityRepository.findByAuthorityUsername(user).isModeratorAuthority();
+    }
+
+    @Transactional
+    Role findAndDelete(User user) {
+        UserAuthority toDelete = userAuthorityRepository.findByAuthorityUsername(user);
+        Role role = toDelete.getRole();
+        userAuthorityRepository.delete(userAuthorityRepository.findByAuthorityUsername(user));
+        return role;
     }
 
     @Transactional
@@ -150,4 +164,11 @@ class UserAuthorityService {
     boolean hasAdminRole(User user) {
         return userAuthorityRepository.findByAuthorityUsername(user).isAdminAuthority();
     }
+
+    @Transactional
+    UserAuthority findByUser(User user) {
+        return userAuthorityRepository.findByAuthorityUsername(user);
+    }
+
+
 }

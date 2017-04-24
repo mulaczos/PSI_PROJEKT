@@ -40,7 +40,6 @@ public class UserAuthority {
 	
 	public static UserAuthority getAdminAuthority(User user) {
 		return new UserAuthority(user, Role.ADMIN);
-		
 	}
 	
 	public boolean isUserAuthority() {
@@ -53,6 +52,18 @@ public class UserAuthority {
 	
 	public boolean isAdminAuthority() {
 		return this.getAuthority().getAuthority().equals(Role.ADMIN);
+	}
+
+	public User getUser() {
+		return this.authority.getUsername();
+	}
+
+	public Role getRole() {
+		return this.authority.getAuthority();
+	}
+
+	public static UserAuthority getUserAuthorityByRole(User userToSave, Role role) {
+		return new UserAuthority(userToSave, role);
 	}
 }
 

@@ -5,9 +5,9 @@
         .controller('ProfileController', ProfileController);
 
 
-    ProfileController.$inject = ['$scope', 'AccountService', '$rootScope'];
+    ProfileController.$inject = ['$scope', 'AccountService', '$rootScope', '$state'];
 
-    function ProfileController($scope, AccountService, $rootScope) {
+    function ProfileController($scope, AccountService, $rootScope, $state) {
 
         AccountService.getProfile().then(function (success) {
             $scope.username = success.data.username;
@@ -40,7 +40,7 @@
                 lastname: $scope.lastname
             }).then(function success(response) {
                 // $rootScope.loggedIn = true;
-                // $state.go("home", {}, {reload: true});
+                $state.go("profile", {}, {reload: true});
             }, function failure(response) {
                 // $scope.signInForm.$setPristine();
                 // $scope.signInForm.$setUntouched();
