@@ -3,11 +3,25 @@
         <form class="form-horizontal" name="profileForm" ng-submit="updateProfile(profileForm.$valid)"
               novalidate>
 
+
+            <div class="form-group">
+                <label for="username" class="cols-sm-2 control-label">Username</label>
+                <div class="cols-sm-10">
+                    <div class="input-group"
+                         ng-class="{ 'has-error': profileForm.username.$error.required }">
+                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="username" id="username"
+                               placeholder="Enter your Username" ng-model="username" ng-required="true"
+                               ng-disabled="true"/>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label for="name" class="cols-sm-2 control-label">Your Name</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
-                         ng-class="{ 'has-error': profileForm.name.$error.required && profileForm.$submitted }">
+                         ng-class="{ 'has-error': profileForm.name.$error.required }">
                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name"
                                ng-model="name" ng-required="true"/>
@@ -19,7 +33,7 @@
                 <label for="lastname" class="cols-sm-2 control-label">Last Name</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
-                         ng-class="{ 'has-error': profileForm.lastname.$error.required && profileForm.$submitted }">
+                         ng-class="{ 'has-error': profileForm.lastname.$error.required }">
                         <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="lastname" id="lastname"
                                placeholder="Enter your Last Name" ng-model="lastname" ng-required="true"/>
@@ -31,7 +45,7 @@
                 <label for="email" class="cols-sm-2 control-label">Email</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
-                         ng-class="{ 'has-error': profileForm.$submitted && (profileForm.email.$error.required || profileForm.$error.email) }">
+                         ng-class="{ 'has-error': (profileForm.email.$error.required || profileForm.$error.email) }">
                         <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"
                                ng-model="email" ng-required="true"/>
@@ -40,33 +54,14 @@
             </div>
 
             <div class="form-group">
-                <label for="username" class="cols-sm-2 control-label">Username</label>
-                <div class="cols-sm-10">
-                    <div class="input-group"
-                         ng-class="{ 'has-error': profileForm.username.$error.required && profileForm.$submitted }">
-                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="username" id="username"
-                               placeholder="Enter your Username" ng-model="username" ng-required="true" ng-disabled="true"/>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="password" class="cols-sm-2 control-label">Password</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
-                         ng-class="{ 'has-error': profileForm.$submitted && (profileForm.password.$error.minlength || profileForm.password.$error.required) }">
+                         ng-class="{ 'has-error':(profileForm.password.$touched && profileForm.password.$invalid) }">
                         <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                         <input type="password" class="form-control" name="password" id="password"
                                placeholder="Enter your Password" ng-model="password" ng-required="true"
                                ng-minlength="5"/>
-                    </div>
-                    <br/>
-                    <div class="alert alert-danger" ng-hide="arePasswordsSame()">
-                        Passwords are not the same!
-                    </div>
-                    <div class="alert alert-danger"
-                         ng-show="profileForm.$submitted && (profileForm.password.$error.minlength || profileForm.confirm.$error.minlength) ">
-                        Password need at least 5 characters!
                     </div>
                 </div>
             </div>
@@ -75,7 +70,7 @@
                 <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
-                         ng-class="{ 'has-error': profileForm.$touched && profileForm.$submitted && (profileForm.confirm.$error.minlength || profileForm.confirm.$error.required) }">
+                         ng-class="{ 'has-error': (profileForm.confirm.$touched && profileForm.confirm.$invalid)}">
                         <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                         <input type="password" class="form-control" name="confirm" id="confirm"
                                placeholder="Confirm your Password" ng-model="confirm" ng-required="true"
@@ -83,9 +78,19 @@
                     </div>
                 </div>
             </div>
-
-            <div class="form-group" ng-class="{ 'cursor-block': profileForm.$invalid === true && !arePasswordsTheSame()}">
-                <button class="btn btn-primary btn-lg btn-block" ng-disabled="profileForm.$invalid">Change</button>
+            <div class="alert alert-danger" ng-hide="arePasswordsSame()">
+                <strong>Passwords are not the same!</strong>
             </div>
+            <div class="alert alert-danger"
+                 ng-show="(profileForm.password.$error.minlength || profileForm.confirm.$error.minlength) ">
+                <strong>Password need at least 5 characters!</strong>
+            </div>
+
+            <div class="form-group" ng-class="{ 'cursor-block': !unlockSubmit(profileForm.$valid)}">
+                <button class="btn btn-primary btn-lg btn-block" ng-disabled="!unlockSubmit(profileForm.$valid)">
+                    Change
+                </button>
+            </div>
+        </form>
     </div>
 </div>
