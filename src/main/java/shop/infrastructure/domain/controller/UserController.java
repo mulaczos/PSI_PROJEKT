@@ -56,27 +56,30 @@ public class UserController {
 	public Principal credentials(Principal principal) {
 		return principal;
 	}
+
+	@GetMapping(value = "profile")
+	public User profile(Principal principal) {
+		User user = get(principal.getName());
+		user.setPassword(null);
+		return user;
+	}
 	
 	@PostMapping("grantmoderator")
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public boolean grantModerator(@RequestBody String username) {
 		return userService.grantToModerator(username);
 	}
 	
 	@PostMapping("degradetouser")
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public boolean degradeToUser(@RequestBody String username) {
 		return userService.degradeToUser(username);
 	}
 	
 	@PostMapping("grantadmin")
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public boolean grantAdmin(@RequestBody String username) {
 		return userService.grantAdmin(username);
 	}
 	
 	@PostMapping("degradetomoderator")
-	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	public boolean degradeToModerator(@RequestBody String username) {
 		return userService.degradeToModerator(username);
 	}

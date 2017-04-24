@@ -17,7 +17,6 @@ public class SecurityAuthenticationFailureHandler extends SimpleUrlAuthenticatio
                                         HttpServletResponse response, AuthenticationException exception)
             throws IOException, ServletException {
         super.onAuthenticationFailure(request, response, exception);
-
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
     }

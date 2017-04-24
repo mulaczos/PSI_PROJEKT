@@ -28,6 +28,13 @@
             })
         };
 
+        AccountService.getProfile = function () {
+            return $http({
+                method: 'GET',
+                url: 'user/profile'
+            })
+        };
+
         AccountService.logout = function () {
           return $http({
               method: 'GET',
@@ -40,6 +47,38 @@
                 method: 'POST',
                 url: '/user',
                 data: data
+            });
+        };
+
+        AccountService.grantmoderator = function (username) {
+            return $http({
+                method: 'POST',
+                url: '/user/grantmoderator',
+                data: username
+            });
+        };
+
+        AccountService.degradetouser = function (username) {
+            return $http({
+                method: 'POST',
+                url: '/user/degradetouser',
+                data: username
+            });
+        };
+
+        AccountService.grantadmin = function (username) {
+            return $http({
+                method: 'POST',
+                url: '/user/grantadmin',
+                data: username
+            });
+        };
+
+        AccountService.degradetomoderator = function (username) {
+            return $http({
+                method: 'POST',
+                url: '/user/degradetomoderator',
+                data: username
             });
         };
 

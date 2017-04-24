@@ -33,10 +33,10 @@
                 templateUrl: '/items.html',
                 controller: 'ItemsController'
             })
-            .state('basket', {
-                url: "/basket",
-                templateUrl: '/basket.html',
-                controller: 'BasketController'
+            .state('profile', {
+                url: "/profile",
+                templateUrl: '/profile.html',
+                controller: 'ProfileController'
             })
             .state('home', {
                 url: "/home",
