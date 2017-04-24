@@ -41,6 +41,9 @@
     function RegisterController($scope, $state, AccountService, $rootScope) {
 
         $scope.processRegistration = function (valid) {
+            console.log("IS THIS THING ON?");
+            console.log(valid);
+            console.log("IS THIS THING sadajsdhlasjdh?");
             if (valid && ($scope.password === $scope.confirm)) {
                 AccountService.register({
                     username: $scope.username,
