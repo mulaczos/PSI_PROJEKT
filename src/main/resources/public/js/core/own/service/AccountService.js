@@ -50,6 +50,14 @@
             });
         };
 
+        AccountService.updateProfile = function (data) {
+            return $http({
+                method: 'PUT',
+                url: '/user',
+                data: data
+            });
+        };
+
         AccountService.grantmoderator = function (username) {
             return $http({
                 method: 'POST',

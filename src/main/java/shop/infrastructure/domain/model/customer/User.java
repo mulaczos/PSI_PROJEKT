@@ -1,10 +1,15 @@
 package shop.infrastructure.domain.model.customer;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * Primary user class used for application authentication
@@ -14,13 +19,19 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "Users")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 	
 	@Id
 	private String username;
+	@Min(5)
 	private String password;
+	@Email
 	private String email;
+	@NotNull
 	private String name;
+	@NotNull
 	private String lastname;
 	private boolean enabled = Boolean.TRUE;
 	

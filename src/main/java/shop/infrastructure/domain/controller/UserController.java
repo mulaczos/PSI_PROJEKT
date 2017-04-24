@@ -1,7 +1,6 @@
 package shop.infrastructure.domain.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +8,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import shop.infrastructure.domain.exception.WrongConfirmPasswordException;
 import shop.infrastructure.domain.model.customer.User;
+import shop.infrastructure.domain.model.customer.UserDto;
 import shop.infrastructure.domain.service.UserService;
 
 import javax.persistence.EntityNotFoundException;
@@ -39,17 +40,13 @@ public class UserController {
 	}
 	
 	@PutMapping
-	public User update(@RequestBody User user) {
-		if (userService.findByUsername(user.getUsername()) != null) {
-			return userService.update(user);
-		} else {
-			throw new EntityNotFoundException();
-		}
+	public User updateUser(@RequestBody UserDto userDto) {
+		return userService.updateUser(userDto);
 	}
 	
 	@DeleteMapping
-	public void delete(Long id) {
-		userService.delete(id);
+	public void delete(String username) {
+		userService.delete(username);
 	}
 	
 	@GetMapping(value = "credentials")

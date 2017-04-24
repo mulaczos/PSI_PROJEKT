@@ -26,8 +26,28 @@
             }
         };
 
-        $scope.unlockSubmit = function(valid) {
+        $scope.unlockSubmit = function (valid) {
             return $scope.password && $scope.confirm && $scope.password.length > 5 && $scope.confirm.length > 5 && ($scope.password === $scope.confirm) && valid;
+        };
+
+        $scope.updateProfile = function () {
+            AccountService.updateProfile({
+                username: $scope.username,
+                newpassword: $scope.password,
+                confirmwithpassword: $scope.confirmwithpassword,
+                email: $scope.email,
+                name: $scope.name,
+                lastname: $scope.lastname
+            }).then(function success(response) {
+                // $rootScope.loggedIn = true;
+                // $state.go("home", {}, {reload: true});
+            }, function failure(response) {
+                // $scope.signInForm.$setPristine();
+                // $scope.signInForm.$setUntouched();
+                // $scope.username = null;
+                // $scope.password = null;
+                // $scope.failed = true;
+            });
         };
     }
 }());
