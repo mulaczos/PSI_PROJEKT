@@ -3,7 +3,8 @@
 
     angular.module('app', [
         'ui.router',
-        'ngResource'
+        'ngResource',
+        'ui.toggle'
     ])
         .config(config);
 

@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User {
+public class Customer {
 
     @Id
     private String username;
@@ -37,13 +37,13 @@ public class User {
     private String lastname;
     private boolean enabled = Boolean.TRUE;
 
-    public static User getCopy(User user) {
-        User copy = new User();
-        copy.setUsername(user.getUsername());
-        copy.setPassword(user.getPassword());
-        copy.setName(user.getName());
-        copy.setLastname(user.getLastname());
-        copy.setEmail((user.getEmail()));
+    public static Customer getCopy(Customer customer) {
+        Customer copy = new Customer();
+        copy.setUsername(customer.getUsername());
+        copy.setPassword(customer.getPassword());
+        copy.setName(customer.getName());
+        copy.setLastname(customer.getLastname());
+        copy.setEmail((customer.getEmail()));
         return copy;
     }
 

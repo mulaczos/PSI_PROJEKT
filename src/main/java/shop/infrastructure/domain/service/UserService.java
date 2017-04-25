@@ -5,12 +5,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.infrastructure.domain.exception.UsernameAlreadyUsedException;
 import shop.infrastructure.domain.exception.WrongConfirmPasswordException;
+import shop.infrastructure.domain.model.customer.Customer;
 import shop.infrastructure.domain.model.customer.Role;
-import shop.infrastructure.domain.model.customer.User;
-import shop.infrastructure.domain.model.customer.UserAuthority;
-import shop.infrastructure.domain.model.customer.UserDto;
-import shop.infrastructure.domain.repository.UserAuthorityRepository;
-import shop.infrastructure.domain.repository.UserRepository;
+import shop.infrastructure.domain.model.customer.BackendUser;
+import shop.infrastructure.domain.model.customer.CustomerDto;
+import shop.infrastructure.domain.repository.BackendUserRepository;
+import shop.infrastructure.domain.repository.CustomerRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -19,39 +19,39 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
     private UserAuthorityService userAuthorityService;
 
     @Transactional
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Customer findByUsername(String username) {
+        return customerRepository.findByUsername(username);
     }
 
-    public List<User> getAll() {
-        return userRepository.findAll();
+    public List<Customer> getAll() {
+        return customerRepository.findAll();
     }
 
     @Transactional
-    public User save(User user) {
-        if (findByUsername(user.getUsername()) != null) {
-            throw new UsernameAlreadyUsedException(user.getUsername());
+    public Customer save(Customer customer) {
+        if (findByUsername(customer.getUsername()) != null) {
+            throw new UsernameAlreadyUsedException(customer.getUsername());
         } else {
-            user.setEnabled(true);
-            User userToReturn = userRepository.save(user);
-            userAuthorityService.save(UserAuthority.getUserAuthority(userRepository.save(userToReturn)));
-            return userToReturn;
+            customer.setEnabled(true);
+            Customer customerToReturn = customerRepository.save(customer);
+            userAuthorityService.save(BackendUser.getUserAuthority(customerRepository.save(customerToReturn)));
+            return customerToReturn;
         }
     }
 
     @Transactional
     public boolean grantToModerator(String username) {
-        User toDelete = findByUsername(username);
-        User toSave = User.getCopy(toDelete);
+        Customer toDelete = findByUsername(username);
+        Customer toSave = Customer.getCopy(toDelete);
         if (userAuthorityService.hasUserRole(toDelete)) {
-            userAuthorityService.delete(UserAuthority.getUserAuthority(toDelete));
-            userAuthorityService.save(UserAuthority.getModeratorAuthority(toSave));
+            userAuthorityService.delete(BackendUser.getUserAuthority(toDelete));
+            userAuthorityService.save(BackendUser.getModeratorAuthority(toSave));
             return true;
         }
         return false;
@@ -59,67 +59,67 @@ public class UserService {
 
     @Transactional
     public boolean degradeToUser(String username) {
-        User toDelete = findByUsername(username);
-        User toSave = User.getCopy(toDelete);
+        Customer toDelete = findByUsername(username);
+        Customer toSave = Customer.getCopy(toDelete);
         if (userAuthorityService.hasModeratorRole(toDelete)) {
-            userAuthorityService.delete(UserAuthority.getModeratorAuthority(toDelete));
-            userAuthorityService.save(UserAuthority.getUserAuthority(toSave));
+            userAuthorityService.delete(BackendUser.getModeratorAuthority(toDelete));
+            userAuthorityService.save(BackendUser.getUserAuthority(toSave));
             return true;
         }
         return false;
     }
 
     public boolean grantAdmin(String username) {
-        User toDelete = findByUsername(username);
-        User toSave = User.getCopy(toDelete);
+        Customer toDelete = findByUsername(username);
+        Customer toSave = Customer.getCopy(toDelete);
         if (userAuthorityService.hasModeratorRole(toDelete)) {
-            userAuthorityService.delete(UserAuthority.getModeratorAuthority(toDelete));
-            userAuthorityService.save(UserAuthority.getAdminAuthority(toSave));
+            userAuthorityService.delete(BackendUser.getModeratorAuthority(toDelete));
+            userAuthorityService.save(BackendUser.getAdminAuthority(toSave));
             return true;
         }
         return false;
     }
 
     public boolean degradeToModerator(String username) {
-        User toDelete = findByUsername(username);
-        User toSave = User.getCopy(toDelete);
+        Customer toDelete = findByUsername(username);
+        Customer toSave = Customer.getCopy(toDelete);
         if (userAuthorityService.hasAdminRole(toDelete)) {
-            userAuthorityService.delete(UserAuthority.getAdminAuthority(toDelete));
-            userAuthorityService.save(UserAuthority.getModeratorAuthority(toSave));
+            userAuthorityService.delete(BackendUser.getAdminAuthority(toDelete));
+            userAuthorityService.save(BackendUser.getModeratorAuthority(toSave));
             return true;
         }
         return false;
     }
 
     @Transactional
-    public User updateUser(UserDto userDto) {
-        User toDelete = findByUsername(userDto.getUsername());
-        User userToReturn = null;
+    public Customer updateUser(CustomerDto customerDto) {
+        Customer toDelete = findByUsername(customerDto.getUsername());
+        Customer customerToReturn = null;
         if (toDelete != null) {
-            if (toDelete.getPassword().equals(userDto.getConfirmwithpassword())) {
-                User userToSave = new User(userDto.getUsername(), userDto.getNewpassword(), userDto.getEmail(), userDto.getName(), userDto.getLastname(), true);
-                UserAuthority userAuthority = userAuthorityService.save(UserAuthority.getUserAuthorityByRole(userToSave, userAuthorityService.findAndDelete(toDelete)));
-                userToReturn = userRepository.save(userAuthority.getUser());
+            if (toDelete.getPassword().equals(customerDto.getConfirmwithpassword())) {
+                Customer customerToSave = new Customer(customerDto.getUsername(), customerDto.getNewpassword(), customerDto.getEmail(), customerDto.getName(), customerDto.getLastname(), true);
+                BackendUser backendUser = userAuthorityService.save(BackendUser.getUserAuthorityByRole(customerToSave, userAuthorityService.findAndDelete(toDelete)));
+                customerToReturn = customerRepository.save(backendUser.getUser());
             } else {
                 throw new WrongConfirmPasswordException();
             }
         } else {
             throw new EntityNotFoundException();
         }
-        return userToReturn;
+        return customerToReturn;
     }
 
     @Transactional
-    public User update(User user) {
-        return userRepository.save(user);
+    public Customer update(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Transactional
     public void delete(String username) {
-        userRepository.delete(username);
+        customerRepository.delete(username);
     }
 
-    public List<UserAuthority> getAllUserAuthorities() {
+    public List<BackendUser> getAllBackendUsers() {
         return userAuthorityService.findAll();
     }
 }
@@ -128,53 +128,48 @@ public class UserService {
 class UserAuthorityService {
 
     @Autowired
-    private UserAuthorityRepository userAuthorityRepository;
+    private BackendUserRepository backendUserRepository;
 
     @Transactional
-    UserAuthority save(UserAuthority userAuthority) {
-        return userAuthorityRepository.save(userAuthority);
+    BackendUser save(BackendUser backendUser) {
+        return backendUserRepository.save(backendUser);
     }
 
     @Transactional
-    UserAuthority findAndSave(User user) {
-        return save(findByUser(user));
-    }
-
-    @Transactional
-    boolean hasUserRole(User user) {
-        return userAuthorityRepository.findByAuthorityUsername(user).isUserAuthority();
+    boolean hasUserRole(Customer customer) {
+        return backendUserRepository.findByBackendUser_Username(customer).isUserAuthority();
     }
 
     @Transactional(readOnly = true)
-    boolean hasModeratorRole(User user) {
-        return userAuthorityRepository.findByAuthorityUsername(user).isModeratorAuthority();
+    boolean hasModeratorRole(Customer customer) {
+        return backendUserRepository.findByBackendUser_Username(customer).isModeratorAuthority();
     }
 
     @Transactional
-    Role findAndDelete(User user) {
-        UserAuthority toDelete = userAuthorityRepository.findByAuthorityUsername(user);
+    Role findAndDelete(Customer customer) {
+        BackendUser toDelete = backendUserRepository.findByBackendUser_Username(customer);
         Role role = toDelete.getRole();
-        userAuthorityRepository.delete(userAuthorityRepository.findByAuthorityUsername(user));
+        backendUserRepository.delete(backendUserRepository.findByBackendUser_Username(customer));
         return role;
     }
 
     @Transactional
-    void delete(UserAuthority userAuthority) {
-        userAuthorityRepository.delete(userAuthority);
+    void delete(BackendUser backendUser) {
+        backendUserRepository.delete(backendUser);
     }
 
     @Transactional(readOnly = true)
-    boolean hasAdminRole(User user) {
-        return userAuthorityRepository.findByAuthorityUsername(user).isAdminAuthority();
+    boolean hasAdminRole(Customer customer) {
+        return backendUserRepository.findByBackendUser_Username(customer).isAdminAuthority();
     }
 
     @Transactional
-    UserAuthority findByUser(User user) {
-        return userAuthorityRepository.findByAuthorityUsername(user);
+    BackendUser findByCustomer(Customer customer) {
+        return backendUserRepository.findByBackendUser_Username(customer);
     }
 
 
-    public List<UserAuthority> findAll() {
-        return userAuthorityRepository.findAll();
+    public List<BackendUser> findAll() {
+        return backendUserRepository.findAll();
     }
 }

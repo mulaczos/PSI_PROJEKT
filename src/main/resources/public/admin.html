@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="col-lg-8 col-lg-offset-2">
+    <div class="col-lg-8 col-lg-offset-1">
         <table class="table">
             <thead class="thead-inverse">
             <tr>
@@ -9,16 +9,45 @@
                 <th>Email</th>
                 <th>Authority</th>
                 <th>Enabled</th>
+                <th>Change</th>
+                <th>Authority</th>
+                <th>To</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="user in users" class="table-hover">
-                <th>{{user.authority.username.username}}</th>
-                <td>{{user.authority.username.name}}</td>
-                <td>{{user.authority.username.lastname}}</td>
-                <td>{{user.authority.username.email}}</td>
-                <td>{{user.authority.authority}}</td>
-                <td>{{user.authority.username.enabled}}</td>
+            <tr ng-repeat="customer in customers" ng-class="{'danger' : !customer.user.enabled}">
+                <td ng-class="{'cursor-block' : !customer.user.enabled}">{{customer.user.username}}</td>
+                <td ng-class="{'cursor-block' : !customer.user.enabled}">{{customer.user.name}}</td>
+                <td ng-class="{'cursor-block' : !customer.user.enabled}">{{customer.user.lastname}}</td>
+                <td ng-class="{'cursor-block' : !customer.user.enabled}">{{customer.user.email}}</td>
+                <td ng-class="{'cursor-block' : !customer.user.enabled}" class="text-center">{{customer.role}}</td>
+                <td>
+                    <toggle ng-model="customer.user.enabled" ng-change="disable(customer.user.username)"></toggle>
+                </td>
+                <td>
+                    <div ng-class="{'cursor-block' : (!customer.user.enabled || customer.role==='USER')}">
+                        <button ng-click="degradeToUser(customer.user.username)" class="btn"
+                                ng-class="{'cursor-block': !customer.user.enabled, 'btn-info' : customer.user.enabled}"
+                                ng-disabled="(!customer.user.enabled || customer.role==='USER')">USER
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <div ng-class="{'cursor-block' : (!customer.user.enabled || customer.role==='MODERATOR')}">
+                        <button ng-click="assignModeratorRole(customer.user.username)" class="btn"
+                                ng-class="{'cursor-block' : !customer.user.enabled, 'btn-warning' : customer.user.enabled}"
+                                ng-disabled="(!customer.user.enabled || customer.role==='MODERATOR')">MOD
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <div ng-class="{'cursor-block' : (!customer.user.enabled || customer.role==='ADMIN')}">
+                        <button ng-click="grantAdmin(customer.user.username)" class="btn"
+                                ng-class="{'cursor-block' : !customer.user.enabled, 'btn-danger' : customer.user.enabled}"
+                                ng-disabled="(!customer.user.enabled || customer.role==='ADMIN')">ADMIN
+                        </button>
+                    </div>
+                </td>
             </tr>
             </tbody>
         </table>

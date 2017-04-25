@@ -2,9 +2,9 @@ package shop.infrastructure.domain.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import shop.infrastructure.domain.model.customer.User;
-import shop.infrastructure.domain.model.customer.UserAuthority;
-import shop.infrastructure.domain.model.customer.UserDto;
+import shop.infrastructure.domain.model.customer.Customer;
+import shop.infrastructure.domain.model.customer.BackendUser;
+import shop.infrastructure.domain.model.customer.CustomerDto;
 import shop.infrastructure.domain.service.UserService;
 
 import java.security.Principal;
@@ -18,28 +18,23 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(params = "username")
-    public User get(String username) {
+    public Customer get(String username) {
         return userService.findByUsername(username);
     }
 
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAll();
-    }
-
     @GetMapping("authorities")
-    public List<UserAuthority> getAllUserAuthorities() {
-        return userService.getAllUserAuthorities();
+    public List<BackendUser> getAllUserAuthorities() {
+        return userService.getAllBackendUsers();
     }
 
     @PostMapping
-    public User save(@RequestBody User user) {
-        return userService.save(user);
+    public Customer save(@RequestBody Customer customer) {
+        return userService.save(customer);
     }
 
     @PutMapping
-    public User updateUser(@RequestBody UserDto userDto) {
-        return userService.updateUser(userDto);
+    public Customer updateUser(@RequestBody CustomerDto customerDto) {
+        return userService.updateUser(customerDto);
     }
 
     @DeleteMapping
@@ -53,10 +48,10 @@ public class UserController {
     }
 
     @GetMapping(value = "profile")
-    public User profile(Principal principal) {
-        User user = get(principal.getName());
-        user.setPassword(null);
-        return user;
+    public Customer profile(Principal principal) {
+        Customer customer = get(principal.getName());
+        customer.setPassword(null);
+        return customer;
     }
 
     @PostMapping("grantmoderator")

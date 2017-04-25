@@ -59,8 +59,7 @@
         };
 
         $scope.arePasswordsTheSame = function () {
-
-            if ($scope.password && $scope.confirm && $scope.password.length > 5 && $scope.confirm.length > 5) {
+            if ($scope.password && $scope.confirm && $scope.password.length > 4 && $scope.confirm.length > 4) {
                 return $scope.password == $scope.confirm;
             } else {
                 return true;

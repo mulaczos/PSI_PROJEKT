@@ -10,8 +10,17 @@
     function AdminController($scope, AccountService) {
 
         AccountService.getAllUserAuthorities().then(function (success) {
-            console.log(success);
-            $scope.users = success.data;
+            $scope.customers = success.data;
         });
+
+        $scope.disable = function (username) {
+        };
+
+        $scope.degradeToUser = function (username) {
+        };
+        $scope.assignModeratorRole= function (username) {
+        };
+        $scope.grantAdmin= function (username) {
+        };
     }
 }());

@@ -2,7 +2,6 @@ package shop.infrastructure.domain.repository.base;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
-import shop.infrastructure.domain.model.customer.User;
 
 import java.io.Serializable;
 import java.util.List;

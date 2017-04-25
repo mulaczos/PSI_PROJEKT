@@ -7,7 +7,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class UserDto {
+public class CustomerDto {
 
     @NotNull
     private String username;

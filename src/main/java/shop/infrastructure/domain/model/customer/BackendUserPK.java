@@ -9,16 +9,16 @@ import java.io.Serializable;
 @Data
 @Embeddable
 @NoArgsConstructor
-public class UserAuthorityPrimaryKey implements Serializable {
+public class BackendUserPK implements Serializable {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "username")
-    private User username;
+    private Customer username;
 
     @Enumerated(EnumType.STRING)
     private Role authority;
 
-    UserAuthorityPrimaryKey(User username, Role authority) {
+    BackendUserPK(Customer username, Role authority) {
         this.username = username;
         this.authority = authority;
     }
