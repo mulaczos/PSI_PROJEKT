@@ -28,6 +28,20 @@
             })
         };
 
+        AccountService.getAllUsers = function () {
+            return $http({
+                method: 'GET',
+                url: 'user'
+            })
+        };
+
+        AccountService.getAllUserAuthorities = function () {
+            return $http({
+                method: 'GET',
+                url: 'user/authorities'
+            })
+        };
+
         AccountService.getProfile = function () {
             return $http({
                 method: 'GET',
@@ -36,10 +50,10 @@
         };
 
         AccountService.logout = function () {
-          return $http({
-              method: 'GET',
-              url: '/logout'
-          })
+            return $http({
+                method: 'GET',
+                url: '/logout'
+            })
         };
 
         AccountService.register = function (data) {

@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="col-lg-8 col-lg-offset-2">
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Authority</th>
+                <th>Enabled</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in users" class="table-hover">
+                <th>{{user.authority.username.username}}</th>
+                <td>{{user.authority.username.name}}</td>
+                <td>{{user.authority.username.lastname}}</td>
+                <td>{{user.authority.username.email}}</td>
+                <td>{{user.authority.authority}}</td>
+                <td>{{user.authority.username.enabled}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

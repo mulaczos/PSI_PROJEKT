@@ -119,6 +119,9 @@ public class UserService {
         userRepository.delete(username);
     }
 
+    public List<UserAuthority> getAllUserAuthorities() {
+        return userAuthorityService.findAll();
+    }
 }
 
 @Service
@@ -171,4 +174,7 @@ class UserAuthorityService {
     }
 
 
+    public List<UserAuthority> findAll() {
+        return userAuthorityRepository.findAll();
+    }
 }

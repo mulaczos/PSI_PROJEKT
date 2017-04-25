@@ -48,10 +48,10 @@
                 templateUrl: '/orders.html',
                 controller: 'OrdersController'
             })
-            .state('panel', {
-                url: "/panel",
-                templateUrl: '/panel.html',
-                controller: 'PanelController'
+            .state('admin', {
+                url: "/admin",
+                templateUrl: '/admin.html',
+                controller: 'AdminController'
             })
             .state('settings', {
                 url: "/settings",
