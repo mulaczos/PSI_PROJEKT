@@ -35,13 +35,6 @@
             })
         };
 
-        AccountService.getAllUserAuthorities = function () {
-            return $http({
-                method: 'GET',
-                url: 'user/authorities'
-            })
-        };
-
         AccountService.getProfile = function () {
             return $http({
                 method: 'GET',
@@ -72,15 +65,15 @@
             });
         };
 
-        AccountService.grantmoderator = function (username) {
+        AccountService.assignModeratorRole = function (username) {
             return $http({
                 method: 'POST',
-                url: '/user/grantmoderator',
+                url: '/user/assignmoderator',
                 data: username
             });
         };
 
-        AccountService.degradetouser = function (username) {
+        AccountService.degradeToUser = function (username) {
             return $http({
                 method: 'POST',
                 url: '/user/degradetouser',
@@ -88,7 +81,7 @@
             });
         };
 
-        AccountService.grantadmin = function (username) {
+        AccountService.grantAdmin = function (username) {
             return $http({
                 method: 'POST',
                 url: '/user/grantadmin',
@@ -96,10 +89,10 @@
             });
         };
 
-        AccountService.degradetomoderator = function (username) {
+        AccountService.toggleDisable = function (username) {
             return $http({
                 method: 'POST',
-                url: '/user/degradetomoderator',
+                url: '/user/toggledisable',
                 data: username
             });
         };

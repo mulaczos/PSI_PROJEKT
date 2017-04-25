@@ -22,7 +22,7 @@ public class UserService {
     private CustomerRepository customerRepository;
 
     @Autowired
-    private UserAuthorityService userAuthorityService;
+    private BackendUserService backendUserService;
 
     @Transactional
     public Customer findByUsername(String username) {
@@ -40,18 +40,18 @@ public class UserService {
         } else {
             customer.setEnabled(true);
             Customer customerToReturn = customerRepository.save(customer);
-            userAuthorityService.save(BackendUser.getUserAuthority(customerRepository.save(customerToReturn)));
+            backendUserService.save(BackendUser.getUserAuthority(customerRepository.save(customerToReturn)));
             return customerToReturn;
         }
     }
 
     @Transactional
-    public boolean grantToModerator(String username) {
+    public boolean assignModerator(String username) {
         Customer toDelete = findByUsername(username);
         Customer toSave = Customer.getCopy(toDelete);
-        if (userAuthorityService.hasUserRole(toDelete)) {
-            userAuthorityService.delete(BackendUser.getUserAuthority(toDelete));
-            userAuthorityService.save(BackendUser.getModeratorAuthority(toSave));
+        if (backendUserService.hasUserRole(toDelete) || backendUserService.hasAdminRole(toDelete)) {
+            backendUserService.findAndDelete(toDelete);
+            backendUserService.save(BackendUser.getModeratorAuthority(toSave));
             return true;
         }
         return false;
@@ -61,31 +61,21 @@ public class UserService {
     public boolean degradeToUser(String username) {
         Customer toDelete = findByUsername(username);
         Customer toSave = Customer.getCopy(toDelete);
-        if (userAuthorityService.hasModeratorRole(toDelete)) {
-            userAuthorityService.delete(BackendUser.getModeratorAuthority(toDelete));
-            userAuthorityService.save(BackendUser.getUserAuthority(toSave));
+        if (backendUserService.hasModeratorRole(toDelete) || backendUserService.hasAdminRole(toDelete)) {
+            backendUserService.findAndDelete(toDelete);
+            backendUserService.save(BackendUser.getUserAuthority(toSave));
             return true;
         }
         return false;
     }
 
+    @Transactional
     public boolean grantAdmin(String username) {
         Customer toDelete = findByUsername(username);
         Customer toSave = Customer.getCopy(toDelete);
-        if (userAuthorityService.hasModeratorRole(toDelete)) {
-            userAuthorityService.delete(BackendUser.getModeratorAuthority(toDelete));
-            userAuthorityService.save(BackendUser.getAdminAuthority(toSave));
-            return true;
-        }
-        return false;
-    }
-
-    public boolean degradeToModerator(String username) {
-        Customer toDelete = findByUsername(username);
-        Customer toSave = Customer.getCopy(toDelete);
-        if (userAuthorityService.hasAdminRole(toDelete)) {
-            userAuthorityService.delete(BackendUser.getAdminAuthority(toDelete));
-            userAuthorityService.save(BackendUser.getModeratorAuthority(toSave));
+        if (backendUserService.hasUserRole(toDelete) || backendUserService.hasModeratorRole(toDelete)) {
+            backendUserService.findAndDelete(toDelete);
+            backendUserService.save(BackendUser.getAdminAuthority(toSave));
             return true;
         }
         return false;
@@ -98,7 +88,7 @@ public class UserService {
         if (toDelete != null) {
             if (toDelete.getPassword().equals(customerDto.getConfirmwithpassword())) {
                 Customer customerToSave = new Customer(customerDto.getUsername(), customerDto.getNewpassword(), customerDto.getEmail(), customerDto.getName(), customerDto.getLastname(), true);
-                BackendUser backendUser = userAuthorityService.save(BackendUser.getUserAuthorityByRole(customerToSave, userAuthorityService.findAndDelete(toDelete)));
+                BackendUser backendUser = backendUserService.save(BackendUser.getUserAuthorityByRole(customerToSave, backendUserService.findAndDelete(toDelete)));
                 customerToReturn = customerRepository.save(backendUser.getUser());
             } else {
                 throw new WrongConfirmPasswordException();
@@ -119,13 +109,31 @@ public class UserService {
         customerRepository.delete(username);
     }
 
+    @Transactional(readOnly = true)
     public List<BackendUser> getAllBackendUsers() {
-        return userAuthorityService.findAll();
+        return backendUserService.findAll();
+    }
+
+    @Transactional
+    public boolean toggleDisable(String username) {
+        Customer toDelete = findByUsername(username);
+        if (toDelete != null) {
+            Customer toSave = Customer.getCopy(toDelete);
+            if (toDelete.isEnabled()) {
+                toSave.setEnabled(false);
+            } else {
+                toSave.setEnabled(true);
+            }
+            BackendUser backendUser = backendUserService.save(BackendUser.getUserAuthorityByRole(toSave, backendUserService.findAndDelete(toDelete)));
+            customerRepository.save(backendUser.getUser());
+            return true;
+        }
+        return false;
     }
 }
 
 @Service
-class UserAuthorityService {
+class BackendUserService {
 
     @Autowired
     private BackendUserRepository backendUserRepository;
@@ -137,39 +145,39 @@ class UserAuthorityService {
 
     @Transactional
     boolean hasUserRole(Customer customer) {
-        return backendUserRepository.findByBackendUser_Username(customer).isUserAuthority();
+        return findByCustomer(customer).isUserAuthority();
     }
 
     @Transactional(readOnly = true)
     boolean hasModeratorRole(Customer customer) {
-        return backendUserRepository.findByBackendUser_Username(customer).isModeratorAuthority();
+        return findByCustomer(customer).isModeratorAuthority();
     }
 
     @Transactional
     Role findAndDelete(Customer customer) {
-        BackendUser toDelete = backendUserRepository.findByBackendUser_Username(customer);
+        BackendUser toDelete = findByCustomer(customer);
         Role role = toDelete.getRole();
-        backendUserRepository.delete(backendUserRepository.findByBackendUser_Username(customer));
+        backendUserRepository.delete(findByCustomer(customer));
         return role;
-    }
-
-    @Transactional
-    void delete(BackendUser backendUser) {
-        backendUserRepository.delete(backendUser);
     }
 
     @Transactional(readOnly = true)
     boolean hasAdminRole(Customer customer) {
-        return backendUserRepository.findByBackendUser_Username(customer).isAdminAuthority();
+        return findByCustomer(customer).isAdminAuthority();
     }
 
     @Transactional
-    BackendUser findByCustomer(Customer customer) {
+    public List<BackendUser> findAll() {
+        return backendUserRepository.findAll();
+    }
+
+    @Transactional
+    private BackendUser findByCustomer(Customer customer) {
         return backendUserRepository.findByBackendUser_Username(customer);
     }
 
-
-    public List<BackendUser> findAll() {
-        return backendUserRepository.findAll();
+    @Transactional(readOnly = true)
+    public Role getRoleFor(Customer customer) {
+        return findByCustomer(customer).getRole();
     }
 }

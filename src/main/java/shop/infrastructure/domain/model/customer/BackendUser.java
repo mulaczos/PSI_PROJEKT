@@ -58,4 +58,8 @@ public class BackendUser {
     public static BackendUser getUserAuthorityByRole(Customer customerToSave, Role role) {
         return new BackendUser(customerToSave, role);
     }
+
+    public static BackendUser getWithAuthority(Customer customer, Role role) {
+        return new BackendUser(customer, role);
+    }
 }

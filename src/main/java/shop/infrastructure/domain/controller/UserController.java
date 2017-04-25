@@ -22,7 +22,7 @@ public class UserController {
         return userService.findByUsername(username);
     }
 
-    @GetMapping("authorities")
+    @GetMapping()
     public List<BackendUser> getAllUserAuthorities() {
         return userService.getAllBackendUsers();
     }
@@ -54,9 +54,9 @@ public class UserController {
         return customer;
     }
 
-    @PostMapping("grantmoderator")
-    public boolean grantModerator(@RequestBody String username) {
-        return userService.grantToModerator(username);
+    @PostMapping("assignmoderator")
+    public boolean assignModerator(@RequestBody String username) {
+        return userService.assignModerator(username);
     }
 
     @PostMapping("degradetouser")
@@ -69,10 +69,9 @@ public class UserController {
         return userService.grantAdmin(username);
     }
 
-    @PostMapping("degradetomoderator")
-    public boolean degradeToModerator(@RequestBody String username) {
-        return userService.degradeToModerator(username);
+    @PostMapping("toggledisable")
+    public boolean toggleDisable(@RequestBody String username) {
+        return userService.toggleDisable(username);
     }
-
 
 }
