@@ -38,10 +38,10 @@ public class UserService {
         if (findByUsername(user.getUsername()) != null) {
             throw new UsernameAlreadyUsedException(user.getUsername());
         } else {
+            user.setEnabled(true);
             User userToReturn = userRepository.save(user);
             userAuthorityService.save(UserAuthority.getUserAuthority(userRepository.save(userToReturn)));
             return userToReturn;
-
         }
     }
 
@@ -99,7 +99,7 @@ public class UserService {
             if (toDelete.getPassword().equals(userDto.getConfirmwithpassword())) {
                 User userToSave = new User(userDto.getUsername(), userDto.getNewpassword(), userDto.getEmail(), userDto.getName(), userDto.getLastname(), true);
                 UserAuthority userAuthority = userAuthorityService.save(UserAuthority.getUserAuthorityByRole(userToSave, userAuthorityService.findAndDelete(toDelete)));
-                userToReturn = userAuthority.getUser();
+                userToReturn = userRepository.save(userAuthority.getUser());
             } else {
                 throw new WrongConfirmPasswordException();
             }
