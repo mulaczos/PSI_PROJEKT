@@ -15,7 +15,6 @@
 
         $scope.disable = function (username) {
             AccountService.toggleDisable(username).then(function (success) {
-                setTimeout(function() {$scope.reload();}, 350);
             });
         };
 

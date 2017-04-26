@@ -11,38 +11,38 @@ import java.util.List;
 @RestController
 @RequestMapping("order")
 public class OrderController {
-	
-	@Autowired
-	private OrderService orderService;
-	
-	
-	@GetMapping(params = "id")
-	public Order get(Long id) {
-		return orderService.get(id);
-	}
-	
-	@GetMapping
-	public List<Order> getAllOrders() {
-		return orderService.getAll();
-	}
-	
-	@PostMapping
-	public Order save(@RequestBody Order order) {
-		return orderService.save(order);
-	}
-	
-	@PutMapping
-	public Order update(@RequestBody Order order) {
-		if (orderService.get(order.getId()) != null) {
-			return orderService.update(order);
-		} else {
-			throw new EntityNotFoundException();
-		}
-	}
-	
-	@DeleteMapping
-	public void delete(Long id) {
-		orderService.delete(id);
-	}
-	
+
+    @Autowired
+    private OrderService orderService;
+
+
+    @GetMapping("{id}")
+    public Order get(@PathVariable Long id) {
+        return orderService.get(id);
+    }
+
+    @GetMapping
+    public List<Order> getAllOrders() {
+        return orderService.getAll();
+    }
+
+    @PostMapping
+    public Order save(@RequestBody Order order) {
+        return orderService.save(order);
+    }
+
+    @PutMapping
+    public Order update(@RequestBody Order order) {
+        if (orderService.get(order.getId()) != null) {
+            return orderService.update(order);
+        } else {
+            throw new EntityNotFoundException();
+        }
+    }
+
+    @DeleteMapping
+    public void delete(Long id) {
+        orderService.delete(id);
+    }
+
 }

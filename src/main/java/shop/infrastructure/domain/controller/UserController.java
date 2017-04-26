@@ -2,8 +2,8 @@ package shop.infrastructure.domain.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import shop.infrastructure.domain.model.customer.Customer;
 import shop.infrastructure.domain.model.customer.BackendUser;
+import shop.infrastructure.domain.model.customer.Customer;
 import shop.infrastructure.domain.model.customer.CustomerDto;
 import shop.infrastructure.domain.service.UserService;
 
@@ -17,8 +17,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(params = "username")
-    public Customer get(String username) {
+    @GetMapping("{username}")
+    public Customer get(@PathVariable String username) {
         return userService.findByUsername(username);
     }
 
