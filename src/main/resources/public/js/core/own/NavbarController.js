@@ -13,7 +13,7 @@
                 .then(function success(response) {
                     if (response.data) {
                         $rootScope.loggedIn = true;
-                        $state.go("home", {}, {reload: true});
+                        $state.go("home");
                     } else {
                         $state.go("login");
                     }

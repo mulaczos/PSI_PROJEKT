@@ -67,12 +67,13 @@
                 <div class="collapse navbar-collapse" id="shop-navbar">
                     <ul class="nav navbar-nav">
                         <li><a href="" ng-click="goToState('products')" ng-class="{ 'cursor-block': !loggedIn }">PRODUCTS</a></li>
-                        <li><a href="" ng-click="goToState('about')" ng-class="{ 'cursor-block': !loggedIn }">ABOUT US</a></li>
+                        <li><a href="" ng-click="goToState('about')" ng-class="{ 'cursor-block': !loggedIn }">CATEGORIES</a></li>
                         <li><a href="" ng-click="goToState('profile')" ng-class="{ 'cursor-block': !loggedIn }">PROFILE</a></li>
                         <li><a href="" ng-click="goToState('admin')" ng-class="{ 'cursor-block': !loggedIn }">ADMINISTRATION</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="navbar-right" ng-show="loggedIn"><a href="" ng-click="logout()">LOGOUT</a></li>
+                    <ul class="nav navbar-nav navbar-right" ng-show="loggedIn">
+                        <li><a href="" ng-click="goToState('about')" ng-class="{ 'cursor-block': !loggedIn }">ABOUT US</a></li>
+                        <li><a href="" ng-click="logout()">LOGOUT</a></li>
                     </ul>
                 </div>
             </nav>

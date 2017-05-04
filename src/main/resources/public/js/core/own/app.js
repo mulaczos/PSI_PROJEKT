@@ -6,7 +6,12 @@
         'ngResource',
         'ui.toggle'
     ])
-        .config(config);
+        .config(config)
+        .filter('capitalize', function () {
+            return function (input) {
+                return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+            }
+        });
 
     config.$inject = (['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider']);
     function config($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {

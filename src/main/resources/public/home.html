@@ -1,4 +1,4 @@
-<div class="body padding">
+<div class="body padding" ng-init="init()">
     <div class="container">
         <div class="row">
             <div class="col-md-2 hidden-xs">
@@ -17,94 +17,42 @@
             </div>
             <div class="col-md-10">
                 <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">TOP BRANDS, HUGE SAVINGS</h3>
-                    </div>
                     <div class="panel-body">
-                        <div class="row">
+                    <div ng-repeat="item in items" ng-if="$index % 4 == 0" class="row">
                             <div class="col-sm-6 col-md-3">
                                 <div class="thumbnail">
                                     <img src="http://placehold.it/500x300" alt="...">
                                     <div class="caption text-center">
-                                        <h3>Product</h3>
+                                        <h3>{{items[$index].name | capitalize}}</h3>
                                     </div>
-                                    <a href="product.html" class="btn btn-warning" role="button">View more <i class="fa fa-angle-right"></i></a>
+                                    <a href="product.html" class="btn btn-warning" role="button">Show details<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-3">
+                            <div class="col-sm-6 col-md-3" ng-show="items[$index + 1]">
                                 <div class="thumbnail">
                                     <img src="http://placehold.it/500x300" alt="...">
                                     <div class="caption text-center">
-                                        <h3>Product</h3>
+                                        <h3>{{items[$index + 1].name| capitalize}}</h3>
                                     </div>
-                                    <a href="product.html" class="btn btn-warning" role="button">View more <i class="fa fa-angle-right"></i></a>
+                                    <a href="product.html" class="btn btn-warning" role="button">Show details<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-3">
+                            <div class="col-sm-6 col-md-3" ng-show="items[$index + 2]">
                                 <div class="thumbnail">
                                     <img src="http://placehold.it/500x300" alt="...">
                                     <div class="caption text-center">
-                                        <h3>Product</h3>
+                                        <h3>{{items[$index + 2].name| capitalize}}</h3>
                                     </div>
-                                    <a href="product.html" class="btn btn-warning" role="button">View more <i class="fa fa-angle-right"></i></a>
+                                    <a href="product.html" class="btn btn-warning" role="button">Show details<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-3">
+                            <div class="col-sm-6 col-md-3" ng-show="items[$index + 3]">
                                 <div class="thumbnail">
                                     <img src="http://placehold.it/500x300" alt="...">
                                     <div class="caption text-center">
-                                        <h3>Product</h3>
+                                        <h3>{{items[$index + 3].name| capitalize}}</h3>
                                     </div>
-                                    <a href="product.html" class="btn btn-warning" role="button">View more <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pull-right">
-                            <a href="#" class="btn btn-warning ">See all deals <i class="fa fa-angle-double-right"></i></a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Top Products and services</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail">
-                                    <img src="http://placehold.it/500x300" alt="...">
-                                    <div class="caption text-center">
-                                        <h3>Product</h3>
-                                    </div>
-                                    <a href="product.html" class="btn btn-warning" role="button">View more <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail">
-                                    <img src="http://placehold.it/500x300" alt="...">
-                                    <div class="caption text-center">
-                                        <h3>Product</h3>
-                                    </div>
-                                    <a href="product.html" class="btn btn-warning" role="button">View more <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail">
-                                    <img src="http://placehold.it/500x300" alt="...">
-                                    <div class="caption text-center">
-                                        <h3>Product</h3>
-                                    </div>
-                                    <a href="product.html" class="btn btn-warning" role="button">View more <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="thumbnail">
-                                    <img src="http://placehold.it/500x300" alt="...">
-                                    <div class="caption text-center">
-                                        <h3>Product</h3>
-                                    </div>
-                                    <a href="product.html" class="btn btn-warning" role="button">View more <i class="fa fa-angle-right"></i></a>
+                                    <a href="product.html" class="btn btn-warning" role="button">Show details<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>

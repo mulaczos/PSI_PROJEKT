@@ -5,9 +5,11 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope'];
+    HomeController.$inject = ['$scope', 'ItemService'];
 
-    function HomeController($scope) {
-
+    function HomeController($scope, ItemService) {
+        $scope.init = function () {
+            $scope.items = ItemService.all();
+        };
     }
 }());

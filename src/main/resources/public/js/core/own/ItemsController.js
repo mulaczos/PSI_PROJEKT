@@ -9,8 +9,9 @@
 
     function ItemsController($scope, ItemService) {
 
-        $scope.items = ItemService.all();
-
+        $scope.init = function () {
+            $scope.items = ItemService.all();
+        };
     }
 }());
 
