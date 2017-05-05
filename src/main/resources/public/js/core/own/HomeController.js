@@ -9,16 +9,22 @@
 
     function HomeController($scope, ItemService, CategoryService, $state) {
 
-        $scope.isOpen = true;
-
         $scope.init = function () {
-            $scope.items = ItemService.all();
+            $scope.fetchAllItems();
             $scope.categories = CategoryService.all();
         };
 
-        $scope.showItem = function (id ){
-            console.log(id);
+        $scope.showItem = function (id) {
             $state.go("items");
+        };
+
+        $scope.fetchAllItems = function () {
+            $scope.items = ItemService.all();
+        };
+
+        $scope.showItemsForGivenCategory = function (id) {
+            console.log(id);
+            $scope.items = ItemService.getItemsForGivenCategory({id: id});
         };
     }
 }());
