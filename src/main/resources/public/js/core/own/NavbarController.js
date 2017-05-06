@@ -4,11 +4,12 @@
         .module('app')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$scope', 'AccountService', '$state', '$rootScope'];
+    NavbarController.$inject = ['$scope', 'AccountService', '$state', '$rootScope', 'localStorageService'];
 
-    function NavbarController($scope, AccountService, $state, $rootScope) {
+    function NavbarController($scope, AccountService, $state, $rootScope, localStorageService) {
 
         $scope.init = function () {
+            $scope.showItemQuanity();
             AccountService.isAuthenticated()
                 .then(function success(response) {
                     if (response.data) {
@@ -23,7 +24,7 @@
         };
 
         $scope.goMain = function () {
-            if($rootScope.loggedIn) {
+            if ($rootScope.loggedIn) {
                 $state.go("main", {}, {reload: true});
             } else {
                 $state.go("login", {}, {reload: true});
@@ -33,23 +34,29 @@
         $scope.logout = function () {
             AccountService.logout()
                 .then(function success(success) {
-                    $rootScope.loggedIn=false;
+                    $rootScope.loggedIn = false;
                     localStorageService.clearAll();
                     $state.go("login", {}, {reload: true});
                 });
         };
 
         $scope.goToState = function (state) {
-            if($rootScope.loggedIn) {
+            if ($rootScope.loggedIn) {
                 $state.go(state);
             }
         };
 
-        $rootScope.$on('addItem', function (event, data) {
-            $scope.user = data;
-            $scope.newAccount = true;
+        $rootScope.$on('refreshCart', function (event, data) {
+            $scope.showItemQuanity();
         });
+
+        $scope.showItemQuanity = function () {
+            $scope.items = localStorageService.get('items');
+            if ($scope.items !== null) {
+                $scope.howManyItems = $scope.items.length;
+            } else {
+                $scope.howManyItems = 0;
+            }
+        }
     }
-
-
 }());

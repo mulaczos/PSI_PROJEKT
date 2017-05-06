@@ -52,9 +52,9 @@
                             </div>
                             </br>
                             <div class="add">
-                                <a href="cart.html" class="btn btn-primary btn-block"
-                                   ng-click="addToCart(item)">Add To Cart <i
-                                        class="fa fa-shopping-cart"></i></a>
+                                <button class="btn btn-primary btn-block" ng-disabled="quanity < 1"
+                                        ng-click="addToCart(item)">Add To Cart <i
+                                        class="fa fa-shopping-cart"></i></button>
                             </div>
                         </div>
                     </div>

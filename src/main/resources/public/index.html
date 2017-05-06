@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="col-xs-6 col-md-4 text-center">
-                    <a href="" class="btn btn-primary" ng-show="loggedIn" ng-click="goToState('cart')"><i class="fa fa-shopping-cart"></i> 1 Item</a>
+                    <a href="" class="btn btn-primary" ng-show="loggedIn" ng-click="goToState('cart')"><i class="fa fa-shopping-cart"></i> {{howManyItems}} Item{{howManyItems === 1 ? '' : 's'}}</a>
                 </div>
             </div>
             <nav class="navbar navbar-default" role="navigation">

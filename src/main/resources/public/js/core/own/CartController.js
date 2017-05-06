@@ -11,13 +11,19 @@
 
         $scope.items = localStorageService.get("items");
 
-        $scope.backToShopping = function() {
+        $scope.backToShopping = function () {
             $state.go('main');
         };
 
         $scope.removeQuanity = function (item) {
-            if (item.quanity > 0) {
-                item.quanity = item.quanity - 1;
+            for (var i = 0; i < $scope.items.length; i++) {
+                if ($scope.items[i].id === item.id) {
+                    if ($scope.items[i].quanity > 0) {
+                        $scope.items[i].quanity = $scope.items[i].quanity - 1;
+                    }
+                    localStorageService.set("items", $scope.items);
+                    break;
+                }
             }
         };
 
