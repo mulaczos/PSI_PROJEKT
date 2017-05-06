@@ -43,6 +43,11 @@
                 $state.go(state);
             }
         };
+
+        $rootScope.$on('addItem', function (event, data) {
+            $scope.user = data;
+            $scope.newAccount = true;
+        });
     }
 
 

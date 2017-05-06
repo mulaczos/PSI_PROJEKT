@@ -28,6 +28,10 @@
         $scope.addQuanity = function () {
             $scope.quanity++;
         };
+
+        $scope.addToCart = function (id, quanity) {
+            $rootScope.$broadcast('addItem', {id: id, quanity: quanity});
+        };
     }
 }());
 

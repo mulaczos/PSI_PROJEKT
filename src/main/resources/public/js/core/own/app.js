@@ -59,6 +59,11 @@
                 templateUrl: '/admin.html',
                 controller: 'AdminController'
             })
+            .state('cart', {
+                url: "/cart",
+                templateUrl: '/cart.html',
+                controller: 'CartController'
+            })
             .state('settings', {
                 url: "/settings",
                 templateUrl: '/settings.html',
