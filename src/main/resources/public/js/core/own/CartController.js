@@ -14,6 +14,16 @@
         $scope.backToShopping = function() {
             $state.go('main');
         };
+
+        $scope.removeQuanity = function (item) {
+            if (item.quanity > 0) {
+                item.quanity = item.quanity - 1;
+            }
+        };
+
+        $scope.addQuanity = function (item) {
+            item.quanity++;
+        };
     }
 }());
 

@@ -31,14 +31,25 @@
 
         $scope.addToCart = function (item) {
             item.quanity = $scope.quanity;
-            if (angular.isUndefined(localStorageService.get('items')) || localStorageService.get('items') === null ) {
+            if (angular.isUndefined(localStorageService.get('items')) || localStorageService.get('items') === null) {
                 $scope.cartData = [];
                 $scope.cartData.push(item);
                 localStorageService.set('items', $scope.cartData);
             } else {
                 $scope.cartData = [];
                 $scope.cartData = localStorageService.get('items');
-                $scope.cartData.push(item);
+
+                var present = false;
+                for (var i = 0; i < $scope.cartData.length; i++) {
+                    if ($scope.cartData[i].id === item.id) {
+                        $scope.cartData[i].quanity = $scope.cartData[i].quanity + item.quanity;
+                        present = true;
+                        break;
+                    }
+                }
+                if (!present) {
+                    $scope.cartData.push(item);
+                }
                 localStorageService.set('items', $scope.cartData);
             }
         };

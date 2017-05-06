@@ -14,10 +14,8 @@
             }
         });
 
-    config.$inject = (['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider','localStorageServiceProvider']);
-    function config($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, localStorageServiceProvider) {
-
-        localStorageServiceProvider.setPrefix('app');
+    config.$inject = (['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider']);
+    function config($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
 
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 

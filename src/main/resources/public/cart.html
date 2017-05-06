@@ -26,17 +26,17 @@
                 </td>
                 <td data-th="Price">{{item.price}}</td>
                 <td>
-                    <span class="input-group-addon cursor-pointer" ng-click="removeQuanity()">-</span>
+                    <span class="input-group-addon cursor-pointer" ng-click="removeQuanity(item)">-</span>
                 </td>
                 <td data-th="Quantity">
-                    <input type="text" class="form-control text-center" ng-model="quanity">
+                    <input type="text" class="form-control text-center" ng-model="item.quanity">
                 </td>
                 <td>
-                    <span class="input-group-addon cursor-pointer" ng-click="addQuanity()">+</span>
+                    <span class="input-group-addon cursor-pointer" ng-click="addQuanity(item)">+</span>
                 </td>
 
                 <td data-th="Subtotal" class="text-center">
-                    {{item.price * quanity }}
+                    {{item.price * item.quanity }}
                 </td>
                 <td class="actions" data-th="">
                     <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>

@@ -34,6 +34,7 @@
             AccountService.logout()
                 .then(function success(success) {
                     $rootScope.loggedIn=false;
+                    localStorageService.clearAll();
                     $state.go("login", {}, {reload: true});
                 });
         };
