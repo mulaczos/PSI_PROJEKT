@@ -23,6 +23,7 @@
         };
 
         $scope.showItem = function (id) {
+            $rootScope.item = id;
             $state.go("item");
         };
 

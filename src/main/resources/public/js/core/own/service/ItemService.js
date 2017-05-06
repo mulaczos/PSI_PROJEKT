@@ -11,6 +11,7 @@
         var base = '/items/';
 
         return $resource(base, {id: '@id'}, {
+            'get': {url: base+':id', method: 'GET'},
             'all': {url: base, method: 'GET', isArray: true},
             'getItemsForGivenCategory': {url: base + "category/:id", method: 'GET', isArray: true}
         });
