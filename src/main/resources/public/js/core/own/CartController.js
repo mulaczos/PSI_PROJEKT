@@ -9,6 +9,9 @@
 
     function CartController($scope, $state, ItemService, $rootScope) {
 
+        $scope.backToShopping = function() {
+            $state.go('main');
+        };
     }
 }());
 
