@@ -38,9 +38,9 @@
                             <div class="quantity">
                                 <h3>Quantity</h3>
                                 <div class="input-group">
-                                    <span class="input-group-addon">+</span>
-                                    <input type="text" class="form-control text-center" value="0">
-                                    <span class="input-group-addon">-</span>
+                                    <span class="input-group-addon cursor-pointer"ng-click="removeQuanity()">-</span>
+                                    <input type="text" class="form-control text-center" ng-model="quanity">
+                                    <span class="input-group-addon cursor-pointer" ng-click="addQuanity()">+</span>
                                 </div>
                             </div>
                             <div class="add">
