@@ -1,21 +1,13 @@
 <div class="body padding">
     <div class="container">
         <div class="row">
-            <div class="col-md-2 hidden-xs">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Categories</h3>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="btn btn-toolbar btn-info" ng-click="backToMainScreen()"><span class="fa fa-arrow-left"> Back to items</span></div>
                     </div>
-                    <ul class="list-group">
-                        <li class="list-group-item"><a href="categories.html">View All Categories</a></li>
-                        <li class="list-group-item"><a href="categories.html">Category 1</a></li>
-                        <li class="list-group-item"><a href="categories.html">Category 2</a></li>
-                        <li class="list-group-item"><a href="categories.html">Category 3</a></li>
-                        <li class="list-group-item"><a href="categories.html">Category 4</a></li>
-                    </ul>
                 </div>
-            </div>
-            <div class="col-md-10">
+                </br>
                 <div class="row">
                     <div class="col-md-3">
                         <img src="http://placehold.it/500x300" alt="..." class="img-responsive img-thumbnail"/>
@@ -25,10 +17,12 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <h3>Product 1 <small>Code: AAR1566</small></h3>
+                        <h3>Product 1
+                            <small>Code: AAR1566</small>
+                        </h3>
                         <div class="border"></div>
                         <h3>Description</h3>
-                        <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                        <p>{{item.longDescription}}dsadasdasdsassssssssssssssssssssssss</p>
                     </div>
                     <div class="col-md-3">
                         <div class="well">
@@ -48,7 +42,8 @@
                                 </div>
                             </div>
                             <div class="add">
-                                <a href="cart.html" class="btn btn-primary btn-block">Add To Cart <i class="fa fa-shopping-cart"></i></a>
+                                <a href="cart.html" class="btn btn-primary btn-block">Add To Cart <i
+                                        class="fa fa-shopping-cart"></i></a>
                             </div>
                         </div>
                     </div>
@@ -56,7 +51,8 @@
 
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#gallery" data-toggle="tab"><i class="fa fa-th-large"></i> Gallery</a></li>
+                    <li class="active"><a href="#gallery" data-toggle="tab"><i class="fa fa-th-large"></i> Gallery</a>
+                    </li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -64,25 +60,39 @@
                     <div class="tab-pane active" id="gallery">
                         <div class="row">
                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 product_photo'>
-                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img src="http://placehold.it/500x300" alt="..." class="img-responsive img-thumbnail"/></a>
+                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img
+                                        src="http://placehold.it/500x300" alt="..."
+                                        class="img-responsive img-thumbnail"/></a>
                             </div>
                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 product_photo'>
-                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img src="http://placehold.it/500x300" alt="..." class="img-responsive img-thumbnail"/></a>
+                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img
+                                        src="http://placehold.it/500x300" alt="..."
+                                        class="img-responsive img-thumbnail"/></a>
                             </div>
                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 product_photo'>
-                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img src="http://placehold.it/500x300" alt="..." class="img-responsive img-thumbnail"/></a>
+                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img
+                                        src="http://placehold.it/500x300" alt="..."
+                                        class="img-responsive img-thumbnail"/></a>
                             </div>
                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 product_photo'>
-                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img src="http://placehold.it/500x300" alt="..." class="img-responsive img-thumbnail"/></a>
+                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img
+                                        src="http://placehold.it/500x300" alt="..."
+                                        class="img-responsive img-thumbnail"/></a>
                             </div>
                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 product_photo'>
-                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img src="http://placehold.it/500x300" alt="..." class="img-responsive img-thumbnail"/></a>
+                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img
+                                        src="http://placehold.it/500x300" alt="..."
+                                        class="img-responsive img-thumbnail"/></a>
                             </div>
                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 product_photo'>
-                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img src="http://placehold.it/500x300" alt="..." class="img-responsive img-thumbnail"/></a>
+                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img
+                                        src="http://placehold.it/500x300" alt="..."
+                                        class="img-responsive img-thumbnail"/></a>
                             </div>
                             <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3 product_photo'>
-                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img src="http://placehold.it/500x300" alt="..." class="img-responsive img-thumbnail"/></a>
+                                <a href="http://placehold.it/900x600" class="fancybox-thumb" rel="fancybox-thumb"><img
+                                        src="http://placehold.it/500x300" alt="..."
+                                        class="img-responsive img-thumbnail"/></a>
                             </div>
                         </div>
                     </div>

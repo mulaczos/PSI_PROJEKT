@@ -15,7 +15,7 @@
                     $scope.password
                 ).then(function success(response) {
                     $rootScope.loggedIn = true;
-                    $state.go("home", {}, {reload: true});
+                    $state.go("main", {}, {reload: true});
                 }, function failure(response) {
                     $scope.signInForm.$setPristine();
                     $scope.signInForm.$setUntouched();

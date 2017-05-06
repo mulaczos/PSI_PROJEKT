@@ -8,7 +8,7 @@
 
     function ItemService($resource) {
 
-        var base = '/item/';
+        var base = '/items/';
 
         return $resource(base, {id: '@id'}, {
             'all': {url: base, method: 'GET', isArray: true},

@@ -13,7 +13,7 @@
                 .then(function success(response) {
                     if (response.data) {
                         $rootScope.loggedIn = true;
-                        $state.go("home");
+                        $state.go("main");
                     } else {
                         $state.go("login");
                     }
@@ -22,9 +22,9 @@
                 });
         };
 
-        $scope.goHome = function () {
+        $scope.goMain = function () {
             if($rootScope.loggedIn) {
-                $state.go("home", {}, {reload: true});
+                $state.go("main", {}, {reload: true});
             } else {
                 $state.go("login", {}, {reload: true});
             }

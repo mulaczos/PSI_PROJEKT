@@ -34,9 +34,9 @@
                 templateUrl: '/register.html',
                 controller: 'RegisterController'
             })
-            .state('items', {
-                url: "/items",
-                templateUrl: '/items.html',
+            .state('item', {
+                url: "/item",
+                templateUrl: '/item.html',
                 controller: 'ItemsController'
             })
             .state('profile', {
@@ -44,10 +44,10 @@
                 templateUrl: '/profile.html',
                 controller: 'ProfileController'
             })
-            .state('home', {
-                url: "/home",
-                templateUrl: '/home.html',
-                controller: 'HomeController'
+            .state('main', {
+                url: "/main",
+                templateUrl: '/main.html',
+                controller: 'MainController'
             })
             .state('orders', {
                 url: "/orders",

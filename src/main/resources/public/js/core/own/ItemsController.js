@@ -5,12 +5,11 @@
         .controller('ItemsController', ItemsController);
 
 
-    ItemsController.$inject = ['$scope', 'ItemService'];
+    ItemsController.$inject = ['$scope', '$state'];
 
-    function ItemsController($scope, ItemService) {
-
-        $scope.init = function () {
-            $scope.items = ItemService.all();
+    function ItemsController($scope, $state) {
+        $scope.backToMainScreen = function () {
+            $state.go("main");
         };
     }
 }());
