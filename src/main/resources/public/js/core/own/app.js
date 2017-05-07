@@ -65,10 +65,10 @@
                 templateUrl: '/cart.html',
                 controller: 'CartController'
             })
-            .state('settings', {
-                url: "/settings",
-                templateUrl: '/settings.html',
-                controller: 'SettingsController'
+            .state('checkout', {
+                url: "/checkout",
+                templateUrl: '/checkout.html',
+                controller: 'CheckoutController'
             });
 
         $urlRouterProvider

@@ -19,7 +19,7 @@
                         <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..."
                                                              class="img-responsive"/></div>
                         <div class="col-sm-10">
-                            <h4 class="nomargin">{{item.name}}</h4>
+                            <h4 class="nomargin">{{item.name | capitalize}}</h4>
                             <p>{{item.fullDescription}}</p>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                     ${{item.price * item.quanity }}
                 </td>
                 <td class="actions" data-th="">
-                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                    <button class="btn btn-danger btn-sm" ng-click="remove(item)"><i class="fa fa-trash-o"></i></button>
                 </td>
             </tr>
             </tbody>
