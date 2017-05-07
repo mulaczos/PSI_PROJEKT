@@ -50,6 +50,7 @@
                     $scope.total = $scope.total + ($scope.items[i].quanity * $scope.items[i].price);
                 }
             }
+            localStorageService.set("total", $scope.total);
         };
 
         $scope.remove = function(item) {

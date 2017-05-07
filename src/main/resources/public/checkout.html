@@ -6,13 +6,8 @@
                     <li ng-class="{'acc-wizard-completed' : shipinfoForm.$valid, 'acc-wizard-todo' :  shipinfoForm.$invalid}">
                         <a data-toggle="collapse" data-parent="#accordion" href="#shipinfo">Shipping Information</a>
                     </li>
-                    <li ng-class="{'acc-wizard-completed' : ccinfoForm.$valid, 'acc-wizard-todo' : !shipinfoForm.$invalid}">
+                    <li class="acc-wizard-todo">
                         <a data-toggle="collapse" data-parent="#accordion" href="#ccinfo">Payment Information</a></li>
-                    <li ng-show="ccinfoForm.$valid && shipinfoForm.$valid">
-                        <div>
-                            <button class="btn btn-success">Confirm</button>
-                        </div>
-                    </li>
                 </ol>
             </div>
             <div class="col-md-8">
@@ -55,7 +50,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control" ng-required="true"
+                                        <input type="email" name="email" id="email" class="form-control" ng-required="true"
                                                ng-model="email"/>
                                     </div>
                                 </form>
@@ -66,66 +61,23 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#ccinfo">
-                                    Credit Card Info
+                                    Payment Information
                                 </a>
                             </h4>
                         </div>
                         <div id="ccinfo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <form name="ccinfoForm" novalidate>
-                                    <div class="form-group">
-                                        <label for="ccType">Card Type</label>
-                                        <select class="form-control" name="ccType" id="ccType" ng-required="true"
-                                                ng-model="ccType">
-                                            <option value="">...</option>
-                                            <option value="visa">Visa</option>
-                                            <option value="discover">Discover</option>
-                                            <option value="mastercard">MasterCard</option>
-                                            <option value="maestro">Maestro</option>
-                                            <option value="jcb">JCB</option>
-                                            <option value="unionpay">China UnionPay</option>
-                                            <option value="amex">American Express</option>
-                                            <option value="dinersclubintl">Diners Club</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ccNumber">Card Number</label>
-                                        <input class="form-control" type="text" name="ccNumber" id="ccNumber"
-                                               placeholder="XXXX XXXX XXXX XXXX" maxlength="19" minlength="19"
-                                               size="19" ng-required="true" ng-model="ccNumber">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ccExpMonth">Expiration Month</label>
-                                        <input class="form-control" type="text" name="ccExpMonth" id="ccExpMonth"
-                                               placeholder="00" ng-required="true" ng-model="ccExpMonth" maxlength="2">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ccExpYear">Expiration Year</label>
-                                        <input class="form-control" type="text" name="ccExpYear" id="ccExpYear"
-                                               placeholder="00" ng-required="true" ng-model="ccExpYear" maxlength="2">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ccName">Cardholder's Name</label>
-                                        <input class="form-control" type="text" name="ccName" id="ccName"
-                                               placeholder="Name Lastname"
-                                               ng-required="true" ng-model="ccName">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ccCvc">Card Validation Code</label>
-                                        <input class="form-control" type="text" name="ccCvc" id="ccCvc"
-                                               placeholder="123" minlength="3" maxlength="3"
-                                               size="3" ng-required="true" ng-model="ccCvc">
-                                    </div>
-                                    <div class="pull-right" ng-class="{'cursor-block': (ccinfoForm.$invalid || shipinfoForm.$invalid)}" >
-                                        <button ng-disabled="ccinfoForm.$invalid || shipinfoForm.$invalid" class="btn btn-success">Confirm</button>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </form><!--end cc info form-->
-                            </div><!--end panel-body-->
-                        </div><!--end panel-collapse-->
-                    </div><!--end panel-->
-                </div><!--end panel-group-->
-            </div><!--end col-md-8-->
-        </div><!--end acc-wizard-->
-    </div><!--end container-->
-</div><!--end body-->
+                                PLEASE SEND MONEY TO: 95 1000 2546 0013 0012 0144 7157 9500
+                            </div>
+                            <div class="pull-right">
+                                <button ng-disabled="shipinfoForm.$invalid" class="btn btn-success"
+                                        ng-click="confirm()">Confirm order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
