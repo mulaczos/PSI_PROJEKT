@@ -3,9 +3,16 @@
         <div class="row acc-wizard">
             <div class="col-md-2">
                 <ol class="acc-wizard-sidebar">
-                    <li class="acc-wizard-todo"><a href="#shipinfo">Shipping Information</a></li>
-                    <li class="acc-wizard-todo"><a href="#billinfo">Billing Information</a></li>
-                    <li class="acc-wizard-todo"><a href="#ccinfo">Payment Information</a></li>
+                    <li ng-class="{'acc-wizard-completed' : shipinfoForm.$valid, 'acc-wizard-todo' :  shipinfoForm.$invalid}">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#shipinfo">Shipping Information</a>
+                    </li>
+                    <li ng-class="{'acc-wizard-completed' : ccinfoForm.$valid, 'acc-wizard-todo' : !shipinfoForm.$invalid}">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#ccinfo">Payment Information</a></li>
+                    <li ng-show="ccinfoForm.$valid && shipinfoForm.$valid">
+                        <div>
+                            <button class="btn btn-success">Confirm</button>
+                        </div>
+                    </li>
                 </ol>
             </div>
             <div class="col-md-8">
@@ -20,90 +27,41 @@
                         </div>
                         <div id="shipinfo" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <form id="form-shipinfo">
+                                <form name="shipinfoForm" novalidate>
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" id="name" class="form-control"/>
+                                        <input type="text" id="name" class="form-control" ng-required="true"
+                                               ng-model="name"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="lastname">Lastname</label>
-                                        <input type="text" id="lastname" class="form-control"/>
+                                        <input type="text" id="lastname" class="form-control" ng-required="true"
+                                               ng-model="lastname"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <input type="text" id="address" class="form-control"/>
+                                        <input type="text" id="address" class="form-control" ng-required="true"
+                                               ng-model="address"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="city">City</label>
-                                        <input type="text" id="city" class="form-control"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="state">State</label>
-                                        <select id="state" class="form-control">
-                                            <option></option>
-                                            <option>California</option>
-                                            <option>Texas</option>
-                                        </select>
+                                        <input type="text" id="city" class="form-control" ng-required="true"
+                                               ng-model="city"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="zipcode">Zipcode</label>
-                                        <input type="number" id="zipcode" class="form-control"/>
+                                        <input type="number" id="zipcode" class="form-control" ng-required="true"
+                                               ng-model="zipcode"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control"/>
+                                        <input type="email" id="email" class="form-control" ng-required="true"
+                                               ng-model="email"/>
                                     </div>
-                                </form><!--end ship info form-->
-                            </div><!--end panel-body-->
-                        </div><!--end panel-collapse-->
-                    </div><!--end panel-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#billinfo">
-                                    Billing Information
-                                </a>
-                            </h4>
+                                </form>
+                            </div>
                         </div>
-                        <div id="billinfo" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <form id="form-billinfo">
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" id="name" class="form-control"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="lastname">Lastname</label>
-                                        <input type="text" id="lastname" class="form-control"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="address">Address</label>
-                                        <input type="text" id="address" class="form-control"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="city">City</label>
-                                        <input type="text" id="city" class="form-control"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="state">State</label>
-                                        <select id="state" class="form-control">
-                                            <option></option>
-                                            <option>California</option>
-                                            <option>Texas</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="zipcode">Zipcode</label>
-                                        <input type="number" id="zipcode" class="form-control"/>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control"/>
-                                    </div>
-                                </form><!--end bill info-->
-                            </div><!--end panel-body-->
-                        </div><!--end panel-collapse-->
-                    </div><!--end panel-->
+                    </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -114,16 +72,11 @@
                         </div>
                         <div id="ccinfo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <form id="form-ccinfo">
-                                    <div class="credit-card-input no-js" id="skeuocard">
-                                        <p class="no-support-warning">
-                                            Either you have Javascript disabled, or you're using an unsupported browser,
-                                            amigo! That's why you're seeing this old-school credit card input form
-                                            instead of a fancy new Skeuocard. On the other hand, at least you know it
-                                            gracefully degrades...
-                                        </p>
-                                        <label for="cc_type">Card Type</label>
-                                        <select name="cc_type">
+                                <form name="ccinfoForm" novalidate>
+                                    <div class="form-group">
+                                        <label for="ccType">Card Type</label>
+                                        <select class="form-control" name="ccType" id="ccType" ng-required="true"
+                                                ng-model="ccType">
                                             <option value="">...</option>
                                             <option value="visa">Visa</option>
                                             <option value="discover">Discover</option>
@@ -134,21 +87,37 @@
                                             <option value="amex">American Express</option>
                                             <option value="dinersclubintl">Diners Club</option>
                                         </select>
-                                        <label for="cc_number">Card Number</label>
-                                        <input type="text" name="cc_number" id="cc_number"
-                                               placeholder="XXXX XXXX XXXX XXXX" maxlength="19" size="19">
-                                        <label for="cc_exp_month">Expiration Month</label>
-                                        <input type="text" name="cc_exp_month" id="cc_exp_month" placeholder="00">
-                                        <label for="cc_exp_year">Expiration Year</label>
-                                        <input type="text" name="cc_exp_year" id="cc_exp_year" placeholder="00">
-                                        <label for="cc_name">Cardholder's Name</label>
-                                        <input type="text" name="cc_name" id="cc_name" placeholder="John Doe">
-                                        <label for="cc_cvc">Card Validation Code</label>
-                                        <input type="text" name="cc_cvc" id="cc_cvc" placeholder="123" maxlength="3"
-                                               size="3">
                                     </div>
-                                    <div class="pull-right">
-                                        <button class="btn btn-success">Confirm</button>
+                                    <div class="form-group">
+                                        <label for="ccNumber">Card Number</label>
+                                        <input class="form-control" type="text" name="ccNumber" id="ccNumber"
+                                               placeholder="XXXX XXXX XXXX XXXX" maxlength="19" minlength="19"
+                                               size="19" ng-required="true" ng-model="ccNumber">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ccExpMonth">Expiration Month</label>
+                                        <input class="form-control" type="text" name="ccExpMonth" id="ccExpMonth"
+                                               placeholder="00" ng-required="true" ng-model="ccExpMonth" maxlength="2">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ccExpYear">Expiration Year</label>
+                                        <input class="form-control" type="text" name="ccExpYear" id="ccExpYear"
+                                               placeholder="00" ng-required="true" ng-model="ccExpYear" maxlength="2">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ccName">Cardholder's Name</label>
+                                        <input class="form-control" type="text" name="ccName" id="ccName"
+                                               placeholder="Name Lastname"
+                                               ng-required="true" ng-model="ccName">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ccCvc">Card Validation Code</label>
+                                        <input class="form-control" type="text" name="ccCvc" id="ccCvc"
+                                               placeholder="123" minlength="3" maxlength="3"
+                                               size="3" ng-required="true" ng-model="ccCvc">
+                                    </div>
+                                    <div class="pull-right" ng-class="{'cursor-block': (ccinfoForm.$invalid || shipinfoForm.$invalid)}" >
+                                        <button ng-disabled="ccinfoForm.$invalid || shipinfoForm.$invalid" class="btn btn-success">Confirm</button>
                                     </div>
                                     <div class="clearfix"></div>
                                 </form><!--end cc info form-->

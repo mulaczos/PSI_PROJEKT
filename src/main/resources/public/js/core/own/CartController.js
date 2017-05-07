@@ -64,6 +64,10 @@
                 }
             }
         };
+
+        $scope.checkout = function() {
+          $state.go('checkout');
+        };
     }
 }());
 
