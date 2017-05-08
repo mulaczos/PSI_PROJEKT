@@ -3,13 +3,10 @@ package shop.infrastructure.domain.model;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cascade;
 import shop.infrastructure.domain.model.base.BaseEntity;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Data
 @Entity
@@ -27,7 +24,7 @@ public class OrderItem extends BaseEntity {
     @Getter(AccessLevel.NONE)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORDER_ID")
-    @Cascade(value={org.hibernate.annotations.CascadeType.DETACH})
+    @Cascade(value = {org.hibernate.annotations.CascadeType.DETACH})
     private Order order;
 
 }

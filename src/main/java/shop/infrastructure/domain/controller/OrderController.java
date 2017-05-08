@@ -3,8 +3,6 @@ package shop.infrastructure.domain.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import shop.infrastructure.domain.model.Order;
-import shop.infrastructure.domain.model.OrderItem;
-import shop.infrastructure.domain.model.dto.OrderDto;
 import shop.infrastructure.domain.service.OrderService;
 
 import javax.persistence.EntityNotFoundException;

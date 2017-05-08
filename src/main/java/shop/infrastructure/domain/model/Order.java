@@ -1,8 +1,5 @@
 package shop.infrastructure.domain.model;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Setter;
 import shop.infrastructure.domain.model.base.BaseEntity;
 import shop.infrastructure.domain.model.customer.Customer;
 
