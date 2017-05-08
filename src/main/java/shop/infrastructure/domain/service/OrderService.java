@@ -22,12 +22,7 @@ public class OrderService {
 //	}
 	@Transactional
 	public Order save(Order order) {
-		List<OrderItem> orderItems = order.getItems();
-		order.setItems(null);
-		Order orderWithoutItems = orderRepository.save(order);
-		orderWithoutItems.setItems(orderItems);
-		orderItems.forEach(orderItem -> orderItem.setOrder(orderWithoutItems));
-		return orderWithoutItems;
+		return orderRepository.save(order);
 	}
 
 	public Order get(Long id) {

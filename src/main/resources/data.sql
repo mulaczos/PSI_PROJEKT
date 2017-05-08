@@ -1,0 +1,30 @@
+INSERT INTO USERS(USERNAME, PASSWORD, ENABLED, NAME, LASTNAME, EMAIL, ZIPCODE, ADDRESS, CITY ) VALUES ('admin', 'admin', TRUE,'administrator','adminek', 'admin@domain.com',42900, 'ADDRESS', 'CITY');
+INSERT INTO AUTHORITIES(USERNAME, AUTHORITY) VALUES ('admin', 'ADMIN');
+
+INSERT INTO CATEGORIES(DELETED, NAME) VALUES (FALSE,'Home&Garden');
+INSERT INTO CATEGORIES(DELETED, NAME) VALUES (FALSE,'Electronic');
+INSERT INTO CATEGORIES(DELETED, NAME) VALUES (FALSE,'Fashion');
+INSERT INTO CATEGORIES(DELETED, NAME) VALUES (FALSE,'Business');
+INSERT INTO CATEGORIES(DELETED, NAME) VALUES (FALSE,'Music');
+
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'deskorolka', 250, 1,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'hulajnoga', 7, 1,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'kamień', 55, 1,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'nożyczki', 87, 2,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'ania', 52, 2,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'kwiatek', 22, 2,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'stół', 432, 3,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'krzesło', 50, 3,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'żelazko', 32, 3,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'antryj', 234, 3,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'małpa', 11, 4,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'adam', 11, 4,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'japko', 558, 4,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'laptop', 437, 4,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'telefon', 332, 4,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'wiosło', 34, 5,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'koło', 722, 5,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'rzutnik', 54, 5,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'okulary', 654, 5,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'masło', 2, 5,'This text is full description' , 'This is a short description');
+INSERT INTO ITEMS(DELETED, NAME, PRICE, CATEGORY_ID, FULL_DESCRIPTION, SHORT_DESCRIPTION) VALUES (FALSE,'magaryna', 32, 5,'This text is full description' , 'This is a short description');

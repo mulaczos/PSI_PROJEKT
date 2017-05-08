@@ -19,6 +19,4 @@ public class OrderItem extends BaseEntity {
     private String fullDescription;
     @ManyToOne
     private Category category;
-    @ManyToOne
-    private Order order;
 }

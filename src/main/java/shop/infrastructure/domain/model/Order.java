@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "Orders")
 public class Order extends BaseEntity {
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.PERSIST)
     @JoinColumn(name="ORDER_ID")
     private List<OrderItem> items;
     private Double summary;
