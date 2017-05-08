@@ -12,17 +12,40 @@ import java.util.List;
 /**
  * Created by Witu on 09.03.2017.
  */
-@Data
+
 @Entity
 @Table(name = "Orders")
 public class Order extends BaseEntity {
 
-    @OneToMany(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="ORDER_ID")
+    @OneToMany(mappedBy = "order")
     private List<OrderItem> items;
     private Double summary;
 
     @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)
     private Customer customer;
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
+
+    public Double getSummary() {
+        return summary;
+    }
+
+    public void setSummary(Double summary) {
+        this.summary = summary;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }
