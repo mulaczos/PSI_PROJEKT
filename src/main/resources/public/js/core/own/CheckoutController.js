@@ -9,6 +9,8 @@
 
     function CheckoutController($scope, AccountService, localStorageService, OrderService) {
 
+        $scope.submitted = false;
+
         AccountService.getProfile().then(function (success) {
             $scope.user = success.data;
             $scope.lastname = success.data.lastname;
@@ -28,6 +30,8 @@
                 items: items,
                 summary: summary,
                 customer: $scope.user
+            }).then(function (success) {
+                $scope.submitted = true;
             });
 
         }

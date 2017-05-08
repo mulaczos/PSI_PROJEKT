@@ -26,7 +26,8 @@
                 </td>
                 <td data-th="Price">${{item.price}}</td>
                 <td>
-                    <p class="input-group-addon cursor-pointer" ng-click="removeQuanity(item)" ng-class="{'cursor-block': item.quanity <= 1 }">-</p>
+                    <p class="input-group-addon cursor-pointer" ng-click="removeQuanity(item)"
+                       ng-class="{'cursor-block': item.quanity <= 1 }">-</p>
                 </td>
                 <td data-th="Quantity">
                     <input type="text" class="form-control text-center" ng-model="item.quanity">
@@ -46,13 +47,14 @@
             <tfoot>
             <tr>
                 <td><a href="" class="btn btn-warning" ng-click="backToShopping()"><i class="fa fa-angle-left"></i>
-                    Continue Shopping</a>
+                    {{items === null || items.length < 1 ? "No items inside cart. Back to shopping" : "Continue Shopping"}}</a>
                 </td>
                 <td></td>
                 <td></td>
                 <td colspan="2" class="hidden-xs"></td>
                 <td class="hidden-xs text-center"><strong>Total ${{total}}</strong></td>
-                <td><a href="" class="btn btn-success btn-block" ng-click="checkout()">Checkout <i class="fa fa-angle-right"></i></a>
+                <td><a href="" class="btn btn-success btn-block" ng-show="items.length>0" ng-click="checkout()">Checkout
+                    <i class="fa fa-angle-right"></i></a>
                 </td>
             </tr>
             </tfoot>
