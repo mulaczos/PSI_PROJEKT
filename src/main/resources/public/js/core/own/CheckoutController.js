@@ -5,9 +5,9 @@
         .controller('CheckoutController', CheckoutController);
 
 
-    CheckoutController.$inject = ['$scope', 'AccountService', 'localStorageService', 'OrderService'];
+    CheckoutController.$inject = ['$scope', 'AccountService', 'localStorageService', 'OrderService', '$rootScope'];
 
-    function CheckoutController($scope, AccountService, localStorageService, OrderService) {
+    function CheckoutController($scope, AccountService, localStorageService, OrderService, $rootScope) {
 
         $scope.submitted = false;
 
@@ -30,8 +30,10 @@
                 items: items,
                 summary: summary,
                 customer: $scope.user
-            }).then(function (success) {
+            }).$promise.then(function (success) {
                 $scope.submitted = true;
+                localStorageService.clearAll();
+                $rootScope.$broadcast("refreshCart");
             });
 
         }
