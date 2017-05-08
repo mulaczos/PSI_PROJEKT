@@ -46,4 +46,8 @@ public class OrderService {
     public void delete(Long id) {
         orderRepository.delete(id);
     }
+
+    public List<Order> getMyOrders(String customer) {
+        return orderRepository.findAllByCustomer_Username(customer);
+    }
 }

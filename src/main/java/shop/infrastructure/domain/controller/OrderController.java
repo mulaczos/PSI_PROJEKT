@@ -6,6 +6,7 @@ import shop.infrastructure.domain.model.Order;
 import shop.infrastructure.domain.service.OrderService;
 
 import javax.persistence.EntityNotFoundException;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -42,6 +43,11 @@ public class OrderController {
     @DeleteMapping
     public void delete(Long id) {
         orderService.delete(id);
+    }
+
+    @GetMapping("my")
+    public List<Order> getMyOrders(Principal principal) {
+        return orderService.getMyOrders(principal.getName());
     }
 
 }
