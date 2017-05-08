@@ -1,14 +1,10 @@
 package shop.infrastructure.domain.service;
 
-import ma.glasnost.orika.MapperFacade;
-import ma.glasnost.orika.MapperFactory;
-import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.infrastructure.domain.model.Order;
 import shop.infrastructure.domain.model.OrderItem;
-import shop.infrastructure.domain.model.dto.OrderDto;
 import shop.infrastructure.domain.repository.OrderItemRepository;
 import shop.infrastructure.domain.repository.OrderRepository;
 
@@ -24,24 +20,16 @@ public class OrderService {
     @Autowired
     private OrderItemRepository orderItemRepository;
 
-    @Autowired
-    private MapperFacade mapperFacade;
-
     @Transactional
-    public Order save(OrderDto order) {
-        List<OrderItem> orderItems = mapperFacade.mapAsList(order.getItems(), OrderItem.class);
-        Order orderToSave = mapperFacade.map(order, Order.class);
-        orderToSave.setItems(null);
-        orderRepository.save(orderToSave);
-        orderItems.forEach(orderItem -> orderItem.setOrder(orderToSave));
-        saveOrderItems(orderItems);
-        return orderToSave;
+    public Order save(Order order) {
+        List<OrderItem> orderItems = (order.getItems());
+        order.setItems(null);
+        orderRepository.save(order);
+        orderItems.forEach(orderItem -> orderItem.setOrder(order));
+        orderItemRepository.save(orderItems);
+        order.setItems(orderItems);
+        return order;
     }
-
-	@Transactional
-	public void saveOrderItems(List<OrderItem> orderItems) {
-		orderItemRepository.save(orderItems);
-	}
 
     public Order get(Long id) {
         return orderRepository.findOne(id);

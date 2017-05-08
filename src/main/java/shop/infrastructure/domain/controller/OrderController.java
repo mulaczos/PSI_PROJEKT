@@ -28,7 +28,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public Order save(@RequestBody OrderDto order) {
+    public Order save(@RequestBody Order order) {
         return orderService.save(order);
     }
 
