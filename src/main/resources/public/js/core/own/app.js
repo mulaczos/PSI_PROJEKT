@@ -4,7 +4,8 @@
     angular.module('app', [
         'ui.router',
         'ngResource',
-        'ui.toggle'
+        'ui.toggle',
+        'LocalStorageModule'
     ])
         .config(config)
         .filter('capitalize', function () {
@@ -34,9 +35,9 @@
                 templateUrl: '/register.html',
                 controller: 'RegisterController'
             })
-            .state('items', {
-                url: "/items",
-                templateUrl: '/items.html',
+            .state('item', {
+                url: "/item",
+                templateUrl: '/item.html',
                 controller: 'ItemsController'
             })
             .state('profile', {
@@ -44,10 +45,10 @@
                 templateUrl: '/profile.html',
                 controller: 'ProfileController'
             })
-            .state('home', {
-                url: "/home",
-                templateUrl: '/home.html',
-                controller: 'HomeController'
+            .state('main', {
+                url: "/main",
+                templateUrl: '/main.html',
+                controller: 'MainController'
             })
             .state('orders', {
                 url: "/orders",
@@ -59,10 +60,15 @@
                 templateUrl: '/admin.html',
                 controller: 'AdminController'
             })
-            .state('settings', {
-                url: "/settings",
-                templateUrl: '/settings.html',
-                controller: 'SettingsController'
+            .state('cart', {
+                url: "/cart",
+                templateUrl: '/cart.html',
+                controller: 'CartController'
+            })
+            .state('checkout', {
+                url: "/checkout",
+                templateUrl: '/checkout.html',
+                controller: 'CheckoutController'
             });
 
         $urlRouterProvider

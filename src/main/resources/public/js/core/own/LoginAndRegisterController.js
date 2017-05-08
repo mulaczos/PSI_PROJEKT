@@ -5,9 +5,9 @@
         .controller('LoginController', LoginController)
         .controller('RegisterController', RegisterController);
 
-    LoginController.$inject = ['$scope', 'AccountService', '$state', '$rootScope'];
+    LoginController.$inject = ['$scope', 'AccountService', '$state', '$rootScope', 'localStorageService'];
 
-    function LoginController($scope, AccountService, $state, $rootScope) {
+    function LoginController($scope, AccountService, $state, $rootScope, localStorageService) {
         $scope.processLogin = function (valid) {
             if (valid) {
                 AccountService.login(
@@ -15,7 +15,10 @@
                     $scope.password
                 ).then(function success(response) {
                     $rootScope.loggedIn = true;
-                    $state.go("home", {}, {reload: true});
+                    localStorageService.clearAll();
+                    $rootScope.$broadcast("refreshCart");
+                    $rootScope.category = 'ALL';
+                    $state.go("main", {}, {reload: true});
                 }, function failure(response) {
                     $scope.signInForm.$setPristine();
                     $scope.signInForm.$setUntouched();

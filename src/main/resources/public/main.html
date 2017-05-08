@@ -7,8 +7,10 @@
                         <h3 class="panel-title">Categories</h3>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item"><a href="">All Categories</a></li>
-                        <li class="list-group-item" ng-repeat="category in categories"><a href="">{{category.name | capitalize}}</a></li>
+                        <li class="list-group-item"><a href="" ng-click="fetchAllItems()">All Categories</a></li>
+                        <li class="list-group-item" ng-repeat="category in categories"
+                            ng-click="showItemsForGivenCategory(category.id)"><a href="">{{category.name |
+                            capitalize}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -58,7 +60,6 @@
                             </div>
                         </div>
                     </div>
-                    {{items}}
                 </div>
             </div>
         </div>

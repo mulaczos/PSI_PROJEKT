@@ -89,7 +89,7 @@ public class UserService {
             if (toDelete.getPassword().equals(customerDto.getConfirmwithpassword())) {
                 Customer customerToSave = new Customer(customerDto.getUsername(), customerDto.getNewpassword(), customerDto.getEmail(), customerDto.getName(), customerDto.getLastname(), true);
                 BackendUser backendUser = backendUserService.save(BackendUser.getUserAuthorityByRole(customerToSave, backendUserService.findAndDelete(toDelete)));
-                customerToReturn = customerRepository.save(backendUser.getUser());
+                customerToReturn = customerRepository.save(backendUser.getCustomer());
             } else {
                 throw new WrongConfirmPasswordException();
             }
@@ -125,7 +125,7 @@ public class UserService {
                 toSave.setEnabled(true);
             }
             BackendUser backendUser = backendUserService.save(BackendUser.getUserAuthorityByRole(toSave, backendUserService.findAndDelete(toDelete)));
-            customerRepository.save(backendUser.getUser());
+            customerRepository.save(backendUser.getCustomer());
             return true;
         }
         return false;
@@ -145,12 +145,12 @@ class BackendUserService {
 
     @Transactional
     boolean hasUserRole(Customer customer) {
-        return findByCustomer(customer).isUserAuthority();
+        return findByCustomer(customer).isUser();
     }
 
     @Transactional(readOnly = true)
     boolean hasModeratorRole(Customer customer) {
-        return findByCustomer(customer).isModeratorAuthority();
+        return findByCustomer(customer).isMod();
     }
 
     @Transactional
@@ -163,7 +163,7 @@ class BackendUserService {
 
     @Transactional(readOnly = true)
     boolean hasAdminRole(Customer customer) {
-        return findByCustomer(customer).isAdminAuthority();
+        return findByCustomer(customer).isAdmin();
     }
 
     @Transactional

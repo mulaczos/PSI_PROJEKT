@@ -3,8 +3,8 @@ package shop.infrastructure.domain.model;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
-import lombok.ToString;
 import shop.infrastructure.domain.model.base.BaseEntity;
+import shop.infrastructure.domain.model.customer.Customer;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,11 +14,15 @@ import java.util.List;
  */
 @Data
 @Entity
-@Table(name="Orders")
+@Table(name = "Orders")
 public class Order extends BaseEntity {
 
-    @Setter(AccessLevel.NONE)
-    @OneToMany(mappedBy = "order")
-    private List<Item> items;
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="ORDER_ID")
+    private List<OrderItem> items;
     private Double summary;
+
+    @ManyToOne
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private Customer customer;
 }

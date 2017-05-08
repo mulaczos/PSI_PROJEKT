@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 <link rel="stylesheet" type="text/css" href="css/site.css"/>
 <link rel="stylesheet" type="text/css" href="css/angular-bootstrap-toggle.css"/>
+<link rel="stylesheet" type="text/css" href="css/acc-wizard.min.css"/>
 <!-- JQUERY -->
 <script src="js/core/jquery.js"></script>
 <script src="js/core/jquery.easing.min.js"></script>
@@ -21,6 +22,7 @@
 <script src="js/core/angular/angular-ui-router.js"></script>
 <script src="js/core/angular/angular-resource.js"></script>
 <script src="js/core/angular/angular-bootstrap-toggle.js"></script>
+<script src="js/core/angular/angular-local-storage.js"></script>
 <!-- OWN -->
 <script src="js/core/own/app.js"></script>
 <script src="js/core/own/service/ItemService.js"></script>
@@ -30,9 +32,12 @@
 <script src="js/core/own/service/CategoryService.js"></script>
 <script src="js/core/own/LoginAndRegisterController.js"></script>
 <script src="js/core/own/ItemsController.js"></script>
-<script src="js/core/own/HomeController.js"></script>
+<script src="js/core/own/MainController.js"></script>
 <script src="js/core/own/ProfileController.js"></script>
 <script src="js/core/own/AdminController.js"></script>
+<script src="js/core/own/CartController.js"></script>
+<script src="js/core/own/CheckoutController.js"></script>
+<script src="js/core/own/service/OrderService.js"></script>
 
 <body ng-controller="NavbarController" ng-init="init()">
 <div class="wrapper">
@@ -40,7 +45,7 @@
         <div class="padding container">
             <div class="row">
                 <div class="col-xs-6 col-md-4 text-center">
-                    <h1 class="logo"><a href="" ng-click="goHome()">Xtra Shop</a></h1>
+                    <h1 class="logo"><a href="" ng-click="goMain()">Xtra Shop</a></h1>
                 </div>
                 <div class="hidden-xs col-md-4">
                     <div class="input-group" ng-show="loggedIn">
@@ -51,7 +56,7 @@
                     </div>
                 </div>
                 <div class="col-xs-6 col-md-4 text-center">
-                    <a href="cart.html" class="btn btn-primary" ng-show="loggedIn"><i class="fa fa-shopping-cart"></i> 1 Item</a>
+                    <a href="" class="btn btn-primary" ng-show="loggedIn" ng-click="goToState('cart')"><i class="fa fa-shopping-cart"></i> {{howManyItems === 0 ? 'No' : howManyItems}} Item{{howManyItems === 1 ? '' : 's'}}</a>
                 </div>
             </div>
             <nav class="navbar navbar-default" role="navigation">
@@ -62,7 +67,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" a href="" ng-click="goHome()"><span class="label label-danger"><i class="fa fa-home"></i></span></a>
+                    <a class="navbar-brand" a href="" ng-click="goMain()"><span class="label label-danger"><i class="fa fa-home"></i></span></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="shop-navbar">

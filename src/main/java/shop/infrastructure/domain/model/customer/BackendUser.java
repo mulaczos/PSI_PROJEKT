@@ -1,5 +1,6 @@
 package shop.infrastructure.domain.model.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -35,22 +36,27 @@ public class BackendUser {
         return new BackendUser(customer, Role.ADMIN);
     }
 
-    public boolean isUserAuthority() {
+    @JsonIgnore
+    public boolean isUser() {
         return this.getBackendUser().getAuthority().equals(Role.USER);
     }
 
-    public boolean isModeratorAuthority() {
+    @JsonIgnore
+    public boolean isMod() {
         return this.getBackendUser().getAuthority().equals(Role.MODERATOR);
     }
 
-    public boolean isAdminAuthority() {
+    @JsonIgnore
+    public boolean isAdmin() {
         return this.getBackendUser().getAuthority().equals(Role.ADMIN);
     }
 
-    public Customer getUser() {
+    @JsonIgnore
+    public Customer getCustomer() {
         return this.backendUser.getUsername();
     }
 
+    @JsonIgnore
     public Role getRole() {
         return this.backendUser.getAuthority();
     }

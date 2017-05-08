@@ -9,7 +9,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController
-@RequestMapping("item")
+@RequestMapping("items")
 public class ItemController {
 
     @Autowired
