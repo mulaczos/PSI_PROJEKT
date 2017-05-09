@@ -5,9 +5,11 @@
         .controller('CheckoutController', CheckoutController);
 
 
-    CheckoutController.$inject = ['$scope', 'AccountService', 'localStorageService', 'OrderService'];
+    CheckoutController.$inject = ['$scope', 'AccountService', 'localStorageService', 'OrderService', '$rootScope'];
 
-    function CheckoutController($scope, AccountService, localStorageService, OrderService) {
+    function CheckoutController($scope, AccountService, localStorageService, OrderService, $rootScope) {
+
+        $scope.submitted = false;
 
         AccountService.getProfile().then(function (success) {
             $scope.user = success.data;
@@ -28,6 +30,10 @@
                 items: items,
                 summary: summary,
                 customer: $scope.user
+            }).$promise.then(function (success) {
+                $scope.submitted = true;
+                localStorageService.clearAll();
+                $rootScope.$broadcast("refreshCart");
             });
 
         }

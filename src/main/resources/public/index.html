@@ -38,6 +38,7 @@
 <script src="js/core/own/CartController.js"></script>
 <script src="js/core/own/CheckoutController.js"></script>
 <script src="js/core/own/service/OrderService.js"></script>
+<script src="js/core/own/OrdersController.js"></script>
 
 <body ng-controller="NavbarController" ng-init="init()">
 <div class="wrapper">
@@ -75,6 +76,7 @@
                         <li><a href="" ng-click="goToState('products')" ng-class="{ 'cursor-block': !loggedIn }">PRODUCTS</a></li>
                         <li><a href="" ng-click="goToState('about')" ng-class="{ 'cursor-block': !loggedIn }">CATEGORIES</a></li>
                         <li><a href="" ng-click="goToState('profile')" ng-class="{ 'cursor-block': !loggedIn }">PROFILE</a></li>
+                        <li><a href="" ng-click="goToState('orders')" ng-class="{ 'cursor-block': !loggedIn }">ORDERS</a></li>
                         <li><a href="" ng-click="goToState('admin')" ng-class="{ 'cursor-block': !loggedIn }">ADMINISTRATION</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" ng-show="loggedIn">
