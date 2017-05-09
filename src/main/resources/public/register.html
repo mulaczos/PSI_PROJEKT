@@ -38,13 +38,12 @@
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="email" class="cols-sm-2 control-label">Email*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': registerForm.$submitted && (registerForm.email.$error.required || registerForm.$error.email) }">
-                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"
                                ng-model="email" ng-required="true"/>
                     </div>
@@ -75,8 +74,8 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-map" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="zipcode" id="zipcode" placeholder="Zipcode"
-                               ng-model="zipcode"/>
+                        <input type="number" class="form-control" name="zipcode" id="zipcode" placeholder="Zipcode"
+                               ng-model="zipcode" max="10"/>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': profileForm.username.$error.required }">
-                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="username" id="username"
                                placeholder="Enter your Username" ng-model="username" ng-required="true"
                                ng-disabled="true"/>
@@ -17,11 +17,11 @@
             </div>
 
             <div class="form-group">
-                <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                <label for="name" class="cols-sm-2 control-label">Your Name*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': profileForm.name.$error.required }">
-                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name"
                                ng-model="name" ng-required="true"/>
                     </div>
@@ -29,11 +29,11 @@
             </div>
 
             <div class="form-group">
-                <label for="lastname" class="cols-sm-2 control-label">Last Name</label>
+                <label for="lastname" class="cols-sm-2 control-label">Last Name*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': profileForm.lastname.$error.required }">
-                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="lastname" id="lastname"
                                placeholder="Enter your Last Name" ng-model="lastname" ng-required="true"/>
                     </div>
@@ -41,13 +41,46 @@
             </div>
 
             <div class="form-group">
-                <label for="email" class="cols-sm-2 control-label">Email</label>
+                <label for="email" class="cols-sm-2 control-label">Email*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': (profileForm.email.$error.required || profileForm.$error.email) }">
-                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email"
                                ng-model="email" ng-required="true"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="city" class="cols-sm-2 control-label">City</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="city" id="city" placeholder="City"
+                               ng-model="city"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address" class="cols-sm-2 control-label">Address</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Address"
+                               ng-model="address"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="zipcode" class="cols-sm-2 control-label">Zipcode</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map" aria-hidden="true"></i></span>
+                        <input type="number" class="form-control" name="zipcode" id="zipcode" placeholder="Zipcode"
+                               ng-model="zipcode" max="10"/>
                     </div>
                 </div>
             </div>

@@ -37,7 +37,10 @@
                 confirmwithpassword: $scope.confirmwithpassword,
                 email: $scope.email,
                 name: $scope.name,
-                lastname: $scope.lastname
+                lastname: $scope.lastname,
+                zipcode: $scope.zipcode,
+                address: $scope.address,
+                city: $scope.city,
             }).then(function success(response) {
                 $state.go("profile", {}, {reload: true});
             }, function failure(response) {
