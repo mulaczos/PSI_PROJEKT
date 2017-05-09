@@ -4,11 +4,7 @@ import lombok.Data;
 import shop.infrastructure.domain.model.base.BaseEntity;
 import shop.infrastructure.domain.model.customer.Customer;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 import static javax.persistence.CascadeType.PERSIST;
@@ -24,5 +20,7 @@ public class Order extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)
     private Customer customer;
+    @Embedded
+    private CustomerDetails customerDetails;
 
 }

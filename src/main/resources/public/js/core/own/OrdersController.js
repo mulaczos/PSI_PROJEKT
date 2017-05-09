@@ -9,7 +9,7 @@
     function OrdersController($scope, OrderService) {
 
         $scope.init = function () {
-           $scope.items = OrderService.getMyOrders();
+           $scope.orders = OrderService.getMyOrders();
         };
     }
 }());

@@ -69,6 +69,11 @@
                 url: "/checkout",
                 templateUrl: '/checkout.html',
                 controller: 'CheckoutController'
+            })
+            .state('allorders', {
+                url: "/allorders",
+                templateUrl: '/allorders.html',
+                controller: 'AllOrdersController'
             });
 
         $urlRouterProvider

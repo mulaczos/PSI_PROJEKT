@@ -4,11 +4,11 @@
               novalidate>
 
             <div class="form-group">
-                <label for="username" class="cols-sm-2 control-label">Username</label>
+                <label for="username" class="cols-sm-2 control-label">Username*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': registerForm.username.$error.required && registerForm.$submitted }">
-                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-user-o" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="username" id="username"
                                placeholder="Enter your Username" ng-model="username" ng-required="true"/>
                     </div>
@@ -16,11 +16,11 @@
             </div>
 
             <div class="form-group">
-                <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                <label for="name" class="cols-sm-2 control-label">Your Name*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': registerForm.name.$error.required && registerForm.$submitted }">
-                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name"
                                ng-model="name" ng-required="true"/>
                     </div>
@@ -28,11 +28,11 @@
             </div>
 
             <div class="form-group">
-                <label for="lastname" class="cols-sm-2 control-label">Last Name</label>
+                <label for="lastname" class="cols-sm-2 control-label">Last Name*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': registerForm.lastname.$error.required && registerForm.$submitted }">
-                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="lastname" id="lastname"
                                placeholder="Enter your Last Name" ng-model="lastname" ng-required="true"/>
                     </div>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-group">
-                <label for="email" class="cols-sm-2 control-label">Email</label>
+                <label for="email" class="cols-sm-2 control-label">Email*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': registerForm.$submitted && (registerForm.email.$error.required || registerForm.$error.email) }">
@@ -51,7 +51,37 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="cols-sm-2 control-label">Password</label>
+                <label for="city" class="cols-sm-2 control-label">City</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="city" id="city" placeholder="City"
+                               ng-model="city"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="cols-sm-2 control-label">Address</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Address"
+                               ng-model="address"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="zipcode" class="cols-sm-2 control-label">Zipcode</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="zipcode" id="zipcode" placeholder="Zipcode"
+                               ng-model="zipcode"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="cols-sm-2 control-label">Password*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': registerForm.$submitted && (registerForm.password.$error.minlength || registerForm.password.$error.required) }">
@@ -64,7 +94,7 @@
             </div>
 
             <div class="form-group">
-                <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                <label for="confirm" class="cols-sm-2 control-label">Confirm Password*</label>
                 <div class="cols-sm-10">
                     <div class="input-group"
                          ng-class="{ 'has-error': registerForm.$submitted && (registerForm.confirm.$error.minlength || registerForm.confirm.$error.required) }">

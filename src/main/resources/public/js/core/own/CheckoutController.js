@@ -26,14 +26,22 @@
             var items = localStorageService.get('items');
             var summary = localStorageService.get('total');
 
-            for(var i =0; i<items.length; i++) {
+            for (var i = 0; i < items.length; i++) {
                 items[i].id = null;
             }
 
             OrderService.post({
                 items: items,
                 summary: summary,
-                customer: $scope.user
+                customer: $scope.user,
+                customerDetails: {
+                    customerName: $scope.name,
+                    customerLastname: $scope.lastname,
+                    customerEmail: $scope.email,
+                    customerAddress: $scope.address,
+                    customerCity: $scope.city,
+                    customerZipcode: $scope.zipcode
+                }
             }).$promise.then(function (success) {
                 $scope.submitted = true;
                 localStorageService.clearAll();

@@ -50,6 +50,9 @@
                     password: $scope.password,
                     name: $scope.name,
                     email: $scope.email,
+                    address: $scope.address,
+                    zipcode: $scope.zipcode,
+                    city: $scope.city,
                     lastname: $scope.lastname
                 }).then(function (success) {
                     $state.go("login").then(function () {
