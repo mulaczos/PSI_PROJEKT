@@ -1,10 +1,10 @@
 package shop.infrastructure.domain.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.infrastructure.domain.model.Order;
-import shop.infrastructure.domain.repository.OrderItemRepository;
 import shop.infrastructure.domain.repository.OrderRepository;
 
 import java.util.List;
@@ -18,9 +18,6 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    @Autowired
-    private OrderItemRepository orderItemRepository;
-
     @Transactional
     public Order save(Order order) {
         order.getItems().forEach(orderItem -> orderItem.setOrder(order));
@@ -33,7 +30,7 @@ public class OrderService {
     }
 
     public List<Order> getAll() {
-        return orderRepository.findAll();
+        return orderRepository.findAll(new Sort(Sort.Direction.ASC, "state"));
     }
 
     @Transactional
@@ -46,7 +43,7 @@ public class OrderService {
     }
 
     public List<Order> getMyOrders(String customer) {
-        return orderRepository.findAllByCustomer_Username(customer);
+        return orderRepository.findAllByCustomer_Username(customer, new Sort(Sort.Direction.ASC, "state"));
     }
 
     public Order confirmOrder(Order order) {
