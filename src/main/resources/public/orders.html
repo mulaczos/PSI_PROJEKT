@@ -1,73 +1,15 @@
 <div class="body padding" ng-init="init()">
     <div class="container">
         <div class="row" ng-repeat="order in orders">
-            <div class="panel"
-                 ng-class="{'panel-success' : order.state === 'CONFIRMED', 'panel-info' : order.state === 'PLACED', 'panel-danger' : order.state === 'REJECTED' }">
-                <div class="panel-heading">
-                    head
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel"
+                     ng-class="{'panel-success' : order.state === 'CONFIRMED', 'panel-primary' : order.state === 'PLACED', 'panel-danger' : order.state === 'REJECTED' }">
+                    <div class="panel-heading">
+                        head
+                    </div>
+                    <div class="panel-body">Panel Content</div>
                 </div>
-                <div class="panel-body">Panel Content</div>
             </div>
         </div>
-
-        <!--<table id="cart" class="table table-hover table-condensed">-->
-        <!--<thead>-->
-        <!--<tr>-->
-        <!--<th style="width:50%">Product</th>-->
-        <!--<th style="width:10%">Price</th>-->
-        <!--<th></th>-->
-        <!--<th style="width:8%">Quantity</th>-->
-        <!--<th></th>-->
-        <!--<th style="width:22%" class="text-center">Subtotal</th>-->
-        <!--<th style="width:10%"></th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<tr ng-repeat="order in orders">-->
-        <!--<td data-th="Product">-->
-        <!--<div class="row">-->
-        <!--<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..."-->
-        <!--class="img-responsive"/></div>-->
-        <!--<div class="col-sm-10">-->
-        <!--<h4 class="nomargin">{{order.name | capitalize}}</h4>-->
-        <!--<p>{{order.fullDescription}}</p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</td>-->
-        <!--<td data-th="Price">${{order.price}}</td>-->
-        <!--<td>-->
-        <!--<p class="input-group-addon cursor-pointer" ng-click="removeQuanity(item)"-->
-        <!--ng-class="{'cursor-block': item.quanity <= 1 }">-</p>-->
-        <!--</td>-->
-        <!--<td data-th="Quantity">-->
-        <!--<input type="text" class="form-control text-center" ng-model="item.quanity">-->
-        <!--</td>-->
-        <!--<td>-->
-        <!--<button class="input-group-addon cursor-pointer" ng-click="addQuanity(item)">+</button>-->
-        <!--</td>-->
-
-        <!--<td data-th="Subtotal" class="text-center">-->
-        <!--${{item.price * item.quanity }}-->
-        <!--</td>-->
-        <!--<td class="actions" data-th="">-->
-        <!--<button class="btn btn-danger btn-sm" ng-click="remove(item)"><i class="fa fa-trash-o"></i></button>-->
-        <!--</td>-->
-        <!--</tr>-->
-        <!--</tbody>-->
-        <!--<tfoot>-->
-        <!--<tr>-->
-        <!--<td><a href="" class="btn btn-warning" ng-click="backToShopping()"><i class="fa fa-angle-left"></i>-->
-        <!--No placed orders. Back to shopping</a>-->
-        <!--</td>-->
-        <!--<td></td>-->
-        <!--<td></td>-->
-        <!--<td colspan="2" class="hidden-xs"></td>-->
-        <!--<td class="hidden-xs text-center"><strong>Total ${{total}}</strong></td>-->
-        <!--<td><a href="" class="btn btn-success btn-block" ng-show="orders.length>0" ng-click="checkout()">Checkout-->
-        <!--<i class="fa fa-angle-right"></i></a>-->
-        <!--</td>-->
-        <!--</tr>-->
-        <!--</tfoot>-->
-        <!--</table>-->
     </div>
 </div>

@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 import static javax.persistence.CascadeType.PERSIST;
-import static javax.persistence.EnumType.STRING;
+import static javax.persistence.EnumType.ORDINAL;
 import static shop.infrastructure.domain.model.OrderState.PLACED;
 
 @Data
@@ -24,7 +24,7 @@ public class Order extends BaseEntity {
     private Customer customer;
     @Embedded
     private CustomerDetails customerDetails;
-    @Enumerated(STRING)
+    @Enumerated(ORDINAL)
     private OrderState state = PLACED;
 
 }

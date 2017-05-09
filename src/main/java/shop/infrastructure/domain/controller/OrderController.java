@@ -50,4 +50,14 @@ public class OrderController {
         return orderService.getMyOrders(principal.getName());
     }
 
+    @PostMapping("confirm")
+    public Order confirmOrder(@RequestBody Order order) {
+        return orderService.confirmOrder(order);
+    }
+
+    @PostMapping("reject")
+    public Order rejectOrder(@RequestBody Order order) {
+        return orderService.rejectOrder(order);
+    }
+
 }

@@ -9,6 +9,8 @@ import shop.infrastructure.domain.repository.OrderRepository;
 
 import java.util.List;
 
+import static shop.infrastructure.domain.model.OrderState.*;
+
 @Service
 @Transactional
 public class OrderService {
@@ -34,6 +36,7 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    @Transactional
     public Order update(Order order) {
         return orderRepository.save(order);
     }
@@ -44,5 +47,17 @@ public class OrderService {
 
     public List<Order> getMyOrders(String customer) {
         return orderRepository.findAllByCustomer_Username(customer);
+    }
+
+    public Order confirmOrder(Order order) {
+        Order orderToConfirm = get(order.getId());
+        orderToConfirm.setState(CONFIRMED);
+        return update(orderToConfirm);
+    }
+
+    public Order rejectOrder(Order order) {
+        Order orderToReject = get(order.getId());
+        orderToReject.setState(REJECTED);
+        return update(orderToReject);
     }
 }
