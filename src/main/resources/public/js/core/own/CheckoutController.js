@@ -5,9 +5,9 @@
         .controller('CheckoutController', CheckoutController);
 
 
-    CheckoutController.$inject = ['$scope', 'AccountService', 'localStorageService', 'OrderService', '$rootScope'];
+    CheckoutController.$inject = ['$scope', 'AccountService', 'localStorageService', 'OrderService', '$rootScope', '$state'];
 
-    function CheckoutController($scope, AccountService, localStorageService, OrderService, $rootScope) {
+    function CheckoutController($scope, AccountService, localStorageService, OrderService, $rootScope, $state) {
 
         $scope.submitted = false;
 
@@ -48,6 +48,10 @@
                 $rootScope.$broadcast("refreshCart");
             });
 
+        };
+
+        $scope.goToMyOrders = function() {
+            $state.go("orders");
         }
 
     }
