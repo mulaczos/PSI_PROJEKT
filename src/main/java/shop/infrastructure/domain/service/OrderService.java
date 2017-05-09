@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.infrastructure.domain.model.Order;
-import shop.infrastructure.domain.model.OrderItem;
 import shop.infrastructure.domain.repository.OrderItemRepository;
 import shop.infrastructure.domain.repository.OrderRepository;
 
@@ -22,12 +21,8 @@ public class OrderService {
 
     @Transactional
     public Order save(Order order) {
-        List<OrderItem> orderItems = (order.getItems());
-        order.setItems(null);
+        order.getItems().forEach(orderItem -> orderItem.setOrder(order));
         orderRepository.save(order);
-        orderItems.forEach(orderItem -> orderItem.setOrder(order));
-        orderItemRepository.save(orderItems);
-        order.setItems(orderItems);
         return order;
     }
 

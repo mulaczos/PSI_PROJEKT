@@ -26,6 +26,10 @@
             var items = localStorageService.get('items');
             var summary = localStorageService.get('total');
 
+            for(var i =0; i<items.length; i++) {
+                items[i].id = null;
+            }
+
             OrderService.post({
                 items: items,
                 summary: summary,

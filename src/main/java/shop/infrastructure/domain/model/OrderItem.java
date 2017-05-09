@@ -6,7 +6,11 @@ import lombok.Getter;
 import org.hibernate.annotations.Cascade;
 import shop.infrastructure.domain.model.base.BaseEntity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Data
 @Entity
