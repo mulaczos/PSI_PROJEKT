@@ -4,9 +4,9 @@
         .module('app')
         .controller('AllOrdersController', AllOrdersController);
 
-    AllOrdersController.$inject = ['$scope', 'OrderService', '$state'];
+    AllOrdersController.$inject = ['$scope', 'OrderService', '$state', '$rootScope'];
 
-    function AllOrdersController($scope, OrderService, $state) {
+    function AllOrdersController($scope, OrderService, $state, $rootScope) {
 
         $scope.expanded = false;
 
@@ -24,6 +24,11 @@
             OrderService.rejectOrder(order).$promise.then(function (success) {
                 $state.go('allorders', {}, {reload: true});
             });
+        };
+
+        $scope.goShopping = function () {
+            $rootScope.selectedCategory = 'ALL';
+            $state.go('main');
         };
     }
 }());

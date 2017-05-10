@@ -4,12 +4,17 @@
         .module('app')
         .controller('OrdersController', OrdersController);
 
-    OrdersController.$inject = ['$scope', 'OrderService'];
+    OrdersController.$inject = ['$scope', 'OrderService', '$rootScope', '$state'];
 
-    function OrdersController($scope, OrderService) {
+    function OrdersController($scope, OrderService, $rootScope, $state) {
 
         $scope.init = function () {
            $scope.orders = OrderService.getMyOrders();
         };
+
+        $scope.goShopping = function() {
+            $rootScope.selectedCategory = 'ALL';
+            $state.go('main');
+        }
     }
 }());
