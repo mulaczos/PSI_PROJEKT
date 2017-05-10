@@ -24,7 +24,6 @@ public class OrderItem extends BaseEntity {
     @Getter(AccessLevel.NONE)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORDER_ID")
-    @Cascade(value = {org.hibernate.annotations.CascadeType.DETACH})
     private Order order;
 
 }

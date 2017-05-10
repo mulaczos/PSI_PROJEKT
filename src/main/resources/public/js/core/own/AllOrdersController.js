@@ -8,6 +8,8 @@
 
     function AllOrdersController($scope, OrderService, $state) {
 
+        $scope.expanded = false;
+
         $scope.init = function () {
             $scope.orders = OrderService.all();
         };
