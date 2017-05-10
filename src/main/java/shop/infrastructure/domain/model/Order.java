@@ -5,6 +5,7 @@ import shop.infrastructure.domain.model.base.BaseEntity;
 import shop.infrastructure.domain.model.customer.Customer;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 import static javax.persistence.CascadeType.PERSIST;
@@ -26,5 +27,6 @@ public class Order extends BaseEntity {
     private CustomerDetails customerDetails;
     @Enumerated(ORDINAL)
     private OrderState state = PLACED;
+    private LocalDate date;
 
 }

@@ -97,6 +97,13 @@
             });
         };
 
+        AccountService.getRole = function (username) {
+            return $http({
+                method: 'GET',
+                url: '/user/role'
+            });
+        };
+
         return AccountService;
     }
 }());

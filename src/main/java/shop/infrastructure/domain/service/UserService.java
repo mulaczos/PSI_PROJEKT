@@ -114,6 +114,11 @@ public class UserService {
         return backendUserService.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public Role getRole(String username) {
+        return backendUserService.getRoleFor(findByUsername(username));
+    }
+
     @Transactional
     public boolean toggleDisable(String username) {
         Customer toDelete = findByUsername(username);

@@ -9,6 +9,12 @@
 
     function AdminController($scope, AccountService, $state) {
 
+        AccountService.getRole().then(function(success) {
+            $scope.role=success.data;
+        });
+
+        $scope.toggle = false;
+
         AccountService.getAllUsers().then(function (success) {
             $scope.customers = success.data;
         });
@@ -24,19 +30,19 @@
             });
         };
 
-        $scope.assignModeratorRole= function (username) {
+        $scope.assignModeratorRole = function (username) {
             AccountService.assignModeratorRole(username).then(function (success) {
                 $scope.reload();
             });
         };
 
-        $scope.grantAdmin= function (username) {
+        $scope.grantAdmin = function (username) {
             AccountService.grantAdmin(username).then(function (success) {
                 $scope.reload();
             });
         };
 
-        $scope.reload = function() {
+        $scope.reload = function () {
             $state.go("admin", {}, {reload: true});
         };
     }

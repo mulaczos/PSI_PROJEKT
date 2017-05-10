@@ -8,6 +8,8 @@
 
     function OrdersController($scope, OrderService, $rootScope, $state) {
 
+        $scope.expanded = false;
+
         $scope.init = function () {
            $scope.orders = OrderService.getMyOrders();
         };

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import shop.infrastructure.domain.model.customer.BackendUser;
 import shop.infrastructure.domain.model.customer.Customer;
 import shop.infrastructure.domain.model.customer.CustomerDto;
+import shop.infrastructure.domain.model.customer.Role;
 import shop.infrastructure.domain.service.UserService;
 
 import java.security.Principal;
@@ -72,6 +73,11 @@ public class UserController {
     @PostMapping("toggledisable")
     public boolean toggleDisable(@RequestBody String username) {
         return userService.toggleDisable(username);
+    }
+
+    @GetMapping(value = "role")
+    public Role role(Principal principal) {
+        return userService.getRole(principal.getName());
     }
 
 }

@@ -2,27 +2,29 @@
     <div class="container">
         <div class="row" ng-repeat="order in orders">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel clearfix"
+                <div class="panel clearfix cursor-pointer" ng-click="expanded = !expanded"
                      ng-class="{'panel-success' : order.state === 'CONFIRMED', 'panel-primary' : order.state === 'PLACED', 'panel-danger' : order.state === 'REJECTED' }">
                     <div class="panel-heading" style="height: 42px">
                         <div class="pull-left">
-                            State: <strong>{{order.state | capitalize}}</strong>
+                            <i class="fa fa-arrow-down" aria-hidden="true" ng-show="!expanded"></i>
+                            <i class="fa fa-arrow-up" aria-hidden="true" ng-show="expanded"></i>
+                            State: <strong>{{order.state | capitalize}} Date: </strong>{{order.date}}
                         </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" ng-show="expanded">
                         <div class="row" ng-repeat="item in order.items">
                             <div class="text-center">
                                 <div class="text-center">
-                                    <h4><p class="bg-info"><i class="fa fa-tag"></i><strong>{{item.name |
+                                    <h4><p><i class="fa fa-tag"></i><strong>{{item.name |
                                         capitalize}}</strong> ${{item.price}} Quanity: <strong>{{item.quanity}}</strong>
                                         Sumary: <strong>${{item.price * item.quanity}}</strong></p></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer" ng-show="expanded">
                         <div class="text-center">
-                            <i class="fa fa-money"></i> Total $ {{order.summary}}
+                            <i class="fa fa-money"></i> <strong>Total $ </strong>{{order.summary}}
                         </div>
                     </div>
                 </div>

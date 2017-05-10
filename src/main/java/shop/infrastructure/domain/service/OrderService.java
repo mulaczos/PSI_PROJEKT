@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import shop.infrastructure.domain.model.Order;
 import shop.infrastructure.domain.repository.OrderRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static shop.infrastructure.domain.model.OrderState.*;
@@ -20,6 +21,7 @@ public class OrderService {
 
     @Transactional
     public Order save(Order order) {
+        order.setDate(LocalDate.now());
         order.getItems().forEach(orderItem -> orderItem.setOrder(order));
         orderRepository.save(order);
         return order;
