@@ -10,11 +10,11 @@
     function MainController($scope, ItemService, CategoryService, $state, $rootScope) {
 
         $scope.init = function () {
-            if (angular.isUndefined($rootScope.category) === false) {
-                if ($rootScope.category === 'ALL') {
+            if (angular.isUndefined($rootScope.selectedCategory) === false) {
+                if ($rootScope.selectedCategory === 'ALL') {
                     $scope.fetchAllItems();
                 } else {
-                    $scope.showItemsForGivenCategory($rootScope.category);
+                    $scope.showItemsForGivenCategory($rootScope.selectedCategory);
                 }
             } else {
                 $scope.fetchAllItems();
@@ -28,12 +28,12 @@
         };
 
         $scope.fetchAllItems = function () {
-            $rootScope.category = 'ALL';
+            $rootScope.selectedCategory = 'ALL';
             $scope.items = ItemService.all();
         };
 
         $scope.showItemsForGivenCategory = function (id) {
-            $rootScope.category = id;
+            $rootScope.selectedCategory = id;
             $scope.items = ItemService.getItemsForGivenCategory({id: id});
         };
     }

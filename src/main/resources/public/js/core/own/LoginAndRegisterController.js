@@ -17,7 +17,7 @@
                     $rootScope.loggedIn = true;
                     localStorageService.clearAll();
                     $rootScope.$broadcast("refreshCart");
-                    $rootScope.category = 'ALL';
+                    $rootScope.selectedCategory = 'ALL';
                     $state.go("main", {}, {reload: true});
                 }, function failure(response) {
                     $scope.signInForm.$setPristine();

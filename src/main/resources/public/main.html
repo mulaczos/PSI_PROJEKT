@@ -4,13 +4,19 @@
             <div class="col-md-2 hidden-xs">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Categories</h3>
+                        <h3 class="panel-title cursor-default">Categories</h3>
                     </div>
-                    <ul class="list-group">
-                        <li class="list-group-item"><a href="" ng-click="fetchAllItems()">All Categories</a></li>
-                        <li class="list-group-item" ng-repeat="category in categories"
-                            ng-click="showItemsForGivenCategory(category.id)"><a href="">{{category.name |
-                            capitalize}}</a></li>
+                    <ul class="list-group cursor-pointer">
+                        <li class="list-group-item"
+                            ng-class="{'list-group-item-info' : selectedCategory === 'ALL'}"
+                            ng-click="fetchAllItems()">
+                            <a href="">All Categories</a></li>
+                        <li ng-repeat="category in categories"
+                            class="list-group-item"
+                            ng-class="{'list-group-item-info' : selectedCategory === category.id}"
+                            ng-click="showItemsForGivenCategory(category.id)">
+                            <a href="">{{category.name | capitalize}}</a></li>
+
                     </ul>
                 </div>
             </div>
