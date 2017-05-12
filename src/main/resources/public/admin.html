@@ -1,15 +1,14 @@
 <div class="container">
-    <div class="col-md-2">
-        <ol class="acc-wizard-sidebar cursor-pointer">
-            <li class="acc-wizard-todo">
-                <a data-toggle="collapse" ng-click="toggle=false">Menage Items</a>
-            </li>
-            <li class="acc-wizard-todo" ng-show="role==='ADMIN'">
-                <a data-toggle="collapse" ng-click="toggle=true">Menage Permissions</a>
-            </li>
-        </ol>
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li ng-click="toggle=false" ng-click="toggle=true" ng-class="{'active' : !toggle}"><a href="#">Menage
+                Items</a></li>
+            <li ng-click="toggle=true" ng-click="toggle=true" ng-class="{'active' : toggle}"><a href="#">Menage
+                Permissions</a></li>
+        </ul>
+        <!-- /tabs -->
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-9">
         <table class="table" ng-show="toggle">
             <thead class="thead-inverse">
             <tr>
@@ -76,7 +75,76 @@
             </tbody>
         </table>
         <div class="form" ng-hide="toggle">
-            ADD ITEM
+            <form class="form-horizontal" name="itemForm" ng-submit="processRegistration(itemForm.$valid)"
+                  novalidate>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Item name*</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group"
+                             ng-class="{ 'has-error': itemForm.name.$error.required && itemForm.$submitted }">
+                            <span class="input-group-addon"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter item name"
+                                   ng-model="name" ng-required="true"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="price" class="cols-sm-2 control-label">Price*</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group"
+                             ng-class="{ 'has-error': itemForm.price.$error.required && itemForm.$submitted }">
+                            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input type="number" class="form-control" name="price" id="price"
+                                   placeholder="Item price" ng-model="price" ng-required="true"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="full" class="cols-sm-2 control-label">Full description*</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group"
+                             ng-class="{ 'has-error': itemForm.full.$error.required && itemForm.$submitted }">
+                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <textarea class="form-control" name="full" id="full" style="resize: none;" rows="5"
+                                      placeholder="Full description"
+                                      ng-model="full" ng-required="true">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="short" class="cols-sm-2 control-label">Short description*</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group"
+                             ng-class="{ 'has-error': itemForm.short.$error.required && itemForm.$submitted }">
+                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="short" id="short"
+                                   placeholder="Short description"
+                                   ng-model="short" ng-required="true"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="short" class="cols-sm-2 control-label">Short description*</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group"
+                             ng-class="{ 'has-error': itemForm.short.$error.required && itemForm.$submitted }">
+                            <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="short" id="short"
+                                   placeholder="Short description"
+                                   ng-model="short" ng-required="true"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary btn-lg btn-block">Add</button>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>
