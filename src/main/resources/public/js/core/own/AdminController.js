@@ -9,6 +9,7 @@
 
     function AdminController($scope, AccountService, $state, CategoryService, ItemService) {
 
+        $scope.success = false;
         $scope.categories = CategoryService.all();
 
         AccountService.getRole().then(function (success) {
@@ -48,8 +49,34 @@
             $state.go("admin", {}, {reload: true});
         };
 
-        $scope.addItem = function () {
-
+        $scope.addItem = function (valid) {
+            console.log(valid);
+            if (valid) {
+                ItemService.post({
+                    name: $scope.name,
+                    price: $scope.price,
+                    shortDescription: $scope.short,
+                    fullDescription: $scope.full,
+                    category: $scope.cat
+                }).$promise.then(function (success) {
+                    $scope.itemForm.$setPristine();
+                    $scope.itemForm.$setUntouched();
+                    $scope.name = null;
+                    $scope.price = null;
+                    $scope.shortDescription = null;
+                    $scope.fullDescription = null;
+                    $scope.category = null;
+                    $scope.success = true;
+                }, function(failure) {
+                    $scope.itemForm.$setPristine();
+                    $scope.itemForm.$setUntouched();
+                    $scope.name = null;
+                    $scope.price = null;
+                    $scope.shortDescription = null;
+                    $scope.fullDescription = null;
+                    $scope.category = null;
+                });
+            }
         };
     }
 }());
