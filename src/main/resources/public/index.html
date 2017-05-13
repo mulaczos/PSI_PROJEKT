@@ -49,7 +49,7 @@
                     <h1 class="logo"><a href="" ng-click="goMain()">Xtra Shop</a></h1>
                 </div>
                 <div class="hidden-xs col-md-4">
-                    <div class="input-group" ng-show="loggedIn">
+                    <div class="input-group" ng-show="false">
                         <input type="text" class="form-control" placeholder="Search for a product">
                         <span class="input-group-btn">
 										<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
@@ -77,8 +77,8 @@
                         <li><a href="" ng-click="goToState('about')" ng-class="{ 'cursor-block': !loggedIn }">CATEGORIES</a></li>
                         <li><a href="" ng-click="goToState('profile')" ng-class="{ 'cursor-block': !loggedIn }">PROFILE</a></li>
                         <li><a href="" ng-click="goToState('orders')" ng-class="{ 'cursor-block': !loggedIn }">ORDERS</a></li>
-                        <li><a href="" ng-click="goToState('allorders')" ng-class="{ 'cursor-block': !loggedIn }">ALL ORDERS</a></li>
-                        <li><a href="" ng-click="goToState('admin')" ng-class="{ 'cursor-block': !loggedIn }">ADMINISTRATION</a></li>
+                        <li ng-show="role==='MODERATOR' || role==='ADMIN'"><a href="" ng-click="goToState('allorders')" ng-class="{ 'cursor-block': !loggedIn }">ALL ORDERS</a></li>
+                        <li ng-show="role==='MODERATOR' || role==='ADMIN'"><a href="" ng-click="goToState('admin')" ng-class="{ 'cursor-block': !loggedIn }">ADMINISTRATION</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" ng-show="loggedIn">
                         <li><a href="" ng-click="goToState('about')" ng-class="{ 'cursor-block': !loggedIn }">ABOUT US</a></li>

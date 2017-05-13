@@ -13,5 +13,5 @@ public class CustomerDetails {
     private String customerEmail;
     private String customerAddress;
     private String customerCity;
-    private Long customerZipcode;
+    private String customerZipcode;
 }

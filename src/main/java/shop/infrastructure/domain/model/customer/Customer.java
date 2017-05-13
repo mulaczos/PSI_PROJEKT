@@ -38,7 +38,7 @@ public class Customer {
 
     private String address;
     private String city;
-    private Long zipcode;
+    private String zipcode;
 
     @Getter(onMethod = @__( @JsonIgnore))
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)

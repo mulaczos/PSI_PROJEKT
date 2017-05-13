@@ -78,8 +78,8 @@
                                              ng-class="{ 'has-error': shipingForm.zipcode.$error.required }">
                                         <span class="input-group-addon"><i class="fa fa-map"
                                                                            aria-hidden="true"></i></span>
-                                            <input type="number" id="zipcode" name="zipcode" class="form-control" ng-required="true"
-                                                   ng-model="zipcode"/>
+                                            <input type="text" id="zipcode" name="zipcode" class="form-control" ng-required="true"
+                                                   ng-model="zipcode" maxlength="10"/>
                                         </div>
                                     </div>
                                 </form>

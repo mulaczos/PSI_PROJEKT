@@ -17,6 +17,7 @@
                     $rootScope.loggedIn = true;
                     localStorageService.clearAll();
                     $rootScope.$broadcast("refreshCart");
+                    $rootScope.role = response.data.authorities[0].authority;
                     $rootScope.selectedCategory = 'ALL';
                     $state.go("main", {}, {reload: true});
                 }, function failure(response) {

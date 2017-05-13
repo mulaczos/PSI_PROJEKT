@@ -14,6 +14,7 @@
                 .then(function success(response) {
                     if (response.data) {
                         $rootScope.loggedIn = true;
+                        $rootScope.role = response.data.authorities[0].authority;
                         $state.go("main");
                     } else {
                         $state.go("login");
@@ -35,6 +36,7 @@
             AccountService.logout()
                 .then(function success(success) {
                     $rootScope.loggedIn = false;
+                    $rootScope.role = null;
                     localStorageService.clearAll();
                     $state.go("login", {}, {reload: true});
                 });
@@ -47,6 +49,7 @@
         };
 
         $rootScope.$on('refreshCart', function (event, data) {
+
             $scope.showItemQuanity();
         });
 
