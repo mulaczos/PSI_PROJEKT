@@ -5,12 +5,14 @@
         .controller('AdminController', AdminController);
 
 
-    AdminController.$inject = ['$scope', 'AccountService', '$state'];
+    AdminController.$inject = ['$scope', 'AccountService', '$state', 'CategoryService', 'ItemService'];
 
-    function AdminController($scope, AccountService, $state) {
+    function AdminController($scope, AccountService, $state, CategoryService, ItemService) {
 
-        AccountService.getRole().then(function(success) {
-            $scope.role=success.data;
+        $scope.categories = CategoryService.all();
+
+        AccountService.getRole().then(function (success) {
+            $scope.role = success.data;
         });
 
         $scope.toggle = false;
@@ -44,6 +46,10 @@
 
         $scope.reload = function () {
             $state.go("admin", {}, {reload: true});
+        };
+
+        $scope.addItem = function () {
+
         };
     }
 }());
