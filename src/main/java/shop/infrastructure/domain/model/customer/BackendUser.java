@@ -1,20 +1,13 @@
 package shop.infrastructure.domain.model.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-/**
- * Created by Witu on 07.03.2017.
- */
-@Data
 @Entity
 @Table(name = "Authorities")
-@NoArgsConstructor
 public class BackendUser {
 
     @EmbeddedId
@@ -22,6 +15,10 @@ public class BackendUser {
 
     private BackendUser(Customer customer, Role role) {
         this.backendUser = new BackendUserPK(customer, role);
+    }
+
+    public BackendUser() {
+
     }
 
     public static BackendUser getUserAuthority(Customer customer) {
@@ -67,5 +64,13 @@ public class BackendUser {
 
     public static BackendUser getWithAuthority(Customer customer, Role role) {
         return new BackendUser(customer, role);
+    }
+
+    public BackendUserPK getBackendUser() {
+        return backendUser;
+    }
+
+    public void setBackendUser(BackendUserPK backendUser) {
+        this.backendUser = backendUser;
     }
 }

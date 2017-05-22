@@ -1,6 +1,5 @@
 package shop.configuration;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,14 +13,19 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@AllArgsConstructor
 public class Security extends WebSecurityConfigurerAdapter {
 
+    @Autowired
     private DataSource dataSource;
+    @Autowired
     private SecurityAuthenticationSuccessHandler securityAuthenticationSuccessHandler;
+    @Autowired
     private SecurityAuthenticationFailureHandler securityAuthenticationFailureHandler;
+    @Autowired
     private RestAccessDeniedHandler restAccessDeniedHandler;
+    @Autowired
     private RestUnauthorizedEntryPoint restUnauthorizedEntryPoint;
+
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -38,7 +42,6 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/console/**").permitAll()
-                .antMatchers("/rest/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .exceptionHandling()

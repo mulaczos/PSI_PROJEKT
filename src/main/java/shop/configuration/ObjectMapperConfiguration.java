@@ -6,9 +6,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * Created by Witu on 10.05.2017.
- */
 @Configuration
 public class ObjectMapperConfiguration {
 

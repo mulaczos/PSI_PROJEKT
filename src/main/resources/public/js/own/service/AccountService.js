@@ -4,7 +4,7 @@
         .module('app')
         .factory('AccountService', AccountService);
 
-    AccountService.$inject = ['$http', 'SessionService', '$state'];
+    AccountService.$inject = ['$http'];
 
     function AccountService($http) {
 

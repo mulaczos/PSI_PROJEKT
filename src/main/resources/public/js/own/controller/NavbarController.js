@@ -68,7 +68,6 @@
                         $rootScope.loggedIn = true;
                         $rootScope.role = response.data.authorities[0].authority;
                         $scope.username = response.data.name;
-                        console.log("mekeke");
                         $state.go("main");
                     } else {
                         $state.go("login");

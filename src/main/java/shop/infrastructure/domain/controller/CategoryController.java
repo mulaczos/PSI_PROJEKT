@@ -8,9 +8,6 @@ import shop.infrastructure.domain.service.CategoryService;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
-/**
- * Created by Witu on 26.04.2017.
- */
 @RestController
 @RequestMapping("category")
 public class CategoryController {

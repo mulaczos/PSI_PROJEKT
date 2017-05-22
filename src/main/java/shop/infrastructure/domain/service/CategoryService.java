@@ -7,9 +7,6 @@ import shop.infrastructure.domain.repository.CategoryRepository;
 
 import java.util.List;
 
-/**
- * Created by Witu on 26.04.2017.
- */
 @Service
 public class CategoryService {
 
