@@ -16,7 +16,7 @@
                         <div class="form-group"
                              ng-class="{ 'has-error': signInForm.password.$error && signInForm.$submitted }">
                             <input class="form-control" placeholder="Password" type="password" ng-model="password"
-                                   ng-required="true" id="password" name="password">
+                                   ng-required="true" id="password" name="password" ng-maxlength="12">
                         </div>
                         <button class="btn btn-lg btn-info btn-block">Login</button>
                     </form>

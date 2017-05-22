@@ -87,7 +87,7 @@ public class UserService {
         Customer customerToReturn = null;
         if (toDelete != null) {
             if (toDelete.getPassword().equals(customerDto.getConfirmwithpassword())) {
-                Customer customerToSave = new Customer(customerDto.getUsername(), customerDto.getNewpassword(), customerDto.getEmail(), customerDto.getName(), customerDto.getLastname(), true);
+                Customer customerToSave = new Customer(customerDto.getUsername(), customerDto.getNewpassword(), customerDto.getEmail(), customerDto.getName(), customerDto.getLastname(), true, customerDto.getAddress(), customerDto.getCity(), customerDto.getZipcode());
                 BackendUser backendUser = backendUserService.save(BackendUser.getUserAuthorityByRole(customerToSave, backendUserService.findAndDelete(toDelete)));
                 customerToReturn = customerRepository.save(backendUser.getCustomer());
             } else {

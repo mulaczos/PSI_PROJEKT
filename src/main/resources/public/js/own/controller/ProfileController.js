@@ -16,6 +16,9 @@
             $scope.email = success.data.email;
             $scope.password = null;
             $scope.confirm = null;
+            $scope.address = success.data.address;
+            $scope.city = success.data.city;
+            $scope.zipcode = success.data.zipcode;
         });
 
         $scope.arePasswordsSame = function () {
@@ -40,7 +43,7 @@
                 lastname: $scope.lastname,
                 zipcode: $scope.zipcode,
                 address: $scope.address,
-                city: $scope.city,
+                city: $scope.city
             }).then(function success(response) {
                 $state.go("profile", {}, {reload: true});
             }, function failure(response) {

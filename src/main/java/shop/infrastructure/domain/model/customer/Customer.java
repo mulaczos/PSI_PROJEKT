@@ -48,13 +48,16 @@ public class Customer {
         return copy;
     }
 
-    public Customer(String username, String password, String email, String name, String lastname, boolean enabled) {
+    public Customer(String username, String password, String email, String name, String lastname, boolean enabled, String address, String city, String zipcode) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.name = name;
         this.lastname = lastname;
         this.enabled = enabled;
+        this.address = address;
+        this.city = city;
+        this.zipcode = zipcode;
     }
 
     public String getUsername() {

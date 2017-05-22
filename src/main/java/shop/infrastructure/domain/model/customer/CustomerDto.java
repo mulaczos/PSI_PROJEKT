@@ -22,6 +22,10 @@ public class CustomerDto {
     private String lastname;
     private boolean enabled = Boolean.TRUE;
 
+    private String address;
+    private String city;
+    private String zipcode;
+
     public String getUsername() {
         return username;
     }
@@ -76,5 +80,29 @@ public class CustomerDto {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 }
