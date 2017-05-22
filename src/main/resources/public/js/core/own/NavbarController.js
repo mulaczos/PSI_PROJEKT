@@ -10,18 +10,7 @@
 
         $scope.init = function () {
             $scope.showItemQuanity();
-            AccountService.isAuthenticated()
-                .then(function success(response) {
-                    if (response.data) {
-                        $rootScope.loggedIn = true;
-                        $rootScope.role = response.data.authorities[0].authority;
-                        $state.go("main");
-                    } else {
-                        $state.go("login");
-                    }
-                }, function failure(response) {
-                    $state.go("login");
-                });
+            $scope.isAuthenticated();
         };
 
         $scope.goMain = function () {
@@ -37,6 +26,7 @@
                 .then(function success(success) {
                     $rootScope.loggedIn = false;
                     $rootScope.role = null;
+                    $scope.username = null;
                     localStorageService.clearAll();
                     $state.go("login", {}, {reload: true});
                 });
@@ -48,10 +38,18 @@
             }
         };
 
-        $rootScope.$on('refreshCart', function (event, data) {
+        $scope.getUsername = function () {
+            return ($scope.username !== null && !angular.isUndefined($scope.username) && $scope.username !== '') ? "Username: "+$scope.username : "";
+        };
 
+        $rootScope.$on('refreshCart', function (event, data) {
             $scope.showItemQuanity();
         });
+
+        $rootScope.$on('updateUsername', function (event, data) {
+            $scope.isAuthenticated();
+        });
+
 
         $scope.showItemQuanity = function () {
             $scope.items = localStorageService.get('items');
@@ -60,6 +58,24 @@
             } else {
                 $scope.howManyItems = 0;
             }
-        }
+
+        };
+
+        $scope.isAuthenticated = function() {
+            AccountService.isAuthenticated()
+                .then(function success(response) {
+                    if (response.data) {
+                        $rootScope.loggedIn = true;
+                        $rootScope.role = response.data.authorities[0].authority;
+                        $scope.username = response.data.name;
+                        console.log("mekeke");
+                        $state.go("main");
+                    } else {
+                        $state.go("login");
+                    }
+                }, function failure(response) {
+                    $state.go("login");
+                });
+        };
     }
 }());

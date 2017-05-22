@@ -45,18 +45,13 @@
     <div class="header">
         <div class="padding container">
             <div class="row">
-                <div class="col-xs-6 col-md-4 text-center">
+                <div class="col-xs-6 col-md-1 col-md-offset-1 pull-left">
+                    <strong>{{getUsername() | capitalize}}</strong>
+                </div>
+                <div class="hidden-xs col-md-4 col-md-offset-2 ">
                     <h1 class="logo"><a href="" ng-click="goMain()">Xtra Shop</a></h1>
                 </div>
-                <div class="hidden-xs col-md-4">
-                    <div class="input-group" ng-show="false">
-                        <input type="text" class="form-control" placeholder="Search for a product">
-                        <span class="input-group-btn">
-										<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-									</span>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-md-4 text-center">
+                <div class="col-xs-6 col-md-2 col-md-offset-2 text-center">
                     <a href="" class="btn btn-primary" ng-show="loggedIn" ng-click="goToState('cart')"><i class="fa fa-shopping-cart"></i> {{howManyItems === 0 ? 'No' : howManyItems}} Item{{howManyItems === 1 ? '' : 's'}}</a>
                 </div>
             </div>
@@ -73,15 +68,12 @@
 
                 <div class="collapse navbar-collapse" id="shop-navbar">
                     <ul class="nav navbar-nav">
-                        <li><a href="" ng-click="goToState('products')" ng-class="{ 'cursor-block': !loggedIn }">PRODUCTS</a></li>
-                        <li><a href="" ng-click="goToState('about')" ng-class="{ 'cursor-block': !loggedIn }">CATEGORIES</a></li>
-                        <li><a href="" ng-click="goToState('profile')" ng-class="{ 'cursor-block': !loggedIn }">PROFILE</a></li>
-                        <li><a href="" ng-click="goToState('orders')" ng-class="{ 'cursor-block': !loggedIn }">ORDERS</a></li>
+                        <li ng-show="loggedIn"><a href="" ng-click="goToState('profile')">PROFILE</a></li>
+                        <li ng-show="loggedIn"><a href="" ng-click="goToState('orders')" >ORDERS</a></li>
                         <li ng-show="role==='MODERATOR' || role==='ADMIN'"><a href="" ng-click="goToState('allorders')" ng-class="{ 'cursor-block': !loggedIn }">ALL ORDERS</a></li>
                         <li ng-show="role==='MODERATOR' || role==='ADMIN'"><a href="" ng-click="goToState('admin')" ng-class="{ 'cursor-block': !loggedIn }">ADMINISTRATION</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" ng-show="loggedIn">
-                        <li><a href="" ng-click="goToState('about')" ng-class="{ 'cursor-block': !loggedIn }">ABOUT US</a></li>
                         <li><a href="" ng-click="logout()">LOGOUT</a></li>
                     </ul>
                 </div>
