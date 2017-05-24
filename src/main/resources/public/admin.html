@@ -11,7 +11,7 @@
             </ul>
         </div>
     </div>
-    <div class="col-lg-8 col-lg-offset-2" ng-show="toggle">
+    <div class="col-lg-8 col-lg-offset-1" ng-show="toggle">
         <table class="table">
             <thead class="thead-inverse">
             <tr>
@@ -68,9 +68,18 @@
                 <td>
                     <div ng-class="{'cursor-block' : (!customer.backendUser.username.enabled || customer.backendUser.authority==='ADMIN')}">
                         <button ng-click="grantAdmin(customer.backendUser.username.username)" class="btn"
-                                ng-class="{'cursor-block' : !customer.backendUser.username.enabled, 'btn-danger' : customer.backendUser.username.enabled}"
+                                ng-class="{'cursor-block' : !customer.backendUser.username.enabled, 'btn-success' : customer.backendUser.username.enabled}"
                                 ng-disabled="(!customer.backendUser.username.enabled || customer.backendUser.authority==='ADMIN')">
                             ADMIN
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <div ng-class="{'cursor-block' : (customer.backendUser.username.username === username)}">
+                        <button ng-click="deleteUser(customer.backendUser.username.username)" class="btn btn-danger"
+                                ng-class="{'cursor-block' : (customer.backendUser.username.username === username)}"
+                                ng-disabled="(customer.backendUser.username.username === username)">
+                            <span class="fa fa-trash"></span>
                         </button>
                     </div>
                 </td>

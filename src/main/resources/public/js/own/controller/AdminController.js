@@ -18,6 +18,9 @@
             AccountService.getAllUsers().then(function (success) {
                 $scope.customers = success.data;
             });
+            AccountService.isAuthenticated().then(function (success) {
+                $scope.username = success.data.name;
+            });
             AccountService.getRole().then(function (success) {
                 if ($rootScope.role !== success.data) {
                     if (success.data === 'USER') {
@@ -33,7 +36,7 @@
             });
         };
 
-        $scope.disable = function (username) {
+        $scope.disable = function (ó) {
             AccountService.toggleDisable(username).then(function (success) {
                 $scope.init();
             });
@@ -89,5 +92,11 @@
                 });
             }
         };
+
+        $scope.deleteUser = function(username) {
+            AccountService.deleteUser(username);
+        };
+
+
     }
 }());

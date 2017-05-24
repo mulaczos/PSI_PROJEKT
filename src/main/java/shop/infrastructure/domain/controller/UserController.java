@@ -38,11 +38,6 @@ public class UserController {
         return userService.updateUser(customerDto);
     }
 
-    @DeleteMapping
-    public void delete(String username) {
-        userService.delete(username);
-    }
-
     @GetMapping(value = "credentials")
     public Principal credentials(Principal principal) {
         return principal;
@@ -78,6 +73,11 @@ public class UserController {
     @GetMapping(value = "role")
     public Role role(Principal principal) {
         return userService.getRole(principal.getName());
+    }
+
+    @DeleteMapping("{username}")
+    public void delete(@PathVariable String username) {
+        userService.delete(username);
     }
 
 }

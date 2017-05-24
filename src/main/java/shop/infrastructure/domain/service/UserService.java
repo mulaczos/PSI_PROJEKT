@@ -106,7 +106,7 @@ public class UserService {
 
     @Transactional
     public void delete(String username) {
-        customerRepository.delete(username);
+        backendUserService.delete(findByUsername(username));
     }
 
     @Transactional(readOnly = true)
@@ -184,5 +184,10 @@ class BackendUserService {
     @Transactional(readOnly = true)
     public Role getRoleFor(Customer customer) {
         return findByCustomer(customer).getRole();
+    }
+
+    @Transactional
+    public void delete(Customer customer) {
+        backendUserRepository.deleteByBackendUserUsername(customer);
     }
 }

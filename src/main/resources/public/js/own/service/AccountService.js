@@ -104,6 +104,13 @@
             });
         };
 
+         AccountService.deleteUser = function (data) {
+            return $http({
+                url: '/user/'+data,
+                method: 'DELETE'
+            });
+         };
+
         return AccountService;
     }
 }());
