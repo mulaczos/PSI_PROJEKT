@@ -20,6 +20,7 @@
                     $rootScope.$broadcast("updateUsername");
                     $rootScope.role = response.data.authorities[0].authority;
                     $rootScope.selectedCategory = 'ALL';
+                    localStorageService.set('tab', 'addItem');
                     $state.go("main", {}, {reload: true});
                 }, function failure(response) {
                     $scope.signInForm.$setPristine();

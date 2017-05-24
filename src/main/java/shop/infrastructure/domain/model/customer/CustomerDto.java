@@ -5,14 +5,13 @@ import org.hibernate.validator.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-
 public class CustomerDto {
 
     @NotNull
     private String username;
-    @Min(5)
+    @Min(3)
     private String confirmwithpassword;
-    @Min(5)
+    @Min(3)
     private String newpassword;
     @Email
     private String email;

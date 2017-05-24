@@ -40,7 +40,7 @@ public class ItemController {
     }
 
     @DeleteMapping
-    public void delete(Long id) {
+    public void delete(@RequestParam Long id) {
         itemService.delete(id);
     }
 

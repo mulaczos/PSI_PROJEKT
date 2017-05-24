@@ -5,14 +5,14 @@
         .controller('AdminController', AdminController);
 
 
-    AdminController.$inject = ['$scope', 'AccountService', '$state', 'CategoryService', 'ItemService', '$rootScope'];
+    AdminController.$inject = ['$scope', 'AccountService', '$state', 'CategoryService', 'ItemService', '$rootScope', 'localStorageService'];
 
-    function AdminController($scope, AccountService, $state, CategoryService, ItemService, $rootScope) {
+    function AdminController($scope, AccountService, $state, CategoryService, ItemService, $rootScope, localStorageService) {
 
         $scope.success = false;
         $scope.categories = CategoryService.all();
-
-        $scope.toggle = false;
+        $scope.tab = localStorageService.get('tab');
+        $scope.items = ItemService.all();
 
         $scope.init = function () {
             AccountService.getAllUsers().then(function (success) {
@@ -36,7 +36,12 @@
             });
         };
 
-        $scope.disable = function (ó) {
+        $scope.openTab = function(tab) {
+           localStorageService.set('tab', tab);
+           $scope.tab = tab;
+        };
+
+        $scope.disable = function (username) {
             AccountService.toggleDisable(username).then(function (success) {
                 $scope.init();
             });
@@ -94,9 +99,15 @@
         };
 
         $scope.deleteUser = function(username) {
-            AccountService.deleteUser(username);
+            AccountService.deleteUser(username).then(function(success) {
+                $scope.reload();
+            });
         };
-
-
+        $scope.deleteItem = function(id) {
+            ItemService.delete({id: id}).$promise.then(function(success){
+                console.log("is this thing on?");
+                $scope.reload();
+            });
+        }
     }
 }());

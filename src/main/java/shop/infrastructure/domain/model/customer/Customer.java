@@ -17,7 +17,7 @@ public class Customer {
 
     @Id
     private String username;
-    @Length(min = 5)
+    @Length(min = 3)
     private String password;
     @Email
     private String email;
