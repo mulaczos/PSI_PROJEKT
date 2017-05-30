@@ -8,6 +8,7 @@
     LoginController.$inject = ['$scope', 'AccountService', '$state', '$rootScope', 'localStorageService'];
 
     function LoginController($scope, AccountService, $state, $rootScope, localStorageService) {
+        
         $scope.processLogin = function (valid) {
             if (valid) {
                 AccountService.login(
@@ -42,10 +43,14 @@
         });
     }
 
-    RegisterController.$inject = ['$scope', '$state', 'AccountService', '$rootScope'];
+    RegisterController.$inject = ['$scope', '$state', 'AccountService', '$rootScope', 'CityService'];
 
-    function RegisterController($scope, $state, AccountService, $rootScope) {
+    function RegisterController($scope, $state, AccountService, $rootScope, CityService) {
 
+        CityService.all().$promise.then(function(success) {
+            $scope.cityList = success;
+        });
+        
         $scope.processRegistration = function (valid) {
             if (valid && ($scope.password === $scope.confirm)) {
                 AccountService.register({
@@ -54,8 +59,8 @@
                     name: $scope.name,
                     email: $scope.email,
                     address: $scope.address,
-                    zipcode: $scope.zipcode,
-                    city: $scope.city,
+                    zipcode: $scope.choosenCity.zipcode,
+                    city: $scope.choosenCity.city,
                     lastname: $scope.lastname
                 }).then(function (success) {
                     $state.go("login").then(function () {

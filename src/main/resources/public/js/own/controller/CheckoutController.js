@@ -5,21 +5,28 @@
         .controller('CheckoutController', CheckoutController);
 
 
-    CheckoutController.$inject = ['$scope', 'AccountService', 'localStorageService', 'OrderService', '$rootScope', '$state'];
+    CheckoutController.$inject = ['$scope', 'AccountService', 'localStorageService', 'OrderService', '$rootScope', '$state', 'CityService'];
 
-    function CheckoutController($scope, AccountService, localStorageService, OrderService, $rootScope, $state) {
+    function CheckoutController($scope, AccountService, localStorageService, OrderService, $rootScope, $state, CityService) {
 
         $scope.submitted = false;
 
-        AccountService.getProfile().then(function (success) {
-            $scope.user = success.data;
-            $scope.lastname = success.data.lastname;
-            $scope.name = success.data.name;
-            $scope.email = success.data.email;
-            $scope.address = success.data.address;
-            $scope.city = success.data.city;
-            $scope.zipcode = success.data.zipcode;
+        CityService.all().$promise.then(function (success) {
+            $scope.cityList = success;
+            AccountService.getProfile().then(function (success) {
+                $scope.user = success.data;
+                $scope.lastname = success.data.lastname;
+                $scope.name = success.data.name;
+                $scope.email = success.data.email;
+                $scope.address = success.data.address;
+                angular.forEach($scope.cityList, function(value, key) {
+                    if(value.zipcode === success.data.zipcode) {
+                        $scope.choosenCity = value;
+                    }
+                });
+            });
         });
+
 
         $scope.confirm = function () {
 
@@ -39,8 +46,8 @@
                     customerLastname: $scope.lastname,
                     customerEmail: $scope.email,
                     customerAddress: $scope.address,
-                    customerCity: $scope.city,
-                    customerZipcode: $scope.zipcode
+                    customerCity: $scope.choosenCity.city,
+                    customerZipcode: $scope.choosenCity.zipcode
                 }
             }).$promise.then(function (success) {
                 $scope.submitted = true;
@@ -50,7 +57,7 @@
 
         };
 
-        $scope.goToMyOrders = function() {
+        $scope.goToMyOrders = function () {
             $state.go("orders");
         }
 
