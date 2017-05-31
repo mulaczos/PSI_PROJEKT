@@ -134,7 +134,7 @@ set ERROR_CODE=1
 if not "%MAVEN_SKIP_RC%" == "" goto skipRcPost
 @REM check for post script, once with legacy .bat ending and once with .cmd ending
 cd target
-java -jar SklepInternetowy-1.0-SNAPSHOT.jar
+java -jar Xtra-Shop-1.0.jar
 :skipRcPost
 
 @REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'
