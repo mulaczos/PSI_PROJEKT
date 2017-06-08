@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>shop.infrastructure.domain.controller</OriginalElement>
+  <nodes>
+    <node x="2362.371190476191" y="568.0">shop.infrastructure.domain.repository.CityRepository</node>
+    <node x="455.6211904761907" y="557.0">shop.infrastructure.domain.repository.CustomerRepository</node>
+    <node x="88.8709523809523" y="714.0">shop.infrastructure.domain.model.customer.Customer</node>
+    <node x="1937.8711904761906" y="1159.0">shop.infrastructure.domain.controller.ItemController</node>
+    <node x="1908.8711904761906" y="769.0">shop.infrastructure.domain.service.ItemService</node>
+    <node x="1208.6211904761906" y="1170.0">shop.infrastructure.domain.controller.CategoryController</node>
+    <node x="1341.1211904761906" y="568.0">shop.infrastructure.domain.repository.CategoryRepository</node>
+    <node x="10.5" y="258.0">shop.infrastructure.domain.model.OrderItem</node>
+    <node x="417.0" y="145.0">shop.infrastructure.domain.model.Category</node>
+    <node x="1769.8711904761906" y="825.0">shop.infrastructure.domain.model.customer.Role</node>
+    <node x="1012.1711904761908" y="134.0">shop.infrastructure.domain.model.City</node>
+    <node x="412.5" y="269.0">shop.infrastructure.domain.model.customer.CustomerDetails</node>
+    <node x="2302.871190476191" y="835.5">shop.infrastructure.domain.service.CityService</node>
+    <node x="2047.3711904761906" y="557.0">shop.infrastructure.domain.repository.ItemRepository</node>
+    <node x="184.8709523809523" y="502.0">shop.infrastructure.domain.model.Order</node>
+    <node x="1507.6211904761908" y="1472.0">shop.infrastructure.domain.model.customer.BackendUser</node>
+    <node x="83.05753564154782" y="1506.5885947046845">shop.infrastructure.domain.model.customer.CustomerDto</node>
+    <node x="727.6211904761906" y="546.0">shop.infrastructure.domain.repository.BackendUserRepository</node>
+    <node x="269.5" y="302.0">shop.infrastructure.domain.model.OrderState</node>
+    <node x="454.1290476190477" y="0.0">shop.infrastructure.domain.model.base.BaseEntity</node>
+    <node x="2587.871190476191" y="1137.0">shop.infrastructure.domain.controller.OrderController</node>
+    <node x="437.53761904761905" y="1472.0">shop.infrastructure.domain.controller.UserController</node>
+    <node x="1570.6211904761908" y="1170.0">shop.infrastructure.domain.model.customer.BackendUserPK</node>
+    <node x="1189.6211904761906" y="791.0">shop.infrastructure.domain.service.CategoryService</node>
+    <node x="380.03761904761905" y="1082.0">shop.infrastructure.domain.service.UserService</node>
+    <node x="1707.7540476190475" y="324.0">shop.infrastructure.domain.repository.base.BaseRepository</node>
+    <node x="2579.871190476191" y="546.0">shop.infrastructure.domain.repository.OrderRepository</node>
+    <node x="2321.871190476191" y="1214.5">shop.infrastructure.domain.controller.CityController</node>
+    <node x="882.0461904761908" y="280.0">shop.infrastructure.domain.model.Item</node>
+    <node x="667.6211904761906" y="747.5">shop.infrastructure.domain.service.BackendUserService</node>
+    <node x="2568.871190476191" y="758.0">shop.infrastructure.domain.service.OrderService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="shop.infrastructure.domain.model.customer.BackendUserPK" target="shop.infrastructure.domain.model.customer.Role">
+      <point x="86.25" y="-82.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.service.CityService" target="shop.infrastructure.domain.repository.CityRepository">
+      <point x="0.0" y="-37.5" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.Order" target="shop.infrastructure.domain.model.customer.CustomerDetails">
+      <point x="98.39999999999998" y="-81.0" />
+      <point x="406.2709523809523" y="482.0" />
+      <point x="553.0" y="482.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.customer.BackendUserPK" target="shop.infrastructure.domain.model.customer.Customer">
+      <point x="-86.25" y="-82.0" />
+      <point x="1656.8711904761908" y="1052.0" />
+      <point x="369.3709523809523" y="1052.0" />
+      <point x="93.5" y="159.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.Order" target="shop.infrastructure.domain.model.customer.Customer">
+      <point x="61.5" y="81.0" />
+      <point x="93.5" y="-159.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.service.ItemService" target="shop.infrastructure.domain.repository.CategoryRepository">
+      <point x="-93.5" y="-104.0" />
+      <point x="2002.3711904761906" y="689.0" />
+      <point x="1456.6211904761906" y="689.0" />
+      <point x="38.50000000000006" y="15.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.OrderItem" target="shop.infrastructure.domain.model.Category">
+      <point x="59.75" y="-92.0" />
+      <point x="189.75" y="233.0" />
+      <point x="446.75" y="233.0" />
+      <point x="-29.75" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.Item" target="shop.infrastructure.domain.model.base.BaseEntity">
+      <point x="49.75" y="-70.0" />
+      <point x="1031.2961904761908" y="233.0" />
+      <point x="1001.6711904761908" y="233.0" />
+      <point x="1001.6711904761908" y="114.0" />
+      <point x="534.6290476190477" y="114.0" />
+      <point x="23.0" y="37.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.customer.Customer" target="shop.infrastructure.domain.model.Order">
+      <point x="-93.5" y="-159.0" />
+      <point x="182.3709523809523" y="689.0" />
+      <point x="246.3709523809523" y="689.0" />
+      <point x="-61.5" y="81.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.OrderItem" target="shop.infrastructure.domain.model.base.BaseEntity">
+      <point x="-59.75" y="-92.0" />
+      <point x="70.25" y="233.0" />
+      <point x="135.19595238095235" y="233.0" />
+      <point x="135.19595238095235" y="104.0" />
+      <point x="488.6290476190477" y="104.0" />
+      <point x="-23.0" y="37.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.repository.CategoryRepository" target="shop.infrastructure.domain.repository.base.BaseRepository">
+      <point x="5.6843418860808015E-14" y="-15.0" />
+      <point x="1418.1211904761906" y="482.0" />
+      <point x="1786.9207142857142" y="482.0" />
+      <point x="-15.833333333333371" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.controller.UserController" target="shop.infrastructure.domain.service.UserService">
+      <point x="0.0" y="-159.0" />
+      <point x="0.0" y="170.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.OrderItem" target="shop.infrastructure.domain.model.Order">
+      <point x="59.75" y="92.0" />
+      <point x="189.75" y="462.0" />
+      <point x="307.8709523809523" y="462.0" />
+      <point x="0.0" y="-81.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.service.CategoryService" target="shop.infrastructure.domain.repository.CategoryRepository">
+      <point x="0.0" y="-82.0" />
+      <point x="-38.5" y="15.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.repository.OrderRepository" target="shop.infrastructure.domain.repository.base.BaseRepository">
+      <point x="0.0" y="-37.0" />
+      <point x="2770.871190476191" y="462.0" />
+      <point x="1881.9207142857144" y="462.0" />
+      <point x="79.16666666666674" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.controller.CategoryController" target="shop.infrastructure.domain.service.CategoryService">
+      <point x="0.0" y="-82.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.service.UserService" target="shop.infrastructure.domain.model.customer.Customer">
+      <point x="-182.66666666666663" y="-170.0" />
+      <point x="471.3709523809524" y="1062.0" />
+      <point x="182.3709523809523" y="1062.0" />
+      <point x="-93.5" y="159.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.controller.ItemController" target="shop.infrastructure.domain.service.ItemService">
+      <point x="0.0" y="-93.0" />
+      <point x="0.0" y="104.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.City" target="shop.infrastructure.domain.model.base.BaseEntity">
+      <point x="0.0" y="-37.0" />
+      <point x="1076.1711904761908" y="104.0" />
+      <point x="557.6290476190477" y="104.0" />
+      <point x="46.0" y="37.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.repository.CustomerRepository" target="shop.infrastructure.domain.repository.base.BaseRepository">
+      <point x="0.0" y="-26.0" />
+      <point x="581.6211904761907" y="462.0" />
+      <point x="1723.587380952381" y="462.0" />
+      <point x="-79.16666666666663" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.repository.BackendUserRepository" target="shop.infrastructure.domain.repository.base.BaseRepository">
+      <point x="0.0" y="-37.0" />
+      <point x="918.6211904761906" y="472.0" />
+      <point x="1755.2540476190475" y="472.0" />
+      <point x="-47.5" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.Order" target="shop.infrastructure.domain.model.OrderState">
+      <point x="49.200000000000045" y="-81.0" />
+      <point x="357.07095238095235" y="482.0" />
+      <point x="331.0" y="482.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.service.ItemService" target="shop.infrastructure.domain.repository.ItemRepository">
+      <point x="93.5" y="-104.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.service.UserService" target="shop.infrastructure.domain.repository.CustomerRepository">
+      <point x="0.0" y="-170.0" />
+      <point x="654.037619047619" y="1062.0" />
+      <point x="581.6211904761907" y="1062.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.service.BackendUserService" target="shop.infrastructure.domain.repository.BackendUserRepository">
+      <point x="0.0" y="-125.5" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.controller.OrderController" target="shop.infrastructure.domain.service.OrderService">
+      <point x="0.0" y="-115.0" />
+      <point x="0.0" y="115.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.Item" target="shop.infrastructure.domain.model.Category">
+      <point x="-49.75" y="-70.0" />
+      <point x="931.7961904761908" y="233.0" />
+      <point x="506.25" y="233.0" />
+      <point x="29.75" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.service.UserService" target="shop.infrastructure.domain.service.BackendUserService">
+      <point x="182.66666666666663" y="-170.0" />
+      <point x="836.7042857142857" y="1062.0" />
+      <point x="918.6211904761906" y="1062.0" />
+      <point x="0.0" y="125.5" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.Order" target="shop.infrastructure.domain.model.base.BaseEntity">
+      <point x="-98.39999999999986" y="-81.0" />
+      <point x="209.47095238095244" y="482.0" />
+      <point x="0.0" y="482.0" />
+      <point x="0.0" y="94.0" />
+      <point x="465.6290476190477" y="94.0" />
+      <point x="-46.0" y="37.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.controller.CityController" target="shop.infrastructure.domain.service.CityService">
+      <point x="0.0" y="-37.5" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.Category" target="shop.infrastructure.domain.model.base.BaseEntity">
+      <point x="0.0" y="-26.0" />
+      <point x="476.5" y="114.0" />
+      <point x="511.6290476190477" y="114.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.customer.BackendUser" target="shop.infrastructure.domain.model.customer.BackendUserPK">
+      <point x="-117.75" y="-159.0" />
+      <point x="1625.3711904761908" y="1447.0" />
+      <point x="1656.8711904761908" y="1447.0" />
+      <point x="-86.25" y="82.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.repository.CityRepository" target="shop.infrastructure.domain.repository.base.BaseRepository">
+      <point x="0.0" y="-15.0" />
+      <point x="2425.871190476191" y="472.0" />
+      <point x="1850.2540476190475" y="472.0" />
+      <point x="47.5" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.repository.ItemRepository" target="shop.infrastructure.domain.repository.base.BaseRepository">
+      <point x="0.0" y="-26.0" />
+      <point x="2189.3711904761903" y="482.0" />
+      <point x="1818.587380952381" y="482.0" />
+      <point x="15.833333333333371" y="26.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.model.Order" target="shop.infrastructure.domain.model.OrderItem">
+      <point x="-49.19999999999999" y="-81.0" />
+      <point x="258.67095238095226" y="472.0" />
+      <point x="70.25" y="472.0" />
+      <point x="-59.75" y="92.0" />
+    </edge>
+    <edge source="shop.infrastructure.domain.service.OrderService" target="shop.infrastructure.domain.repository.OrderRepository">
+      <point x="0.0" y="-115.0" />
+      <point x="0.0" y="37.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4474666666666669" x="1588.6996424314652" y="449.49999999999955" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
