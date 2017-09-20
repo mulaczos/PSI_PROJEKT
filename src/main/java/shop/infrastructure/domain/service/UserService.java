@@ -1,19 +1,18 @@
 package shop.infrastructure.domain.service;
 
+import java.util.List;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import shop.infrastructure.domain.exception.UsernameAlreadyUsedException;
 import shop.infrastructure.domain.exception.WrongConfirmPasswordException;
-import shop.infrastructure.domain.model.customer.Customer;
-import shop.infrastructure.domain.model.customer.Role;
 import shop.infrastructure.domain.model.customer.BackendUser;
+import shop.infrastructure.domain.model.customer.Customer;
 import shop.infrastructure.domain.model.customer.CustomerDto;
+import shop.infrastructure.domain.model.customer.Role;
 import shop.infrastructure.domain.repository.BackendUserRepository;
 import shop.infrastructure.domain.repository.CustomerRepository;
-
-import javax.persistence.EntityNotFoundException;
-import java.util.List;
 
 @Service
 public class UserService {

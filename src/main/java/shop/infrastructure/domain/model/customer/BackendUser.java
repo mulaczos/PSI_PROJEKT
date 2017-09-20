@@ -1,7 +1,6 @@
 package shop.infrastructure.domain.model.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;

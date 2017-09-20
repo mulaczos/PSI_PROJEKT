@@ -16,7 +16,7 @@
                 url: 'login',
                 data: 'username=' + username + '&password=' + password,
                 headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 }
             });
         };
@@ -104,12 +104,12 @@
             });
         };
 
-         AccountService.deleteUser = function (data) {
+        AccountService.deleteUser = function (data) {
             return $http({
-                url: '/user/'+data,
+                url: '/user/' + data,
                 method: 'DELETE'
             });
-         };
+        };
 
         return AccountService;
     }

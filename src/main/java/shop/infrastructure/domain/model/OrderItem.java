@@ -1,8 +1,11 @@
 package shop.infrastructure.domain.model;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import shop.infrastructure.domain.model.base.BaseEntity;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "ORDERITEMS")

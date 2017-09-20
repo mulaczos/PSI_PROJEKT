@@ -16,7 +16,7 @@
         };
 
         $scope.backToMainScreen = function () {
-            $state.go("main");
+            $state.go('main');
         };
 
         $scope.removeQuanity = function () {
@@ -52,7 +52,7 @@
                 }
                 localStorageService.set('items', $scope.cartData);
             }
-            $rootScope.$broadcast("refreshCart");
+            $rootScope.$broadcast('refreshCart');
             $state.go('cart', {}, {reload: true});
         };
     }

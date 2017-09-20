@@ -25,8 +25,8 @@
                                         <label for="name">Name</label>
                                         <div class="input-group"
                                              ng-class="{ 'has-error': shipingForm.name.$error.required }">
-                                        <span class="input-group-addon"><i class="fa fa-user-circle"
-                                                                           aria-hidden="true"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-user-circle"
+                                                                               aria-hidden="true"></i></span>
                                             <input type="text" id="name" name="name" class="form-control"
                                                    ng-required="true"
                                                    ng-model="name"/>
@@ -36,8 +36,8 @@
                                         <label for="lastname">Lastname</label>
                                         <div class="input-group"
                                              ng-class="{ 'has-error': shipingForm.lastname.$error.required }">
-                                        <span class="input-group-addon"><i class="fa fa-user"
-                                                                           aria-hidden="true"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-user"
+                                                                               aria-hidden="true"></i></span>
                                             <input type="text" id="lastname" name="lastname" class="form-control"
                                                    ng-required="true"
                                                    ng-model="lastname"/>
@@ -47,8 +47,8 @@
                                         <label for="email">Email</label>
                                         <div class="input-group"
                                              ng-class="{ 'has-error': shipingForm.email.$error.required ||shipingForm.email.$error.email }">
-                                        <span class="input-group-addon"><i class="fa fa-envelope"
-                                                                           aria-hidden="true"></i></span>
+                                            <span class="input-group-addon"><i class="fa fa-envelope"
+                                                                               aria-hidden="true"></i></span>
                                             <input type="email" name="email" id="email" class="form-control"
                                                    ng-required="true"
                                                    ng-model="email"/>
@@ -58,8 +58,11 @@
                                         <label for="city">City</label>
                                         <div class="input-group"
                                              ng-class="{ 'has-error': shipingForm.city.$error.required }">
-                                        <span class="input-group-addon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                                            <select id="city" name="city" class="form-control" ng-model="choosenCity" ng-options="city.city for city in cityList" ng-required="false" ng-required="true">
+                                            <span class="input-group-addon"><i class="fa fa-map-marker"
+                                                                               aria-hidden="true"></i></span>
+                                            <select id="city" name="city" class="form-control" ng-model="choosenCity"
+                                                    ng-options="city.city for city in cityList" ng-required="false"
+                                                    ng-required="true">
                                                 <option value="">-- choose city --</option>
                                             </select>
                                         </div>
@@ -68,8 +71,11 @@
                                         <label for="zipcode">Zipcode</label>
                                         <div class="input-group"
                                              ng-class="{ 'has-error': shipingForm.zipcode.$error.required }">
-                                        <span class="input-group-addon"><i class="fa fa-map" aria-hidden="true"></i></span>
-                                            <select id="zipcode" name="city" class="form-control" ng-model="choosenCity" ng-options="city.zipcode for city in cityList" ng-required="false" ng-required="true">
+                                            <span class="input-group-addon"><i class="fa fa-map" aria-hidden="true"></i>
+                                            </span>
+                                            <select id="zipcode" name="city" class="form-control" ng-model="choosenCity"
+                                                    ng-options="city.zipcode for city in cityList" ng-required="false"
+                                                    ng-required="true">
                                                 <option value="">-- choose zipcode --</option>
                                             </select>
                                         </div>
@@ -78,8 +84,10 @@
                                         <label for="address">Address</label>
                                         <div class="input-group"
                                              ng-class="{ 'has-error': shipingForm.address.$error.required }">
-                                        <span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
-                                            <input type="text" id="address" name="address" class="form-control" ng-required="true" ng-model="address"/>
+                                            <span class="input-group-addon"><i class="fa fa-location-arrow"
+                                                                               aria-hidden="true"></i></span>
+                                            <input type="text" id="address" name="address" class="form-control"
+                                                   ng-required="true" ng-model="address"/>
                                         </div>
                                     </div>
                                 </form>

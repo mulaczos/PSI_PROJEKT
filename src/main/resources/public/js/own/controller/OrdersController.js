@@ -11,10 +11,10 @@
         $scope.expanded = false;
 
         $scope.init = function () {
-           $scope.orders = OrderService.getMyOrders();
+            $scope.orders = OrderService.getMyOrders();
         };
 
-        $scope.goShopping = function() {
+        $scope.goShopping = function () {
             $rootScope.selectedCategory = 'ALL';
             $state.go('main');
         }

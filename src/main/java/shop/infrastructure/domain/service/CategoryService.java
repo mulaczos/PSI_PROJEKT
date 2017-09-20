@@ -1,11 +1,11 @@
 package shop.infrastructure.domain.service;
 
+import java.util.List;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shop.infrastructure.domain.model.Category;
 import shop.infrastructure.domain.repository.CategoryRepository;
-
-import java.util.List;
 
 @Service
 public class CategoryService {
@@ -30,6 +30,10 @@ public class CategoryService {
     }
 
     public Category update(Category category) {
-        return categoryRepository.save(category);
+        if (get(category.getId()) != null) {
+            return save(category);
+        } else {
+            throw new EntityNotFoundException();
+        }
     }
 }

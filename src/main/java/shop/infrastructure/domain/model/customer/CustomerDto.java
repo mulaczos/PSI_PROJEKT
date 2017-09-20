@@ -1,9 +1,8 @@
 package shop.infrastructure.domain.model.customer;
 
-import org.hibernate.validator.constraints.Email;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Email;
 
 public class CustomerDto {
 

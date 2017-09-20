@@ -26,58 +26,58 @@
 
         $stateProvider
             .state('login', {
-                url: "/login",
+                url: '/login',
                 templateUrl: '/login.html',
                 controller: 'LoginController'
             })
             .state('register', {
-                url: "/register",
+                url: '/register',
                 templateUrl: '/register.html',
                 controller: 'RegisterController'
             })
             .state('item', {
-                url: "/item",
+                url: '/item',
                 templateUrl: '/item.html',
                 controller: 'ItemsController'
             })
             .state('profile', {
-                url: "/profile",
+                url: '/profile',
                 templateUrl: '/profile.html',
                 controller: 'ProfileController'
             })
             .state('main', {
-                url: "/main",
+                url: '/main',
                 templateUrl: '/main.html',
                 controller: 'MainController'
             })
             .state('orders', {
-                url: "/orders",
+                url: '/orders',
                 templateUrl: '/orders.html',
                 controller: 'OrdersController'
             })
             .state('admin', {
-                url: "/admin",
+                url: '/admin',
                 templateUrl: '/admin.html',
                 controller: 'AdminController'
             })
             .state('cart', {
-                url: "/cart",
+                url: '/cart',
                 templateUrl: '/cart.html',
                 controller: 'CartController'
             })
             .state('checkout', {
-                url: "/checkout",
+                url: '/checkout',
                 templateUrl: '/checkout.html',
                 controller: 'CheckoutController'
             })
             .state('allorders', {
-                url: "/allorders",
+                url: '/allorders',
                 templateUrl: '/allorders.html',
                 controller: 'AllOrdersController'
             });
 
         $urlRouterProvider
             .when('/', '/')
-            .otherwise("/");
+            .otherwise('/');
     }
 }());

@@ -10,7 +10,7 @@
     function CartController($scope, $state, localStorageService, $rootScope) {
 
         $scope.total = 0;
-        $scope.items = localStorageService.get("items");
+        $scope.items = localStorageService.get('items');
 
         $scope.backToShopping = function () {
             $state.go('main');
@@ -22,8 +22,8 @@
                     if ($scope.items[i].quanity > 1) {
                         $scope.items[i].quanity = $scope.items[i].quanity - 1;
                     }
-                    localStorageService.set("items", $scope.items);
-                    $scope.items = localStorageService.get("items");
+                    localStorageService.set('items', $scope.items);
+                    $scope.items = localStorageService.get('items');
                     $scope.countTotal();
                     break;
                 }
@@ -34,8 +34,8 @@
             for (var i = 0; i < $scope.items.length; i++) {
                 if ($scope.items[i].id === item.id) {
                     $scope.items[i].quanity = $scope.items[i].quanity + 1;
-                    localStorageService.set("items", $scope.items);
-                    $scope.items = localStorageService.get("items");
+                    localStorageService.set('items', $scope.items);
+                    $scope.items = localStorageService.get('items');
                     $scope.countTotal();
                     break;
                 }
@@ -50,24 +50,24 @@
                     $scope.total = $scope.total + ($scope.items[i].quanity * $scope.items[i].price);
                 }
             }
-            localStorageService.set("total", $scope.total);
+            localStorageService.set('total', $scope.total);
         };
 
-        $scope.remove = function(item) {
+        $scope.remove = function (item) {
             for (var i = 0; i < $scope.items.length; i++) {
                 if ($scope.items[i].id === item.id) {
                     $scope.items.splice(i, 1);
-                    localStorageService.set("items", $scope.items);
-                    $scope.items = localStorageService.get("items");
+                    localStorageService.set('items', $scope.items);
+                    $scope.items = localStorageService.get('items');
                     $scope.countTotal();
-                    $rootScope.$broadcast("refreshCart");
+                    $rootScope.$broadcast('refreshCart');
                     break;
                 }
             }
         };
 
-        $scope.checkout = function() {
-          $state.go('checkout');
+        $scope.checkout = function () {
+            $state.go('checkout');
         };
     }
 }());

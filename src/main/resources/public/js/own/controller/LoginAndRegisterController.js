@@ -8,7 +8,7 @@
     LoginController.$inject = ['$scope', 'AccountService', '$state', '$rootScope', 'localStorageService'];
 
     function LoginController($scope, AccountService, $state, $rootScope, localStorageService) {
-        
+
         $scope.processLogin = function (valid) {
             if (valid) {
                 AccountService.login(
@@ -17,12 +17,12 @@
                 ).then(function success(response) {
                     $rootScope.loggedIn = true;
                     localStorageService.clearAll();
-                    $rootScope.$broadcast("refreshCart");
-                    $rootScope.$broadcast("updateUsername");
+                    $rootScope.$broadcast('refreshCart');
+                    $rootScope.$broadcast('updateUsername');
                     $rootScope.role = response.data.authorities[0].authority;
                     $rootScope.selectedCategory = 'ALL';
                     localStorageService.set('tab', 'addItem');
-                    $state.go("main", {}, {reload: true});
+                    $state.go('main', {}, {reload: true});
                 }, function failure(response) {
                     $scope.signInForm.$setPristine();
                     $scope.signInForm.$setUntouched();
@@ -34,7 +34,7 @@
         };
 
         $scope.register = function () {
-            $state.go("register", {}, {reload: true});
+            $state.go('register', {}, {reload: true});
         };
 
         $rootScope.$on('newAccount', function (event, data) {
@@ -47,10 +47,10 @@
 
     function RegisterController($scope, $state, AccountService, $rootScope, CityService) {
 
-        CityService.all().$promise.then(function(success) {
+        CityService.all().$promise.then(function (success) {
             $scope.cityList = success;
         });
-        
+
         $scope.processRegistration = function (valid) {
             if (valid && ($scope.password === $scope.confirm)) {
                 AccountService.register({
@@ -63,7 +63,7 @@
                     city: $scope.choosenCity.city,
                     lastname: $scope.lastname
                 }).then(function (success) {
-                    $state.go("login").then(function () {
+                    $state.go('login').then(function () {
                         $rootScope.$broadcast('newAccount', $scope.username);
                     });
                 }, function (failure) {
@@ -81,7 +81,7 @@
         };
 
         $scope.goToLoginPage = function () {
-            $state.go("login", {}, {reload: true});
+            $state.go('login', {}, {reload: true});
         };
     }
 }());

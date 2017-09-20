@@ -1,5 +1,7 @@
 package shop.infrastructure.domain.service;
 
+import java.util.List;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,8 +9,6 @@ import shop.infrastructure.domain.model.Category;
 import shop.infrastructure.domain.model.Item;
 import shop.infrastructure.domain.repository.CategoryRepository;
 import shop.infrastructure.domain.repository.ItemRepository;
-
-import java.util.List;
 
 @Service
 public class ItemService {
@@ -41,7 +41,11 @@ public class ItemService {
 
     @Transactional
     public Item update(Item item) {
-        return itemRepository.save(item);
+        if (get(item.getId()) != null) {
+            return save(item);
+        } else {
+            throw new EntityNotFoundException();
+        }
     }
 
     @Transactional

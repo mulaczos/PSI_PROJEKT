@@ -15,9 +15,9 @@
 
         $scope.goMain = function () {
             if ($rootScope.loggedIn) {
-                $state.go("main", {}, {reload: true});
+                $state.go('main', {}, {reload: true});
             } else {
-                $state.go("login", {}, {reload: true});
+                $state.go('login', {}, {reload: true});
             }
         };
 
@@ -28,7 +28,7 @@
                     $rootScope.role = null;
                     $scope.username = null;
                     localStorageService.clearAll();
-                    $state.go("login", {}, {reload: true});
+                    $state.go('login', {}, {reload: true});
                 });
         };
 
@@ -39,7 +39,8 @@
         };
 
         $scope.getUsername = function () {
-            return ($scope.username !== null && !angular.isUndefined($scope.username) && $scope.username !== '') ? "Username: "+$scope.username : "";
+            return ($scope.username !== null && !angular.isUndefined($scope.username) &&
+            $scope.username !== '') ? 'Username: ' + $scope.username : '';
         };
 
         $rootScope.$on('refreshCart', function (event, data) {
@@ -61,19 +62,19 @@
 
         };
 
-        $scope.isAuthenticated = function() {
+        $scope.isAuthenticated = function () {
             AccountService.isAuthenticated()
                 .then(function success(response) {
                     if (response.data) {
                         $rootScope.loggedIn = true;
                         $rootScope.role = response.data.authorities[0].authority;
                         $scope.username = response.data.name;
-                        $state.go("main");
+                        $state.go('main');
                     } else {
-                        $state.go("login");
+                        $state.go('login');
                     }
                 }, function failure(response) {
-                    $state.go("login");
+                    $state.go('login');
                 });
         };
     }

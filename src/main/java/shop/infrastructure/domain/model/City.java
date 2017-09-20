@@ -1,15 +1,11 @@
 package shop.infrastructure.domain.model;
 
-import shop.infrastructure.domain.model.base.BaseEntity;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import shop.infrastructure.domain.model.base.BaseEntity;
 
-/**
- * Created by Witold on 2017-05-30.
- */
 @Entity
-@Table(name="CITY")
+@Table(name = "CITY")
 public class City extends BaseEntity {
 
     private String city;

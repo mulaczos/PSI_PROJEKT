@@ -1,5 +1,8 @@
 package shop.infrastructure.domain.service;
 
+import java.time.LocalDate;
+import java.util.List;
+import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -7,10 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import shop.infrastructure.domain.model.Order;
 import shop.infrastructure.domain.repository.OrderRepository;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import static shop.infrastructure.domain.model.OrderState.*;
+import static shop.infrastructure.domain.model.OrderState.CONFIRMED;
+import static shop.infrastructure.domain.model.OrderState.REJECTED;
 
 @Service
 @Transactional
@@ -37,7 +38,11 @@ public class OrderService {
 
     @Transactional
     public Order update(Order order) {
-        return orderRepository.save(order);
+        if (get(order.getId()) != null) {
+            return save(order);
+        } else {
+            throw new EntityNotFoundException();
+        }
     }
 
     public void delete(Long id) {

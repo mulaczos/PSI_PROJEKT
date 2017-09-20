@@ -5,9 +5,6 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by Witu on 09.03.2017.
- */
 @MappedSuperclass
 public class BaseEntity {
 

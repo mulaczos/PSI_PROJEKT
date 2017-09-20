@@ -36,9 +36,9 @@
             });
         };
 
-        $scope.openTab = function(tab) {
-           localStorageService.set('tab', tab);
-           $scope.tab = tab;
+        $scope.openTab = function (tab) {
+            localStorageService.set('tab', tab);
+            $scope.tab = tab;
         };
 
         $scope.disable = function (username) {
@@ -66,7 +66,7 @@
         };
 
         $scope.reload = function () {
-            $state.go("admin", {}, {reload: true});
+            $state.go('admin', {}, {reload: true});
         };
 
         $scope.addItem = function (valid) {
@@ -98,14 +98,14 @@
             }
         };
 
-        $scope.deleteUser = function(username) {
-            AccountService.deleteUser(username).then(function(success) {
+        $scope.deleteUser = function (username) {
+            AccountService.deleteUser(username).then(function (success) {
                 $scope.reload();
             });
         };
-        $scope.deleteItem = function(id) {
-            ItemService.delete({id: id}).$promise.then(function(success){
-                console.log("is this thing on?");
+        $scope.deleteItem = function (id) {
+            ItemService.delete({id: id}).$promise.then(function (success) {
+                console.log('is this thing on?');
                 $scope.reload();
             });
         }

@@ -20,10 +20,10 @@
                 $scope.confirm = null;
                 $scope.address = success.data.address;
 
-                angular.forEach($scope.cityList, function(value, key) {
-                   if(value.zipcode === success.data.zipcode) {
-                       $scope.choosenCity = value;
-                   }
+                angular.forEach($scope.cityList, function (value, key) {
+                    if (value.zipcode === success.data.zipcode) {
+                        $scope.choosenCity = value;
+                    }
                 });
             });
         });
@@ -38,7 +38,8 @@
         };
 
         $scope.unlockSubmit = function (valid) {
-            return $scope.password && $scope.confirm && $scope.password.length > 4 && $scope.confirm.length > 4 && ($scope.password === $scope.confirm) && valid;
+            return $scope.password && $scope.confirm && $scope.password.length > 4 && $scope.confirm.length > 4 &&
+                ($scope.password === $scope.confirm) && valid;
         };
 
         $scope.updateProfile = function () {
@@ -53,7 +54,7 @@
                 address: $scope.address,
                 city: $scope.choosenCity.city
             }).then(function success(response) {
-                $state.go("profile", {}, {reload: true});
+                $state.go('profile', {}, {reload: true});
             }, function failure(response) {
             });
         };

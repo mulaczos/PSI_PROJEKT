@@ -1,7 +1,12 @@
 package shop.infrastructure.domain.model.customer;
 
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Embeddable
 public class BackendUserPK implements Serializable {

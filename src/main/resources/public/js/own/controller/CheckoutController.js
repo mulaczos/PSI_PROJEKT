@@ -19,8 +19,8 @@
                 $scope.name = success.data.name;
                 $scope.email = success.data.email;
                 $scope.address = success.data.address;
-                angular.forEach($scope.cityList, function(value, key) {
-                    if(value.zipcode === success.data.zipcode) {
+                angular.forEach($scope.cityList, function (value, key) {
+                    if (value.zipcode === success.data.zipcode) {
                         $scope.choosenCity = value;
                     }
                 });
@@ -52,13 +52,13 @@
             }).$promise.then(function (success) {
                 $scope.submitted = true;
                 localStorageService.clearAll();
-                $rootScope.$broadcast("refreshCart");
+                $rootScope.$broadcast('refreshCart');
             });
 
         };
 
         $scope.goToMyOrders = function () {
-            $state.go("orders");
+            $state.go('orders');
         }
 
     }

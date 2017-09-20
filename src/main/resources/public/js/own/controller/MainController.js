@@ -5,7 +5,7 @@
         .module('app')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['$scope', 'ItemService', 'CategoryService', '$state','$rootScope'];
+    MainController.$inject = ['$scope', 'ItemService', 'CategoryService', '$state', '$rootScope'];
 
     function MainController($scope, ItemService, CategoryService, $state, $rootScope) {
 
@@ -24,7 +24,7 @@
 
         $scope.showItem = function (id) {
             $rootScope.item = id;
-            $state.go("item");
+            $state.go('item');
         };
 
         $scope.fetchAllItems = function () {
