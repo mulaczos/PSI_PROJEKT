@@ -15,7 +15,7 @@ import shop.infrastructure.domain.model.Item;
 import shop.infrastructure.domain.service.ItemService;
 
 @RestController
-@RequestMapping("items")
+@RequestMapping("api/items")
 public class ItemController {
 
     @Autowired

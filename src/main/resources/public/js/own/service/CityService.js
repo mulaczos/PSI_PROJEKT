@@ -8,7 +8,7 @@
 
     function CityService($resource) {
 
-        var base = '/city/';
+        var base = 'api/city/';
 
         return $resource(base, {id: '@id'}, {
             'all': {url: base, method: 'GET', isArray: true}

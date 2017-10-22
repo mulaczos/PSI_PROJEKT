@@ -8,7 +8,7 @@
 
     function CategoryService($resource) {
 
-        var base = '/category/';
+        var base = 'api/category/';
 
         return $resource(base, {id: '@id'}, {
             'all': {url: base, method: 'GET', isArray: true}

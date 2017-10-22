@@ -8,7 +8,7 @@
 
     function OrderService($resource) {
 
-        var base = '/order/';
+        var base = 'api/order/';
 
         return $resource(base, {id: '@id'}, {
             'get': {url: base + ':id', method: 'GET'},

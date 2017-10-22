@@ -19,11 +19,6 @@
 
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        });
-
         $stateProvider
             .state('login', {
                 url: '/login',
@@ -76,8 +71,10 @@
                 controller: 'AllOrdersController'
             });
 
-        $urlRouterProvider
-            .when('/', '/')
-            .otherwise('/');
+        $urlRouterProvider.otherwise('/');
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
     }
 }());

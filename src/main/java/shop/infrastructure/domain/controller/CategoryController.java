@@ -14,7 +14,7 @@ import shop.infrastructure.domain.model.Category;
 import shop.infrastructure.domain.service.CategoryService;
 
 @RestController
-@RequestMapping("category")
+@RequestMapping("api/category")
 public class CategoryController {
 
     @Autowired

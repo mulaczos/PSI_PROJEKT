@@ -9,7 +9,7 @@ import shop.infrastructure.domain.model.City;
 import shop.infrastructure.domain.service.CityService;
 
 @RestController
-@RequestMapping("city")
+@RequestMapping("api/city")
 public class CityController {
 
     @Autowired
