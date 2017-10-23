@@ -1,0 +1,29 @@
+body {
+    font-family: 'Tahoma', sans-serif;
+    padding-top: 70px;
+    font-size: 15px;
+}
+
+.cursor-block {
+    cursor: not-allowed !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-default {
+    cursor: default;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
