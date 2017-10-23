@@ -25,7 +25,6 @@ public class Security extends WebSecurityConfigurerAdapter {
     @Autowired
     private RestUnauthorizedEntryPoint restUnauthorizedEntryPoint;
 
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -51,8 +50,12 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .successHandler(securityAuthenticationSuccessHandler)
                 .failureHandler(securityAuthenticationFailureHandler)
-                .and().logout().logoutSuccessUrl("/");
-
-
+                .and()
+                .logout()
+                .logoutUrl("/api/logout")
+                .logoutSuccessUrl("/")
+                .and()
+                .formLogin()
+                .loginPage("/api/login");
     }
 }

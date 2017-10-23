@@ -16,13 +16,13 @@
 
         $scope.confirmOrder = function (order) {
             OrderService.confirmOrder(order).$promise.then(function (success) {
-                $state.go('allorders', {}, {reload: true});
+                $state.go('allorders');
             });
         };
 
         $scope.rejectOrder = function (order) {
             OrderService.rejectOrder(order).$promise.then(function (success) {
-                $state.go('allorders', {}, {reload: true});
+                $state.go('allorders');
             });
         };
 

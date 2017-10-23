@@ -5,13 +5,13 @@
         .controller('ProfileController', ProfileController);
 
 
-    ProfileController.$inject = ['$scope', 'AccountService', '$state', 'CityService'];
+    ProfileController.$inject = ['$scope', 'AuthenticationService', '$state', 'CityService'];
 
-    function ProfileController($scope, AccountService, $state, CityService) {
+    function ProfileController($scope, AuthenticationService, $state, CityService) {
 
         CityService.all().$promise.then(function (success) {
             $scope.cityList = success;
-            AccountService.getProfile().then(function (success) {
+            AuthenticationService.getProfile().then(function (success) {
                 $scope.username = success.data.username;
                 $scope.lastname = success.data.lastname;
                 $scope.name = success.data.name;
@@ -43,7 +43,7 @@
         };
 
         $scope.updateProfile = function () {
-            AccountService.updateProfile({
+            AuthenticationService.updateProfile({
                 username: $scope.username,
                 newpassword: $scope.password,
                 confirmwithpassword: $scope.confirmwithpassword,
@@ -54,7 +54,7 @@
                 address: $scope.address,
                 city: $scope.choosenCity.city
             }).then(function success(response) {
-                $state.go('profile', {}, {reload: true});
+                $state.go('profile');
             }, function failure(response) {
             });
         };

@@ -5,13 +5,13 @@
         .controller('LoginController', LoginController)
         .controller('RegisterController', RegisterController);
 
-    LoginController.$inject = ['$scope', 'AccountService', '$state', '$rootScope', 'localStorageService'];
+    LoginController.$inject = ['$scope', 'AuthenticationService', '$state', '$rootScope', 'localStorageService'];
 
-    function LoginController($scope, AccountService, $state, $rootScope, localStorageService) {
+    function LoginController($scope, AuthenticationService, $state, $rootScope, localStorageService) {
 
         $scope.processLogin = function (valid) {
             if (valid) {
-                AccountService.login(
+                AuthenticationService.login(
                     $scope.username,
                     $scope.password
                 ).then(function success(response) {
@@ -22,7 +22,7 @@
                     $rootScope.role = response.data.authorities[0].authority;
                     $rootScope.selectedCategory = 'ALL';
                     localStorageService.set('tab', 'addItem');
-                    $state.go('main', {}, {reload: true});
+                    $state.go('main');
                 }, function failure(response) {
                     $scope.signInForm.$setPristine();
                     $scope.signInForm.$setUntouched();
@@ -34,7 +34,7 @@
         };
 
         $scope.register = function () {
-            $state.go('register', {}, {reload: true});
+            $state.go('register');
         };
 
         $rootScope.$on('newAccount', function (event, data) {
@@ -43,9 +43,9 @@
         });
     }
 
-    RegisterController.$inject = ['$scope', '$state', 'AccountService', '$rootScope', 'CityService'];
+    RegisterController.$inject = ['$scope', '$state', 'AuthenticationService', '$rootScope', 'CityService'];
 
-    function RegisterController($scope, $state, AccountService, $rootScope, CityService) {
+    function RegisterController($scope, $state, AuthenticationService, $rootScope, CityService) {
 
         CityService.all().$promise.then(function (success) {
             $scope.cityList = success;
@@ -53,7 +53,7 @@
 
         $scope.processRegistration = function (valid) {
             if (valid && ($scope.password === $scope.confirm)) {
-                AccountService.register({
+                AuthenticationService.register({
                     username: $scope.username,
                     password: $scope.password,
                     name: $scope.name,
@@ -81,7 +81,7 @@
         };
 
         $scope.goToLoginPage = function () {
-            $state.go('login', {}, {reload: true});
+            $state.go('login');
         };
     }
 }());

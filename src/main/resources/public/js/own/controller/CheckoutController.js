@@ -5,15 +5,15 @@
         .controller('CheckoutController', CheckoutController);
 
 
-    CheckoutController.$inject = ['$scope', 'AccountService', 'localStorageService', 'OrderService', '$rootScope', '$state', 'CityService'];
+    CheckoutController.$inject = ['$scope', 'AuthenticationService', 'localStorageService', 'OrderService', '$rootScope', '$state', 'CityService'];
 
-    function CheckoutController($scope, AccountService, localStorageService, OrderService, $rootScope, $state, CityService) {
+    function CheckoutController($scope, AuthenticationService, localStorageService, OrderService, $rootScope, $state, CityService) {
 
         $scope.submitted = false;
 
         CityService.all().$promise.then(function (success) {
             $scope.cityList = success;
-            AccountService.getProfile().then(function (success) {
+            AuthenticationService.getProfile().then(function (success) {
                 $scope.user = success.data;
                 $scope.lastname = success.data.lastname;
                 $scope.name = success.data.name;

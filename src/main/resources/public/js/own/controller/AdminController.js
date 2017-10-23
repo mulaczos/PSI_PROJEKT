@@ -5,9 +5,9 @@
         .controller('AdminController', AdminController);
 
 
-    AdminController.$inject = ['$scope', 'AccountService', '$state', 'CategoryService', 'ItemService', '$rootScope', 'localStorageService'];
+    AdminController.$inject = ['$scope', 'AuthenticationService', '$state', 'CategoryService', 'ItemService', '$rootScope', 'localStorageService'];
 
-    function AdminController($scope, AccountService, $state, CategoryService, ItemService, $rootScope, localStorageService) {
+    function AdminController($scope, AuthenticationService, $state, CategoryService, ItemService, $rootScope, localStorageService) {
 
         $scope.success = false;
         $scope.categories = CategoryService.all();
@@ -15,17 +15,17 @@
         $scope.items = ItemService.all();
 
         $scope.init = function () {
-            AccountService.getAllUsers().then(function (success) {
+            AuthenticationService.getAllUsers().then(function (success) {
                 $scope.customers = success.data;
             });
-            AccountService.isAuthenticated().then(function (success) {
+            AuthenticationService.isAuthenticated().then(function (success) {
                 $scope.username = success.data.name;
             });
-            AccountService.getRole().then(function (success) {
+            AuthenticationService.getRole().then(function (success) {
                 if ($rootScope.role !== success.data) {
                     if (success.data === 'USER') {
                         $rootScope.role = success.data;
-                        $state.go('main', {}, {reload: true});
+                        $state.go('main');
                     } else {
                         $rootScope.role = success.data;
                         $scope.reload();
@@ -42,31 +42,31 @@
         };
 
         $scope.disable = function (username) {
-            AccountService.toggleDisable(username).then(function (success) {
+            AuthenticationService.toggleDisable(username).then(function (success) {
                 $scope.init();
             });
         };
 
         $scope.degradeToUser = function (username) {
-            AccountService.degradeToUser(username).then(function (success) {
+            AuthenticationService.degradeToUser(username).then(function (success) {
                 $scope.init();
             });
         };
 
         $scope.assignModeratorRole = function (username) {
-            AccountService.assignModeratorRole(username).then(function (success) {
+            AuthenticationService.assignModeratorRole(username).then(function (success) {
                 $scope.init();
             });
         };
 
         $scope.grantAdmin = function (username) {
-            AccountService.grantAdmin(username).then(function (success) {
+            AuthenticationService.grantAdmin(username).then(function (success) {
                 $scope.init();
             });
         };
 
         $scope.reload = function () {
-            $state.go('admin', {}, {reload: true});
+            $state.go('admin');
         };
 
         $scope.addItem = function (valid) {
@@ -99,7 +99,7 @@
         };
 
         $scope.deleteUser = function (username) {
-            AccountService.deleteUser(username).then(function (success) {
+            AuthenticationService.deleteUser(username).then(function (success) {
                 $scope.reload();
             });
         };

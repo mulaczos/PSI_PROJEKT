@@ -53,7 +53,7 @@
                 localStorageService.set('items', $scope.cartData);
             }
             $rootScope.$broadcast('refreshCart');
-            $state.go('cart', {}, {reload: true});
+            $state.go('cart');
         };
     }
 }());

@@ -4,9 +4,9 @@
         .module('app')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$scope', 'AccountService', '$state', '$rootScope', 'localStorageService'];
+    NavbarController.$inject = ['$scope', 'AuthenticationService', '$state', '$rootScope', 'localStorageService'];
 
-    function NavbarController($scope, AccountService, $state, $rootScope, localStorageService) {
+    function NavbarController($scope, AuthenticationService, $state, $rootScope, localStorageService) {
 
         $scope.init = function () {
             $scope.showItemQuanity();
@@ -15,20 +15,20 @@
 
         $scope.goMain = function () {
             if ($rootScope.loggedIn) {
-                $state.go('main', {}, {reload: true});
+                $state.go('main');
             } else {
-                $state.go('login', {}, {reload: true});
+                $state.go('login');
             }
         };
 
         $scope.logout = function () {
-            AccountService.logout()
+            AuthenticationService.logout()
                 .then(function success(success) {
                     $rootScope.loggedIn = false;
                     $rootScope.role = null;
                     $scope.username = null;
                     localStorageService.clearAll();
-                    $state.go('login', {}, {reload: true});
+                    $state.go('login');
                 });
         };
 
@@ -63,7 +63,7 @@
         };
 
         $scope.isAuthenticated = function () {
-            AccountService.isAuthenticated()
+            AuthenticationService.isAuthenticated()
                 .then(function success(response) {
                     if (response.data) {
                         $rootScope.loggedIn = true;
