@@ -13,7 +13,8 @@ public class ObjectMapperConfiguration {
     private ObjectMapper objectMapper;
 
     public void config() {
-        objectMapper.registerModule(new JavaTimeModule());
-        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        objectMapper
+                .registerModule(new JavaTimeModule())
+                .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
 }

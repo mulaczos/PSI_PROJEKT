@@ -105,7 +105,6 @@
         };
         $scope.deleteItem = function (id) {
             ItemService.delete({id: id}).$promise.then(function (success) {
-                console.log('is this thing on?');
                 $scope.reload();
             });
         }

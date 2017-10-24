@@ -4,12 +4,20 @@ body {
     font-size: 15px;
 }
 
+label {
+    font-weight: normal;
+}
+
 .cursor-block {
     cursor: not-allowed !important;
 }
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.padding-left {
+    padding-left: 50px;
 }
 
 .cursor-default {

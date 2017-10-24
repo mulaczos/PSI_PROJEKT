@@ -22,52 +22,52 @@
         $stateProvider
             .state('login', {
                 url: '/login',
-                templateUrl: '/login.html',
+                templateUrl: '/html/login.html',
                 controller: 'LoginController'
             })
             .state('register', {
                 url: '/register',
-                templateUrl: '/register.html',
+                templateUrl: '/html/register.html',
                 controller: 'RegisterController'
             })
             .state('item', {
                 url: '/item',
-                templateUrl: '/item.html',
+                templateUrl: '/html/item.html',
                 controller: 'ItemsController'
             })
             .state('profile', {
                 url: '/profile',
-                templateUrl: '/profile.html',
+                templateUrl: '/html/profile.html',
                 controller: 'ProfileController'
             })
             .state('main', {
                 url: '/main',
-                templateUrl: '/main.html',
+                templateUrl: '/html/main.html',
                 controller: 'MainController'
             })
             .state('orders', {
                 url: '/orders',
-                templateUrl: '/orders.html',
+                templateUrl: '/html/orders.html',
                 controller: 'OrdersController'
             })
             .state('admin', {
                 url: '/admin',
-                templateUrl: '/admin.html',
+                templateUrl: '/html/admin.html',
                 controller: 'AdminController'
             })
             .state('cart', {
                 url: '/cart',
-                templateUrl: '/cart.html',
+                templateUrl: '/html/cart.html',
                 controller: 'CartController'
             })
             .state('checkout', {
                 url: '/checkout',
-                templateUrl: '/checkout.html',
+                templateUrl: '/html/checkout.html',
                 controller: 'CheckoutController'
             })
             .state('allorders', {
                 url: '/allorders',
-                templateUrl: '/allorders.html',
+                templateUrl: '/html/allorders.html',
                 controller: 'AllOrdersController'
             });
 

@@ -26,6 +26,7 @@
         <script src="js/own/app.js"></script>
         <script src="js/own/service/ItemService.js"></script>
         <script src="js/own/controller/NavbarController.js"></script>
+        <script src="js/own/service/NavbarService.js"></script>
         <script src="js/own/service/AuthenticationService.js"></script>
         <script src="js/own/service/CategoryService.js"></script>
         <script src="js/own/controller/LoginAndRegisterController.js"></script>
@@ -44,27 +45,37 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                    </button>
-                    <a class="navbar-brand navbar-title" href="" ng-click="goMain()">Go Travel</a>
+                    <span class="navbar-brand navbar-title cursor-pointer" ng-click="goMain()">Go Travel</span>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar">
-                    <ul class="nav navbar-nav">
-                        <li ng-show="loggedIn"><a href="" ng-click="goToState('profile')">PROFILE</a></li>
-                        <li ng-show="loggedIn"><a href="" ng-click="goToState('orders')">ORDERS</a></li>
-                        <li ng-show="role==='MODERATOR' || role==='ADMIN'">
-                            <a href="" ng-click="goToState('allorders')" ng-class="{ 'cursor-block': !loggedIn }">ALL
-                                ORDERS</a></li>
-                        <li ng-show="role==='MODERATOR' || role==='ADMIN'">
-                            <a href="" ng-click="goToState('admin')"
-                               ng-class="{ 'cursor-block': !loggedIn }">ADMINISTRATION</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right" ng-show="loggedIn">
-                        <li><a href="" ng-click="logout()">LOGOUT</a></li>
-                    </ul>
+                    <div class="nav navbar-nav">
+                        <span ng-show="loggedIn">
+                            <label class="navbar-brand padding-left" ng-click="goToState('profile')"
+                                   ng-class="{'navbar-selected' : isSelected('profile')}">PROFILE
+                            </label>
+                        </span>
+                        <span ng-show="loggedIn">
+                            <label class="navbar-brand" ng-click="goToState('orders')"
+                                   ng-class="{'navbar-selected' : isSelected('orders')}">ORDERS
+                            </label>
+                        </span>
+                        <span ng-show="role==='MODERATOR' || role==='ADMIN'">
+                            <label class="navbar-brand" ng-click="goToState('allorders')"
+                                   ng-class="{'navbar-selected' : isSelected('allorders')}">ALL
+                                ORDERS
+                            </label>
+                        </span>
+                        <span ng-show="role==='MODERATOR' || role==='ADMIN'">
+                            <label class="navbar-brand" ng-click="goToState('admin')"
+                                   ng-class="{'navbar-selected' : isSelected('admin')}">ADMINISTRATION
+                            </label>
+                        </span>
+                    </div>
+                    <div class="nav navbar-nav navbar-right" ng-show="loggedIn">
+                        <span>
+                            <label class="navbar-brand" ng-click="logout()">LOGOUT</label>
+                        </span>
+                    </div>
                 </div>
             </div>
         </nav>

@@ -4,13 +4,14 @@
         .module('app')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$scope', 'AuthenticationService', '$state', '$rootScope', 'localStorageService'];
+    NavbarController.$inject = ['$scope', 'AuthenticationService', '$state', '$rootScope', 'localStorageService', 'NavbarService'];
 
-    function NavbarController($scope, AuthenticationService, $state, $rootScope, localStorageService) {
+    function NavbarController($scope, AuthenticationService, $state, $rootScope, localStorageService, NavbarService) {
 
         $scope.init = function () {
             $scope.showItemQuanity();
             $scope.isAuthenticated();
+            $scope.selectedTab = NavbarService.getSelectedTab();
         };
 
         $scope.goMain = function () {
@@ -34,6 +35,7 @@
 
         $scope.goToState = function (state) {
             if ($rootScope.loggedIn) {
+                NavbarService.setSelectedTab(state);
                 $state.go(state);
             }
         };
@@ -77,5 +79,9 @@
                     $state.go('login');
                 });
         };
+
+        $scope.isSelected = function (tab) {
+            return NavbarService.getSelectedTab() === tab;
+        }
     }
 }());
