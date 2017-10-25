@@ -50,30 +50,28 @@
                 <div class="collapse navbar-collapse" id="navbar">
                     <div class="nav navbar-nav">
                         <span ng-show="loggedIn">
-                            <label class="navbar-brand padding-left" ng-click="goToState('profile')"
-                                   ng-class="{'navbar-selected' : isSelected('profile')}">PROFILE
-                            </label>
-                        </span>
-                        <span ng-show="loggedIn">
-                            <label class="navbar-brand" ng-click="goToState('orders')"
+                            <label class="navbar-brand padding-left cursor-pointer" ng-click="goToState('orders')"
                                    ng-class="{'navbar-selected' : isSelected('orders')}">ORDERS
                             </label>
                         </span>
                         <span ng-show="role==='MODERATOR' || role==='ADMIN'">
-                            <label class="navbar-brand" ng-click="goToState('allorders')"
+                            <label class="navbar-brand cursor-pointer" ng-click="goToState('allorders')"
                                    ng-class="{'navbar-selected' : isSelected('allorders')}">ALL
                                 ORDERS
                             </label>
                         </span>
                         <span ng-show="role==='MODERATOR' || role==='ADMIN'">
-                            <label class="navbar-brand" ng-click="goToState('admin')"
+                            <label class="navbar-brand cursor-pointer" ng-click="goToState('admin')"
                                    ng-class="{'navbar-selected' : isSelected('admin')}">ADMINISTRATION
                             </label>
                         </span>
                     </div>
                     <div class="nav navbar-nav navbar-right" ng-show="loggedIn">
                         <span>
-                            <label class="navbar-brand" ng-click="logout()">LOGOUT</label>
+                            <label class="navbar-brand cursor-pointer" ng-click="goToState('profile')"
+                                   ng-class="{'navbar-selected' : isSelected('profile')}">SETTINGS
+                            </label>
+                            <label class="navbar-brand cursor-pointer" ng-click="logout()">LOGOUT</label>
                         </span>
                     </div>
                 </div>
